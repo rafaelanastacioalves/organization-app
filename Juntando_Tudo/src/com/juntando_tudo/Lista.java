@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
@@ -32,7 +33,8 @@ public class Lista extends Activity {
 	@Override
 	 public void onCreate(Bundle savedInstanceState) {
 	     super.onCreate(savedInstanceState);
-	      
+	     Intent iRecebeDados = getIntent();
+	      setupActionBar();
 	     // Define o arquivo /layout/main.xml como layout principal da aplicação
 	     setContentView(R.layout.main);
 	      

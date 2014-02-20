@@ -15,12 +15,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.juntando_tudo.MainActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="@string/app_name" android:parentActivityName="@string/title_activity_main_menu" android:finishOnTaskLaunch="false" android:launchMode="standard">
         </activity>
         <activity
             android:name="com.juntando_tudo.LoginGoogle"
@@ -30,7 +25,15 @@
         </activity>
         <activity
             android:name="com.juntando_tudo.MainMenu"
-            android:label="@string/title_activity_main_menu" >
+            android:label="@string/title_activity_main_menu" 
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter><meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.juntando_tudo.MainMenu" />
         </activity>
         <activity
             android:name="com.juntando_tudo.Lista"

@@ -12,7 +12,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		Intent iLogin = new Intent(this, LoginGoogle.class);
-		startActivity(iLogin);
+		iLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+		startActivity(iLogin );
 		//setContentView(R.layout.activity_main);
 	}
 

@@ -32,6 +32,7 @@ public class MainMenu extends Activity {
 		adMensagem.show();
 		Intent iChamaLista = new Intent(this,Lista.class);
 		startActivity(iChamaLista);
+		this.overridePendingTransition(R.anim.slide2, R.anim.slide);
 	}
 
 }

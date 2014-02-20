@@ -116,6 +116,7 @@ public class LoginGoogle extends Activity {
 			// that hierarchy.
 			//NavUtils.navigateUpFromSameTask(this);
 			Intent iChamaMenuPrincipal =  new Intent(this, MainMenu.class);
+			iChamaMenuPrincipal.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(iChamaMenuPrincipal);
 			return true;
 		}
