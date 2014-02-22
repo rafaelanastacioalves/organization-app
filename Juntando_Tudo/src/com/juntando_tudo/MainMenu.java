@@ -27,12 +27,16 @@ public class MainMenu extends Activity {
 	public void listar ( View v){
 		ImageButton bTela = (ImageButton) findViewById(v.getId());
 		String sNome = bTela.toString();
-		AlertDialog adMensagem = new AlertDialog.Builder(this).create();
-		adMensagem.setMessage(sNome);
-		adMensagem.show();
+		mostrarMSG(sNome, "Info Button" );
 		Intent iChamaLista = new Intent(this,Lista.class);
 		startActivity(iChamaLista);
 		this.overridePendingTransition(R.anim.slide2, R.anim.slide);
+	}
+	public void mostrarMSG(String strMSG, String strTitle){
+		AlertDialog adMensagem = new AlertDialog.Builder(this).create();
+		adMensagem.setMessage(strMSG);
+		adMensagem.setTitle(strTitle);
+		adMensagem.show();
 	}
 
 }
