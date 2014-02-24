@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import android.R.color;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -101,8 +104,7 @@ public class Lista extends Activity {
 				result = String.valueOf(userInput.getText());
 				mostrarMSG(result, "Teste");
 				ESTADOS.add(result);
-				
-				
+				onResume();
 			    }
 			  });
 			alertDialogBuilder.setNegativeButton("Cancel",
@@ -117,7 +119,7 @@ public class Lista extends Activity {
 
 		// show it
 		alertDialog.show();
-
+		return true;
 		
 		}
 		return super.onOptionsItemSelected(item);
@@ -170,12 +172,16 @@ ArrayAdapter<String> lsvEstadosAdapter = new ArrayAdapter<String>(this, android.
     @Override
     public void onClick(View v) {
         CheckBox chk = (CheckBox) v;
+        LinearLayout vParent =  (LinearLayout) v.getParent();
+        TextView tbTxt =  (TextView) vParent.findViewById(R.id.txvEstados);
     String estado = (String) chk.getTag();
     if(chk.isChecked()) {
+    	tbTxt.setTextColor(Color.BLUE);
         Toast.makeText(getApplicationContext(), "Checbox de " + estado + " marcado!", Toast.LENGTH_SHORT).show();
         if(!selecionados.contains(estado))
             selecionados.add(estado);
                 } else {
+                	tbTxt.setTextColor(Color.BLACK);
             Toast.makeText(getApplicationContext(), "Checbox de " + estado + " desmarcado!", Toast.LENGTH_SHORT).show();
             if(selecionados.contains(estado))
                 selecionados.remove(estado);
@@ -189,8 +195,11 @@ ArrayAdapter<String> lsvEstadosAdapter = new ArrayAdapter<String>(this, android.
     txv.setText(estado);
     if(selecionados.contains(estado)) {
         chk.setChecked(true);
+        txv.setTextColor(Color.BLUE);
+       
     } else {
         chk.setChecked(false);
+        txv.setTextColor(Color.BLACK);
     }
 
     return v;
