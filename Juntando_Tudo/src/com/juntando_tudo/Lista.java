@@ -24,6 +24,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import pfc.ime.gtdmanager.helper.*;
+import pfc.ime.gtdmanager.model.ActionBox;
+import pfc.ime.gtdmanager.model.CheckLine;
 
 public class Lista extends Activity {
 	private final List<String> selecionados = new ArrayList<String>();
@@ -44,7 +47,26 @@ public class Lista extends Activity {
 	 public void onCreate(Bundle savedInstanceState) {
 	     super.onCreate(savedInstanceState);
 	     Intent iRecebeDados = getIntent();
+	     try{
+	    	 //testando inicializar banco de dados
+	     DBHelper dbTeste = new DBHelper(this);
+	     ActionBox listaTeste = new ActionBox("bla");
+	     dbTeste.populateActionBoxesTable();
+	     	// getAllActionBoxes
+	     List<ActionBox> lAB = new 	ArrayList<ActionBox>();
+	     lAB = dbTeste.getAllActionBoxes();
+	     Iterator<ActionBox> iAB = lAB.iterator();
+	     String strActionBox = "";
+	     while (iAB.hasNext()) {
+			ActionBox actionBox = (ActionBox) iAB.next();
+			strActionBox +=  "" + actionBox.getName() + "ID: "+ actionBox.getId() +  " \n";
+			}
+	     mostrarMSG(strActionBox, "ActionBoxes") ;
 	     
+	     }
+	     catch(Exception erro){
+	    	 mostrarMSG(String.valueOf(erro), "erro");
+	     }
 	     loadList();
 	     
 	      setupActionBar();
@@ -129,7 +151,18 @@ public void loadList(){
 		ESTADOS.add(ESTADO[i] + i );
 		
 	}
+	
+	
 }
+//public void loadList(long actbxId, DBHelper dbHelper){
+//	CheckLine chklnItem = new CheckLine();
+//	ActionBox actbxLoaded = dbHelper.getActionBoxById(actbxId);
+//
+//	for(int i=0; i<5; i++){
+//		chklnItem.setText("Objeto no "+ i);
+//		actbxLoaded.
+//	}
+//}
 
 public void mostrarMSG(String strMSG, String strTitle){
 	AlertDialog adMensagem = new AlertDialog.Builder(this).create();
