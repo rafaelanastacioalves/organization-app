@@ -58,6 +58,9 @@ public class CheckLine extends Table {
 	}
 
 	public String getCheck_time() {
+		if(check_time == null){
+			check_time= new Date().toString();
+		}
 		return check_time;
 	}
 

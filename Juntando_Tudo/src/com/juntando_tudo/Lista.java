@@ -1,6 +1,7 @@
 package com.juntando_tudo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class Lista extends Activity {
 	 "São Paulo", "Sergipe", "Tocantins"
 	 };
 	 private final List<String> ESTADOS = new ArrayList<String>();
+	 private List<CheckLine> lstCheckLine ;
 
 	private String result;
 	
@@ -61,7 +63,10 @@ public class Lista extends Activity {
 			ActionBox actionBox = (ActionBox) iAB.next();
 			strActionBox +=  "" + actionBox.getName() + "ID: "+ actionBox.getId() +  " \n";
 			}
-	     mostrarMSG(strActionBox, "ActionBoxes") ;
+	     loadList(1, dbTeste);
+	     ActionBox actBxInbox = new ActionBox(1, dbTeste);
+	     mostrarMSG(String.valueOf(actBxInbox.getId()) , "ActionBox");
+	     lstCheckLine = actBxInbox.getAllChecklines(dbTeste);
 	     
 	     }
 	     catch(Exception erro){
@@ -72,7 +77,7 @@ public class Lista extends Activity {
 	      setupActionBar();
 	     // Define o arquivo /layout/main.xml como layout principal da aplicação
 	     setContentView(R.layout.lista);
-	      
+	     mostrarMSG("TOTAL  " +  String.valueOf(lstCheckLine.size()), "TOTAL");
 	     
 	      
 	     // Adapter para implementar o layout customizado de cada item
@@ -147,22 +152,29 @@ public class Lista extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 public void loadList(){
-	for(int i = 0; i< ESTADO.length ; i++ ) {
-		ESTADOS.add(ESTADO[i] + i );
+//	for(int i = 0; i< ESTADO.length ; i++ ) {
+//		ESTADOS.add(ESTADO[i] + i );
+	Iterator<CheckLine> i1 = lstCheckLine.iterator();
+	while (i1.hasNext()) {
 		
+		ESTADOS.add(i1.next().getText());
+	}
+}
+		
+	
+
+	
+	
+public void loadList(long actbxId, DBHelper dbHelper){
+	CheckLine chklnItem = new CheckLine();
+	ActionBox actbxTested = dbHelper.getActionBoxById(actbxId);
+
+	for(int i=0; i<5; i++){
+		actbxTested.addCheckLine("Objeto no "+ i, dbHelper, new Date().toString());
 	}
 	
 	
 }
-//public void loadList(long actbxId, DBHelper dbHelper){
-//	CheckLine chklnItem = new CheckLine();
-//	ActionBox actbxLoaded = dbHelper.getActionBoxById(actbxId);
-//
-//	for(int i=0; i<5; i++){
-//		chklnItem.setText("Objeto no "+ i);
-//		actbxLoaded.
-//	}
-//}
 
 public void mostrarMSG(String strMSG, String strTitle){
 	AlertDialog adMensagem = new AlertDialog.Builder(this).create();
@@ -254,3 +266,4 @@ lsvEstados.setAdapter(lsvEstadosAdapter);
 	
 }
 }
+
