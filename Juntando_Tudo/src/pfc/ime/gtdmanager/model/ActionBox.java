@@ -1,5 +1,6 @@
 package pfc.ime.gtdmanager.model;
 
+import java.util.Iterator;
 import java.util.List;
 
 import android.database.Cursor;
@@ -17,7 +18,7 @@ public class ActionBox extends Table {
 
 	String name;
 	
-	List<CheckLine> lstCheckLines; // added by Rafael
+	private List<CheckLine> lstCheckLines; // added by Rafael
 	
 	public String getName() {
 		return name;
@@ -136,7 +137,17 @@ public class ActionBox extends Table {
 //		return lstCheckLines.get(intPosition).getText();
 //				
 //	}
-	
+
+	public CheckLine getCheckLineByID (int ID) {
+		Iterator<CheckLine> i = lstCheckLines.iterator();
+		while (i.hasNext()) {
+			CheckLine chlnCurrent = (CheckLine) i.next();
+			if (chlnCurrent.getId() == ID) {
+				return chlnCurrent;
+			}
+		}
+		return null;
+	}
 	
 	/**
 	 * Returns a CheckLine at the position specified. The object who receives it take the responsability 
@@ -153,4 +164,33 @@ public class ActionBox extends Table {
 				
 		return lstCheckLines.size();
 	}
+	
+	public boolean getCheckedStatusByID(int ID){
+		
+		return  getCheckLineByID(ID).isChecked();
+		 
+	}
+	public void toogleCheckByID(int ID){
+		getCheckLineByID(ID).toogleCheck();
+	}
+	
+	public void setChecked(CheckLine chlnCheckLine){
+		lstCheckLines.get(lstCheckLines.indexOf(chlnCheckLine)).setChecked(true);
+		
+		
+	}
+	
+	public void setUnCheked(CheckLine chlnCheckLine){
+		lstCheckLines.get(lstCheckLines.indexOf(chlnCheckLine)).setChecked(false);
+	}
+	
+	public void persistCheckLine (CheckLine chlnCheckLine, DBHelper dbHelper){
+		
+		
+		dbHelper.updateCheckLine( lstCheckLines.get(lstCheckLines.indexOf(chlnCheckLine)));
+		
+	}
+		
+	
+	
 }

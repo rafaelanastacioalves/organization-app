@@ -6,7 +6,6 @@ import java.util.List;
 
 import pfc.ime.gtdmanager.model.ActionBox;
 import pfc.ime.gtdmanager.model.CheckLine;
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -60,7 +59,7 @@ public class DBHelper extends SQLiteOpenHelper {
 			+ KEY_CHECKLINES_TEXT 			+ " TEXT NOT NULL,"
 			+ KEY_CHECKLINES_ACTIONBOX_ID 	+ " INTEGER NOT NULL DEFAULT 1," 
 			+ KEY_CHECKLINES_ORDER 			+ " INTEGER NOT NULL," 
-			+ KEY_CHECKLINES_CHECKED 		+ " BOOLEAN NOT NULL DEFAULT 0," 
+			+ KEY_CHECKLINES_CHECKED 		+ " BOOLEAN NOT NULL DEFAULT FALSE," 
 			+ KEY_CHECKLINES_UPDATE_TIME 	+ " DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP," 
 			+ KEY_CHECKLINES_CHECK_TIME 	+ " DATETIME," 
 			+ KEY_CREATED_AT 				+ " DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP" 

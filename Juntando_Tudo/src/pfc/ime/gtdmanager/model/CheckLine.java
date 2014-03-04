@@ -19,6 +19,7 @@ public class CheckLine extends Table {
 
 	public void setText(String text) {
 		this.text = text;
+		setUpdate_time(new Date().toString());
 	}
 
 	public int getActionbox_id() {
@@ -27,6 +28,8 @@ public class CheckLine extends Table {
 
 	public void setActionbox_id(int actionbox_id) {
 		this.actionbox_id = actionbox_id;
+		setUpdate_time(new Date().toString());
+
 	}
 
 	public int getOrder() {
@@ -43,10 +46,14 @@ public class CheckLine extends Table {
 
 	public void setChecked(boolean checked) {
 		this.checked = checked;
+		setCheck_time(new Date().toString());
+		setUpdate_time(new Date().toString());
 	}
 	
 	public void setChecked(int checked) {
-		this.checked = (checked == 0);
+		this.checked = (checked != 0);
+		setCheck_time(new Date().toString());
+		setUpdate_time(new Date().toString());
 	}
 
 	public String getUpdate_time() {
