@@ -30,7 +30,7 @@ import pfc.ime.gtdmanager.model.ActionBox;
 import pfc.ime.gtdmanager.model.CheckLine;
 
 public class Lista extends Activity {
-	private final List<String> selecionados = new ArrayList<String>();
+	private final List<Integer> selecionados = new ArrayList<Integer>();
 	
 	// Lista de Estados que será exibida
 	 private final String[] ESTADO = new String[] {
@@ -44,30 +44,15 @@ public class Lista extends Activity {
 	 private List<CheckLine> lstCheckLine ;
 
 	private String result;
+
+	private ActionBox actBxInbox;
 	
 	@Override
 	 public void onCreate(Bundle savedInstanceState) {
 	     super.onCreate(savedInstanceState);
 	     Intent iRecebeDados = getIntent();
 	     try{
-	    	 //testando inicializar banco de dados
-	     DBHelper dbTeste = new DBHelper(this);
-	     ActionBox listaTeste = new ActionBox("bla");
-	     dbTeste.populateActionBoxesTable();
-	     	// getAllActionBoxes
-	     List<ActionBox> lAB = new 	ArrayList<ActionBox>();
-	     lAB = dbTeste.getAllActionBoxes();
-	     Iterator<ActionBox> iAB = lAB.iterator();
-	     String strActionBox = "";
-	     while (iAB.hasNext()) {
-			ActionBox actionBox = (ActionBox) iAB.next();
-			strActionBox +=  "" + actionBox.getName() + "ID: "+ actionBox.getId() +  " \n";
-			}
-	     loadList(1, dbTeste);
-	     ActionBox actBxInbox = new ActionBox(1, dbTeste);
-	     mostrarMSG(String.valueOf(actBxInbox.getId()) , "ActionBox");
-	     lstCheckLine = actBxInbox.getAllChecklines(dbTeste);
-	     
+	    	 codigoTeste();
 	     }
 	     catch(Exception erro){
 	    	 mostrarMSG(String.valueOf(erro), "erro");
@@ -154,10 +139,10 @@ public class Lista extends Activity {
 public void loadList(){
 //	for(int i = 0; i< ESTADO.length ; i++ ) {
 //		ESTADOS.add(ESTADO[i] + i );
-	Iterator<CheckLine> i1 = lstCheckLine.iterator();
-	while (i1.hasNext()) {
+	Iterator<CheckLine> i = lstCheckLine.iterator();
+	while (i.hasNext()) {
 		
-		ESTADOS.add(i1.next().getText());
+		ESTADOS.add(i.next().getText());
 	}
 }
 		
@@ -191,7 +176,7 @@ ArrayAdapter<String> lsvEstadosAdapter = new ArrayAdapter<String>(this, android.
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Recuperando o Estado selecionado de acordo com a sua posição no ListView
-    String estado = ESTADOS.get(position);
+    CheckLine chkLine = actBxInbox.get(position);
     
 
         // Se o ConvertView for diferente de null o layout já foi "inflado"
@@ -207,7 +192,7 @@ ArrayAdapter<String> lsvEstadosAdapter = new ArrayAdapter<String>(this, android.
     CheckBox chk = (CheckBox) v.findViewById(R.id.chkEstados);
 
     // Definindo um "valor" para o checkbox
-    chk.setTag(estado);
+    chk.setTag(chkLine.getId());
 
         /** Definindo uma ação ao clicar no checkbox. Aqui poderiamos armazenar um valor chave
      * que identifique o objeto selecionado para que o mesmo possa ser, por exemplo, excluído
@@ -219,17 +204,17 @@ ArrayAdapter<String> lsvEstadosAdapter = new ArrayAdapter<String>(this, android.
         CheckBox chk = (CheckBox) v;
         LinearLayout vParent =  (LinearLayout) v.getParent();
         TextView tbTxt =  (TextView) vParent.findViewById(R.id.txvEstados);
-    String estado = (String) chk.getTag();
+    int estado =  (Integer) chk.getTag();
     if(chk.isChecked()) {
     	tbTxt.setTextColor(Color.BLUE);
-        Toast.makeText(getApplicationContext(), "Checbox de " + estado + " marcado!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Checbox de " + String.valueOf(estado) + " marcado!", Toast.LENGTH_SHORT).show();
         if(!selecionados.contains(estado))
             selecionados.add(estado);
                 } else {
                 	tbTxt.setTextColor(Color.BLACK);
-            Toast.makeText(getApplicationContext(), "Checbox de " + estado + " desmarcado!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Checbox de " + String.valueOf(estado) + " desmarcado!", Toast.LENGTH_SHORT).show();
             if(selecionados.contains(estado))
-                selecionados.remove(estado);
+                selecionados.remove(Integer.valueOf(estado));
                 }
     
             }
@@ -237,8 +222,8 @@ ArrayAdapter<String> lsvEstadosAdapter = new ArrayAdapter<String>(this, android.
 
         // Preenche o TextView do layout com o nome do Estado
     TextView txv = (TextView) v.findViewById(R.id.txvEstados);
-    txv.setText(estado);
-    if(selecionados.contains(estado)) {
+    txv.setText(chkLine.getText());
+    if(selecionados.contains(chkLine.getId())) {
         chk.setChecked(true);
         txv.setTextColor(Color.BLUE);
        
@@ -252,18 +237,41 @@ ArrayAdapter<String> lsvEstadosAdapter = new ArrayAdapter<String>(this, android.
 
     @Override
     public long getItemId(int position) {
-        return position;
+    	CheckLine clTemp = actBxInbox.get(position);
+    	return clTemp.getId();
+        
     }
 
     @Override
     public int getCount() {
-        return ESTADOS.size();
+        return actBxInbox.size();
     }
 };
 
 lsvEstados.setAdapter(lsvEstadosAdapter);
 
 	
+}
+public void codigoTeste(){
+	//testando inicializar banco de dados
+    DBHelper dbTeste = new DBHelper(this);
+    ActionBox listaTeste = new ActionBox("bla");
+    dbTeste.populateActionBoxesTable();
+    	// getAllActionBoxes
+    List<ActionBox> lAB = new 	ArrayList<ActionBox>();
+    lAB = dbTeste.getAllActionBoxes();
+    Iterator<ActionBox> iAB = lAB.iterator();
+    String strActionBox = "";
+    while (iAB.hasNext()) {
+		ActionBox actionBox = (ActionBox) iAB.next();
+		strActionBox +=  "" + actionBox.getName() + "ID: "+ actionBox.getId() +  " \n";
+		}
+    loadList(1, dbTeste);
+    actBxInbox = new ActionBox(1, dbTeste);
+    mostrarMSG(String.valueOf(actBxInbox.getId()) , "ActionBox");
+    lstCheckLine = actBxInbox.getAllChecklines(dbTeste);
+    actBxInbox.loadAllCheckLines(dbTeste);
+    
 }
 }
 

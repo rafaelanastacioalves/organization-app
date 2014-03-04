@@ -5,6 +5,14 @@ import java.util.List;
 import android.database.Cursor;
 import pfc.ime.gtdmanager.helper.DBHelper;
 
+/**
+ * @author rafaelanastacioalves
+ *
+ */
+/**
+ * @author rafaelanastacioalves
+ *
+ */
 public class ActionBox extends Table {
 
 	String name;
@@ -111,5 +119,38 @@ public class ActionBox extends Table {
 	public ActionBox( int id,  DBHelper dbhpCurrent){
 		this.id= id;
 		dbhpCurrent.createActionBox(this);
+	}
+	public void loadAllCheckLines(DBHelper dbHlpCurrent){
+		this.lstCheckLines = this.getAllChecklines(dbHlpCurrent);
+	}
+
+	//----------------------- GET------------------------//
+	
+//	/**
+//	 * Take the CheckLine at that position and returns its String Value
+//	 * @param intPosition
+//	 * @return String
+//	 */
+//	public String get(int intPosition){
+//		
+//		return lstCheckLines.get(intPosition).getText();
+//				
+//	}
+	
+	
+	/**
+	 * Returns a CheckLine at the position specified. The object who receives it take the responsability 
+	 * for manipulation of the {@link CheckLine}.
+	 * @param intPostion
+	 * @return {@link CheckLine}
+	 */
+	public CheckLine get(int intPostion){
+		
+		return lstCheckLines.get(intPostion);
+	}
+	
+	public int size(){
+				
+		return lstCheckLines.size();
 	}
 }
