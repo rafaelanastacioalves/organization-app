@@ -1,4 +1,6 @@
-package com.juntando_tudo;
+package pfc.ime.gtdmanager.main;
+
+import com.juntando_tudo.R;
 
 import android.os.Bundle;
 import android.app.Activity;

@@ -14,17 +14,17 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.juntando_tudo.Lista"
+            android:name="pfc.ime.gtdmanager.main.Lista"
             android:label="@string/app_name" android:parentActivityName="@string/title_activity_main_menu" android:finishOnTaskLaunch="false" android:launchMode="standard">
         </activity>
         <activity
-            android:name="com.juntando_tudo.LoginGoogle"
+            android:name="pfc.ime.gtdmanager.main.LoginGoogle"
             android:label="@string/title_activity_login_google"
             android:parentActivityName="@string/title_activity_main_menu"
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
         <activity
-            android:name="com.juntando_tudo.MainMenu"
+            android:name="pfc.ime.gtdmanager.main.MainMenu"
             android:label="@string/title_activity_main_menu" 
             >
             <intent-filter>
@@ -36,9 +36,9 @@
                 android:value="com.juntando_tudo.MainMenu" />
         </activity>
         <activity
-            android:name="com.juntando_tudo.Lista"
+            android:name="pfc.ime.gtdmanager.main.Lista"
             android:label="@string/title_activity_lista"
-            android:parentActivityName="com.juntando_tudo.MainMenu" >
+            android:parentActivityName="pfc.ime.gtdmanager.main.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.juntando_tudo.MainMenu" />

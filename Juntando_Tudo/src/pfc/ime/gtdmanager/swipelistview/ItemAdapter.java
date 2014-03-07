@@ -1,4 +1,4 @@
-package com.tutecentral.swipelistviewexample;
+package pfc.ime.gtdmanager.swipelistview;
 
 import java.util.List;
 
@@ -35,9 +35,9 @@ public ItemAdapter(Context context, int layoutResourceId,List<ItemRow> data) {
 @Override
 public View getView(int position, View convertView, ViewGroup parent) {
 	
-	NewsHolder holder = null;
+	NewsHolder holder ;//=null;
 	   View row = convertView;
-	    holder = null;
+	    
         
         if(row == null)
         {

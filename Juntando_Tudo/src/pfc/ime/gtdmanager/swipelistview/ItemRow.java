@@ -1,4 +1,4 @@
-package com.tutecentral.swipelistviewexample;
+package pfc.ime.gtdmanager.swipelistview;
 
 import android.graphics.drawable.Drawable;
 import android.widget.CheckBox;

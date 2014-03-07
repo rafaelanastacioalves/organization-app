@@ -1,12 +1,14 @@
-package com.juntando_tudo;
+package pfc.ime.gtdmanager.main;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
+import pfc.ime.gtdmanager.swipelistview.ItemRow;
+
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
-import com.tutecentral.swipelistviewexample.ItemAdapter;
-import com.tutecentral.swipelistviewexample.ItemRow;
+import com.juntando_tudo.R;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -102,6 +104,7 @@ public class Lista extends Activity {
         }
         
         adapter.notifyDataSetChanged();
+    
     }
 
     public int convertDpToPixel(float dp) {
