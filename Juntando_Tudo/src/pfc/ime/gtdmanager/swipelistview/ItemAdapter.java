@@ -2,6 +2,9 @@ package pfc.ime.gtdmanager.swipelistview;
 
 import java.util.List;
 
+import pfc.ime.gtdmanager.model.CheckLine;
+
+
 import com.juntando_tudo.R;
 
 import android.app.Activity;
@@ -16,13 +19,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ItemAdapter extends ArrayAdapter<ItemRow> {
+public class ItemAdapter extends ArrayAdapter<CheckLine> {
 
-	List<ItemRow>   data; 
+	List<CheckLine>   data; 
 	Context context;
 	int layoutResID;
 
-public ItemAdapter(Context context, int layoutResourceId,List<ItemRow> data) {
+public ItemAdapter(Context context, int layoutResourceId,List<CheckLine> data) {
 	super(context, layoutResourceId, data);
 	
 	this.data=data;
@@ -46,7 +49,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
             
             holder = new NewsHolder();
            
-            holder.itemName = (TextView)row.findViewById(R.id.example_itemname);
+            holder.itemText = (TextView)row.findViewById(R.id.example_itemname);
             holder.icon=(CheckBox)row.findViewById(R.id.example_image);
             holder.button1=(Button)row.findViewById(R.id.swipe_button1);
             holder.button2=(Button)row.findViewById(R.id.swipe_button2);
@@ -58,8 +61,8 @@ public View getView(int position, View convertView, ViewGroup parent) {
             holder = (NewsHolder)row.getTag();
         }
         
-        ItemRow itemdata = data.get(position);
-        holder.itemName.setText(itemdata.getItemName());
+        CheckLine itemdata = data.get(position);
+        holder.itemText.setText(itemdata.getText());
         //holder.icon.setImageDrawable(itemdata.getIcon());
       
         holder.button1.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +101,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
 
 static class NewsHolder{
 	
-	TextView itemName;
+	TextView itemText;
 	CheckBox icon;
 	Button button1;
 	Button button2;

@@ -1,5 +1,7 @@
 package pfc.ime.gtdmanager.main;
 
+import pfc.ime.gtdmanager.controller.Controller;
+
 import com.juntando_tudo.R;
 
 import android.os.Bundle;
@@ -11,11 +13,15 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class MainMenu extends Activity {
-
+	
+	 Controller aController; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_menu);
+		aController = (Controller) getApplicationContext();
+		aController.setupBD();
+		
 	}
 	
 
