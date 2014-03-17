@@ -137,29 +137,29 @@ containing a value of this type.
         public static final int ic_launcher=0x7f02000c;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f050018;
+        public static final int RelativeLayout1=0x7f050015;
         public static final int action_forgot_password=0x7f050025;
         public static final int action_settings=0x7f050023;
         public static final int add=0x7f050024;
-        public static final int back=0x7f050010;
+        public static final int back=0x7f050017;
         public static final int both=0x7f050001;
-        public static final int btAgenda=0x7f050013;
-        public static final int btDelegados=0x7f050017;
-        public static final int btInbox=0x7f050016;
-        public static final int btIncubar=0x7f050011;
-        public static final int btNextAction=0x7f050014;
-        public static final int btOther=0x7f050012;
-        public static final int btTalvez=0x7f050015;
-        public static final int button1=0x7f050021;
-        public static final int chkEstados=0x7f05001f;
+        public static final int btAgenda=0x7f050010;
+        public static final int btDelegados=0x7f050014;
+        public static final int btInbox=0x7f050013;
+        public static final int btIncubar=0x7f05000e;
+        public static final int btNextAction=0x7f050011;
+        public static final int btOther=0x7f05000f;
+        public static final int btTalvez=0x7f050012;
+        public static final int button1=0x7f050020;
+        public static final int chkEstados=0x7f05001e;
         public static final int choice=0x7f050006;
         public static final int dismiss=0x7f050005;
         public static final int email=0x7f05000a;
-        public static final int etItem_new=0x7f050019;
-        public static final int example_image=0x7f05001d;
-        public static final int example_itemname=0x7f05001e;
-        public static final int example_swipe_lv_list=0x7f05000e;
-        public static final int front=0x7f05000f;
+        public static final int etItem_new=0x7f050016;
+        public static final int example_image=0x7f05001c;
+        public static final int example_itemname=0x7f05001d;
+        public static final int example_swipe_lv_list=0x7f050021;
+        public static final int front=0x7f05001b;
         public static final int left=0x7f050003;
         public static final int login=0x7f05000c;
         public static final int login_form=0x7f050009;
@@ -171,22 +171,21 @@ containing a value of this type.
         public static final int reveal=0x7f050004;
         public static final int right=0x7f050002;
         public static final int sign_in_button=0x7f05000d;
-        public static final int swipe_button1=0x7f05001a;
-        public static final int swipe_button2=0x7f05001b;
-        public static final int swipe_button3=0x7f05001c;
-        public static final int txvEstados=0x7f050020;
+        public static final int swipe_button1=0x7f050018;
+        public static final int swipe_button2=0x7f050019;
+        public static final int swipe_button3=0x7f05001a;
+        public static final int txvEstados=0x7f05001f;
     }
     public static final class layout {
         public static final int activity_lista=0x7f030000;
         public static final int activity_login_google=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int activity_main_menu=0x7f030003;
-        public static final int add=0x7f030004;
-        public static final int custom_row=0x7f030005;
-        public static final int item_estado=0x7f030006;
-        public static final int item_estado_option=0x7f030007;
-        public static final int lista=0x7f030008;
-        public static final int main=0x7f030009;
+        public static final int activity_main_menu=0x7f030002;
+        public static final int add=0x7f030003;
+        public static final int custom_row=0x7f030004;
+        public static final int item_estado=0x7f030005;
+        public static final int item_estado_option=0x7f030006;
+        public static final int lista=0x7f030007;
+        public static final int main=0x7f030008;
     }
     public static final class menu {
         public static final int lista=0x7f090000;

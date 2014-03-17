@@ -3,6 +3,9 @@ package pfc.ime.gtdmanager.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
+import pfc.ime.gtdmanager.controller.Controller;
+import pfc.ime.gtdmanager.model.CheckLine;
 import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
 import pfc.ime.gtdmanager.swipelistview.ItemRow;
 
@@ -20,15 +23,17 @@ public class Lista extends Activity {
 
 	SwipeListView swipelistview;
 	ItemAdapter adapter;
-	List<ItemRow> itemData;
+	List<CheckLine> itemData;
+	
+	 Controller aController; 
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
+        setContentView(R.layout.lista);
+        aController = (Controller) getApplicationContext();
         swipelistview=(SwipeListView)findViewById(R.id.example_swipe_lv_list); 
-        itemData=new ArrayList<ItemRow>();
+        itemData=new ArrayList<CheckLine>();
         adapter=new ItemAdapter(this,R.layout.custom_row,itemData);
         
      
@@ -97,11 +102,9 @@ public class Lista extends Activity {
         swipelistview.setAdapter(adapter);
         
         
-        for(int i=0;i<10;i++)
-        {
-        	itemData.add(new ItemRow("Swipe BLALBABLA Item"+i ));
-        	
-        }
+        aController.setActionBox(1);
+        // Controller.LoadActionBox();
+        itemData = (aController.getActionBox()).getCheckLines();
         
         adapter.notifyDataSetChanged();
     

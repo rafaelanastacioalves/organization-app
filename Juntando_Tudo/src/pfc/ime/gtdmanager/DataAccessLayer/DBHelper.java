@@ -1,4 +1,4 @@
-package pfc.ime.gtdmanager.helper;
+package pfc.ime.gtdmanager.DataAccessLayer;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,6 +6,7 @@ import java.util.List;
 
 import pfc.ime.gtdmanager.model.ActionBox;
 import pfc.ime.gtdmanager.model.CheckLine;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
