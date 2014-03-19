@@ -19,7 +19,7 @@ public class ActionBox extends Table {
 
 	String name;
 	
-	private List<CheckLine> lstCheckLines; // added by Rafael
+	protected List<CheckLine> lstCheckLines; // added by Rafael
 	
 	public String getName() {
 		return name;

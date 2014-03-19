@@ -3,21 +3,27 @@ package pfc.ime.gtdmanager.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
 import pfc.ime.gtdmanager.controller.Controller;
 import pfc.ime.gtdmanager.model.CheckLine;
 import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
-import pfc.ime.gtdmanager.swipelistview.ItemRow;
-
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
 import com.juntando_tudo.R;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.support.v4.app.NavUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class Lista extends Activity {
 
@@ -31,7 +37,7 @@ public class Lista extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista);
-        aController = (Controller) getApplicationContext();
+        aController = (Controller ) getApplicationContext();
         swipelistview=(SwipeListView)findViewById(R.id.example_swipe_lv_list); 
         itemData=new ArrayList<CheckLine>();
         adapter=new ItemAdapter(this,R.layout.custom_row,itemData);
@@ -104,8 +110,10 @@ public class Lista extends Activity {
         
         aController.setActionBox(1);
         // Controller.LoadActionBox();
-        itemData = (aController.getActionBox()).getCheckLines();
-        
+//        aController.populaActionBoxTeste();
+//        Toast.makeText(this , String.valueOf(aController.getId() ), Toast.LENGTH_SHORT).show();
+        itemData.addAll(aController.getAllCheckLines());
+        aController.setCheckline(itemData);
         adapter.notifyDataSetChanged();
     
     }
@@ -118,10 +126,83 @@ public class Lista extends Activity {
     
     
     @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			// This ID represents the Home or Up button. In the case of this
+			// activity, the Up button is shown. Use NavUtils to allow users
+			// to navigate up one level in the application structure. For
+			// more details, see the Navigation pattern on Android Design:
+			//
+			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
+			//
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		case R.id.add:
+			add_method();
+
+		}
+		return super.onOptionsItemSelected(item);
+	}
+    
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.lista, menu);
         return true;
     }
-    
+    @Override
+    protected void onStop(){
+    	super.onStop();
+//    	Controller aController = (Controller) getApplicationContext();
+    	aController.persist();
+    }
+    private boolean add_method(){
+		// get prompts.xml view
+		LayoutInflater liAdd = LayoutInflater.from(this);
+		View promptsView = liAdd.inflate(R.layout.add, null);
+
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+		// set prompts.xml to alertdialog builder
+		alertDialogBuilder.setView(promptsView);
+		final EditText userInput =  (EditText) promptsView.findViewById(R.id.etItem_new);
+		userInput.requestFocus();
+		alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,int id) {
+				// get user input and set it to result
+				// edit text
+				String result = String.valueOf(userInput.getText());
+				Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+				aController.addCheckline(result);
+				aController.loadActionBox();
+				adapter.notifyDataSetChanged();
+			}
+		});
+		alertDialogBuilder.setNegativeButton("Cancel",
+				new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,int id) {
+				dialog.cancel();
+			}
+		});
+
+
+
+		// create alert dialog
+		AlertDialog alertDialog = alertDialogBuilder.create();
+
+		// settin position
+		//WindowManager.LayoutParams alDlgParemters = alertDialog.getWindow().getAttributes();
+		//	alDlgParemters.gravity = Gravity.TOP;
+		//	alDlgParemters.y = 100;
+
+
+		// forcing showing soft input
+		alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+
+		// show it
+		alertDialog.show();
+		return true;
+		
+	}
 }

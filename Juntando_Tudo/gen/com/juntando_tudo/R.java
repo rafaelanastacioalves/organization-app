@@ -260,6 +260,7 @@ containing a value of this type.
         public static final int MyListFrontContent=0x7f080004;
         public static final int MyListImage=0x7f080006;
         public static final int MyListTitle=0x7f080007;
+        public static final int MyListTitleChecked=0x7f080008;
     }
     public static final class styleable {
         /** Attributes that can be used with a SwipeListView.

@@ -290,7 +290,7 @@ public class DBHelper extends SQLiteOpenHelper {
 					values.put(KEY_CREATED_AT				, actionbox.getCreated_at());
 					
 					// updating row
-					return db.update(TABLE_CHECKLINES, values, KEY_ID + " = ?",
+					return db.update(TABLE_ACTIONBOXES, values, KEY_ID + " = ?",
 							new String[] { String.valueOf(actionbox.getId()) });
 				}
 

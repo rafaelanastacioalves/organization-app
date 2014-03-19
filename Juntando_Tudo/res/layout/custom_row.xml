@@ -45,8 +45,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/example_image"
-                style="@style/MyListTitle"
                 android:id="@+id/example_itemname"/>
+        <!-- style="@style/MyListTitle" -->
+                
 
 
     </RelativeLayout>

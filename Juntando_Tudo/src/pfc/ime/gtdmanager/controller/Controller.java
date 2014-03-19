@@ -1,5 +1,6 @@
 package pfc.ime.gtdmanager.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
@@ -25,25 +26,35 @@ public class Controller extends Application {
 	
 	
 	
-	public ActionBox getActionBox(){
-		
-		return actBox;
-		
+//	public ActionBox getActionBox(){
+//		
+//		return actBox;
+//		
+//	}
+//	
+	
+	public void loadActionBox(){
+			this.actBox.setCheckLines(this.getAllCheckLines()); 
 	}
 	
-	
-	private void loadActionBox(DBHelper dbHlpCurrent){
-		this.actBox.setCheckLines(this.getAllChecklines(dbHlpCurrent)); 
+//	private List<CheckLine> getAllChecklines(DBHelper dbHlpCurrent){
+//		
+//		return    dbHlpCurrent.getAllToDosByTag(actBox.getId());
+//	
+//}
+	public List<CheckLine> getAllCheckLines(){
+		if ((actBox.getCheckLines()) == null){
+			actBox.setCheckLines(dbHelper.getAllToDosByTag(actBox.getId()));
+		}
+		return actBox.getCheckLines(); 
 	}
 	
-	public List<CheckLine> getAllChecklines(DBHelper dbHlpCurrent){
-		
-		return    dbHlpCurrent.getAllToDosByTag(actBox.getId());
-	
-}
+	public void setCheckline(List<CheckLine> lstChk){
+		actBox.setCheckLines(lstChk);
+	}
 	
 
-	public void addCheckLine(String strText, DBHelper dbHlpCurrent){
+	private void addCheckLine(String strText, DBHelper dbHlpCurrent){
 		CheckLine chkLnNew = new CheckLine();
 		
 		//----------------------setting values---------------------/
@@ -53,7 +64,7 @@ public class Controller extends Application {
 		
 		// order
 		if(actBox.getCheckLines() == null) {
-			getAllChecklines(dbHlpCurrent);
+			actBox.setCheckLines(getAllCheckLines());
 		}
 		chkLnNew.setOrder(actBox.size() + 1);
 		
@@ -64,7 +75,7 @@ public class Controller extends Application {
 
 		
 	}
-public void addCheckLine(String strText, DBHelper dbHlpCurrent, String strDateCreated){
+private void addCheckLine(String strText, DBHelper dbHlpCurrent, String strDateCreated){
 		
 		CheckLine chkLnNew = new CheckLine();
 		
@@ -75,7 +86,7 @@ public void addCheckLine(String strText, DBHelper dbHlpCurrent, String strDateCr
 		
 		// order
 		if(actBox.getCheckLines() == null) {
-			actBox.setCheckLines(getAllChecklines(dbHlpCurrent));
+			actBox.setCheckLines(getAllCheckLines());
 		}
 		chkLnNew.setOrder(actBox.size() + 1);
 		
@@ -92,15 +103,24 @@ public void addCheckLine(String strText, DBHelper dbHlpCurrent, String strDateCr
 
 
 	}
-public void persistCheckLine (CheckLine chlnCheckLine, DBHelper dbHelper){
+
+/**
+ *TODO: comentar funcionamento depois! E sua utilização
+ */
+public void persist(){
 	
-	
-	dbHelper.updateCheckLine( actBox.get(actBox.getCheckLines().indexOf(chlnCheckLine)));
+	if(dbHelper == null){
+		dbHelper = new DBHelper(getApplicationContext());
+	}
+	dbHelper.updateActionBox(actBox); 
+	for (int i = 0; i < actBox.size(); i++) {
+		dbHelper.updateCheckLine(actBox.getCheckLines().get(i));
+	}
 	
 }
 public void codigoTeste(){
 	dbHelper = new DBHelper(this);
-	//    ActionBox listaTeste = new ActionBox("bla");
+//	    ActionBox listaTeste = new ActionBox("bla");
 	    
 	// getAllActionBoxes
 	//    List<ActionBox> lAB = new 	ArrayList<ActionBox>();
@@ -112,7 +132,7 @@ public void codigoTeste(){
 	//		strActionBox +=  "" + actionBox.getName() + "ID: "+ actionBox.getId() +  " \n";
 	//		}
 	//    loadList(1, dbHelper);
-	loadActionBox(dbHelper);
+	loadActionBox();
 //	lstCheckLine = getAllChecklines(dbHelper);
 //	actBox.loadAllCheckLines(dbHelper);
 
@@ -124,6 +144,22 @@ public void setupBD(){
 	}
 	dbHelper.populateActionBoxesTable();
 }
+public void populaActionBoxTeste(){
+	for (int j = 0; j < 20; j++) {
+		addCheckLine("itemTeste" + j, dbHelper, (new Date()).toString());
+		loadActionBox();
+
+	}
+}
+
+public long getId(){
+	return actBox.getId();
+}
+
+public void addCheckline(String str){
+	addCheckLine(str, dbHelper);
+}
+
 	
 	
 	

@@ -105,6 +105,7 @@ int style MyListButtonAction 0x7f080005
 int style MyListFrontContent 0x7f080004
 int style MyListImage 0x7f080006
 int style MyListTitle 0x7f080007
+int style MyListTitleChecked 0x7f080008
 int[] styleable SwipeListView { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b }
 int styleable SwipeListView_swipeActionLeft 8
 int styleable SwipeListView_swipeActionRight 9
