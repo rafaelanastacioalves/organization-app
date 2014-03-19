@@ -33,8 +33,12 @@ public class Controller extends Application {
 //	}
 //	
 	
+	/**
+	 * Loads by copying to the current List reference from the values from Database
+	 */
 	public void loadActionBox(){
-			this.actBox.setCheckLines(this.getAllCheckLines()); 
+			this.actBox.getCheckLines().clear();
+			this.actBox.getCheckLines().addAll( dbHelper.getAllToDosByTag(actBox.getId())); 
 	}
 	
 //	private List<CheckLine> getAllChecklines(DBHelper dbHlpCurrent){
@@ -112,7 +116,11 @@ public void persist(){
 	if(dbHelper == null){
 		dbHelper = new DBHelper(getApplicationContext());
 	}
+	
+	// ----                             atualiza informacao sobre ActionBox                       ----//
 	dbHelper.updateActionBox(actBox); 
+	
+	// ----                  atualiza informacao sobre as Checkline contidas no ActionBox         ----//
 	for (int i = 0; i < actBox.size(); i++) {
 		dbHelper.updateCheckLine(actBox.getCheckLines().get(i));
 	}
@@ -158,6 +166,32 @@ public long getId(){
 
 public void addCheckline(String str){
 	addCheckLine(str, dbHelper);
+}
+
+/**
+ * Makes the Controller share the actionBox's List<Checkline> 
+ * @param lstChk
+ */
+public void shareListWith(List<CheckLine> lstChk){
+	
+	// --- verifica se a lista de Checklines foi carregada ---//
+	if (actBox.getCheckLines() == null){
+		actBox.setCheckLines(dbHelper.getAllToDosByTag(actBox.getId()));
+	}
+	
+	// --- agora faz o ActBox ter suas listas referenciando a lista ser compartilhada 
+	
+		lstChk.addAll(actBox.getCheckLines());
+		actBox.setCheckLines(lstChk);
+	
+}
+/**
+ * Removes the Checkline at the referenced position holded by the current ActionBox and holded by the dataBase. No need for loadActionBox()...
+ * @param position
+ */
+public void deleteChecklineAt(int position){
+	dbHelper.deleteCheckLine(actBox.get(position).getId());
+	actBox.getCheckLines().remove(position);
 }
 
 	

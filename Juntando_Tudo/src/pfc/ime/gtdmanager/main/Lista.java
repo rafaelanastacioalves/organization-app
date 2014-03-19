@@ -112,8 +112,7 @@ public class Lista extends Activity {
         // Controller.LoadActionBox();
 //        aController.populaActionBoxTeste();
 //        Toast.makeText(this , String.valueOf(aController.getId() ), Toast.LENGTH_SHORT).show();
-        itemData.addAll(aController.getAllCheckLines());
-        aController.setCheckline(itemData);
+        aController.shareListWith(itemData);
         adapter.notifyDataSetChanged();
     
     }
@@ -175,7 +174,8 @@ public class Lista extends Activity {
 				String result = String.valueOf(userInput.getText());
 				Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
 				aController.addCheckline(result);
-				aController.loadActionBox();
+				aController.persist();
+				aController.loadActionBox(); 
 				adapter.notifyDataSetChanged();
 			}
 		});

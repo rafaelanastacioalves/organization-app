@@ -9,12 +9,14 @@
             style="@style/MyListBackContent"
             >
 
-        <Button
+        <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/swipe_button1"
-                style="@style/MyListButtonAction"
-                android:text="Button 1"/>
+                android:src= "@drawable/ic_action_discard"
+                style="@style/MyListImageButtonAction"/>
+        
+               
 
         <Button
                 android:layout_width="wrap_content"

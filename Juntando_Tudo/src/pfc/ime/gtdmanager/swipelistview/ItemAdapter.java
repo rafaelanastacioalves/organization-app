@@ -6,6 +6,7 @@ import pfc.ime.gtdmanager.controller.Controller;
 import pfc.ime.gtdmanager.model.CheckLine;
 
 
+import com.fortysevendeg.swipelistview.SwipeListView;
 import com.juntando_tudo.R;
 
 import android.app.Activity;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -60,8 +62,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
             holder.itemText = (TextView)row.findViewById(R.id.example_itemname);
             holder.itemText.setTextAppearance(context, R.style.MyListTitle);
             holder.chk=(CheckBox)row.findViewById(R.id.example_image);
-            holder.chk.setTag(position);
-            holder.button1=(Button)row.findViewById(R.id.swipe_button1);
+            holder.button1=(ImageButton)row.findViewById(R.id.swipe_button1);
             holder.button2=(Button)row.findViewById(R.id.swipe_button2);
             holder.button3=(Button)row.findViewById(R.id.swipe_button3);
             row.setTag(holder);
@@ -72,7 +73,9 @@ public View getView(int position, View convertView, ViewGroup parent) {
         }
         
         itemdata = data.get(position);
-
+        
+        holder.chk.setTag(position);
+        holder.button1.setTag(position);
         
         holder.itemText.setText(itemdata.getText());
         holder.chk.setOnClickListener(chkClickListener);
@@ -95,6 +98,8 @@ public View getView(int position, View convertView, ViewGroup parent) {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Toast.makeText(context, "Button 1 Clicked",Toast.LENGTH_SHORT).show();
+				deleteMethod(v);
+				
 			}
 		});
         
@@ -150,11 +155,17 @@ private OnClickListener chkClickListener = new View.OnClickListener() {
 };
 
 
+public void deleteMethod(View v){
+	int position = (Integer) v.getTag();
+	aController.deleteChecklineAt(position);
+	notifyDataSetChanged();
+}
+
 static class NewsHolder{
 	
 	TextView itemText;
 	CheckBox chk;
-	Button button1;
+	ImageButton button1;
 	Button button2;
 	Button button3;
 	
