@@ -26,12 +26,7 @@ public class Controller extends Application {
 	
 	
 	
-//	public ActionBox getActionBox(){
-//		
-//		return actBox;
-//		
-//	}
-//	
+
 	
 	/**
 	 * Loads by copying to the current List reference from the values from Database
