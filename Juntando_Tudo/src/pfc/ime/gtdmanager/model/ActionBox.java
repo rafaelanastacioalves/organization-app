@@ -105,7 +105,10 @@ public class ActionBox extends Table {
 		lstCheckLines.get(lstCheckLines.indexOf(chlnCheckLine)).setChecked(false);
 	}
 	
-
+	public void addCheckLine(CheckLine chkLn){
+		
+		this.lstCheckLines.add(chkLn);
+	}
 	
 	
 }

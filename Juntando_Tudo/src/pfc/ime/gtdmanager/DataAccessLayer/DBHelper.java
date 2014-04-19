@@ -92,7 +92,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	// ------------------------ CHECKLINES table methods ----------------//
 
 		// creating a checkline
-		public long createCheckLine(CheckLine checkline) {
+		public CheckLine createCheckLine(CheckLine checkline) {
 			SQLiteDatabase db = this.getWritableDatabase();
 			
 			Log.e(LOG, "Creating CHECKLINE at: " + checkline.toS());
@@ -106,8 +106,7 @@ public class DBHelper extends SQLiteOpenHelper {
 			if(checkline.getCheck_time() != null)
 				values.put(KEY_CHECKLINES_CHECK_TIME, checkline.getCheck_time().toString());
 
-			// insert row and return id
-			return db.insert(TABLE_CHECKLINES, null, values);
+			return getCheckLineById(db.insert(TABLE_CHECKLINES, null, values));
 		}
 
 		// get checkline by id
