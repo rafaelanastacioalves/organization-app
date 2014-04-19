@@ -173,9 +173,9 @@ public class Lista extends Activity {
 				// edit text
 				String result = String.valueOf(userInput.getText());
 				Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-				aController.addCheckline(result);
-				aController.persist();
-				aController.loadActionBox(); 
+				aController.addCheckLine(result);
+				//aController.persist();
+				//aController.loadActionBox(); 
 				adapter.notifyDataSetChanged();
 			}
 		});

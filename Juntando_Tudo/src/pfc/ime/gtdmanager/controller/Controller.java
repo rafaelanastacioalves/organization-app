@@ -70,7 +70,9 @@ public class Controller extends Application {
 		//ActionBox
 		chkLnNew.setActionbox_id(actBox.getId());
 		
-		dbHlpCurrent.createCheckLine(chkLnNew);	
+		chkLnNew = 	dbHlpCurrent.createCheckLine(chkLnNew);	
+		
+		actBox.addCheckLine(chkLnNew);
 
 		
 	}
@@ -104,7 +106,7 @@ private void addCheckLine(String strText, DBHelper dbHlpCurrent, String strDateC
 	}
 
 /**
- *TODO: comentar funcionamento depois! E sua utilização
+ *TODO: comentar funcionamento depois! E sua utilizaÔøΩ‚Äπo
  */
 public void persist(){
 	
@@ -159,7 +161,7 @@ public long getId(){
 	return actBox.getId();
 }
 
-public void addCheckline(String str){
+public void addCheckLine(String str){
 	addCheckLine(str, dbHelper);
 }
 
