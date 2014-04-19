@@ -3,6 +3,8 @@
 	<name>Juntando_Tudo</name>
 	<comment></comment>
 	<projects>
+		<project>nineoldandroids</project>
+		<project>swipelistview</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
