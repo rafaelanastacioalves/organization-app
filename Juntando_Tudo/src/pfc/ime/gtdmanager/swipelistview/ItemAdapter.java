@@ -98,7 +98,8 @@ public View getView(int position, View convertView, ViewGroup parent) {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Toast.makeText(context, "Button 1 Clicked",Toast.LENGTH_SHORT).show();
-				deleteMethod(v);
+				int position = (Integer) v.getTag();
+				aController.deleteChecklineAt(position);
 				
 			}
 		});
@@ -154,12 +155,6 @@ private OnClickListener chkClickListener = new View.OnClickListener() {
 
 };
 
-
-public void deleteMethod(View v){
-	int position = (Integer) v.getTag();
-	aController.deleteChecklineAt(position);
-	notifyDataSetChanged();
-}
 
 static class NewsHolder{
 	

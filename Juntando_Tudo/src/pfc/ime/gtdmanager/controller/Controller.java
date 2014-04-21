@@ -1,18 +1,31 @@
 package pfc.ime.gtdmanager.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
+import com.fortysevendeg.swipelistview.SwipeListView;
+import com.juntando_tudo.R;
+
 import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
+import pfc.ime.gtdmanager.main.Lista;
 import pfc.ime.gtdmanager.model.ActionBox;
 import pfc.ime.gtdmanager.model.CheckLine;
+import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
 import android.app.Application;
+import android.util.Log;
+import android.widget.Adapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.app.Activity;
 
 public class Controller extends Application {
 	private ActionBox actBox;
-	
+	public  SwipeListView swipelistview;
 	private DBHelper dbHelper;
-	
+	public ItemAdapter adapter;
+	public List<CheckLine> itemData;
 	public void setActionBox(ActionBox actBox){
 		
 		this.actBox = actBox; 
@@ -163,6 +176,7 @@ public long getId(){
 
 public void addCheckLine(String str){
 	addCheckLine(str, dbHelper);
+	adapter.notifyDataSetChanged();
 }
 
 /**
@@ -187,10 +201,28 @@ public void shareListWith(List<CheckLine> lstChk){
  * @param position
  */
 public void deleteChecklineAt(int position){
+	//swipelistview.closeAnimate(position );
 	dbHelper.deleteCheckLine(actBox.get(position).getId());
 	actBox.getCheckLines().remove(position);
+	adapter.notifyDataSetChanged();
+	swipelistview.closeAnimate(position);
+	 
 }
 
+public void setListView(ListView lv ){
+	this.swipelistview = (SwipeListView) lv;
+}
+
+public void setAdapter(Lista lista){
+	 itemData=new ArrayList<CheckLine>();
+	 adapter=new ItemAdapter(lista ,R.layout.custom_row,itemData);
+	 swipelistview.setAdapter( adapter);
+	 this.shareListWith(itemData);
+     adapter.notifyDataSetChanged();
+
+     
+	
+}
 	
 	
 	
