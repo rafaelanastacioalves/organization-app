@@ -37,10 +37,6 @@ public class Controller extends Application {
 		this.actBox = dbHelper.getActionBoxById(id);
 	}
 	
-	
-	
-
-	
 	/**
 	 * Loads by copying to the current List reference from the values from Database
 	 */
@@ -122,7 +118,6 @@ private void addCheckLine(String strText, DBHelper dbHlpCurrent, String strDateC
  *TODO: comentar funcionamento depois! E sua utiliza�‹o
  */
 public void persist(){
-	
 	if(dbHelper == null){
 		dbHelper = new DBHelper(getApplicationContext());
 	}

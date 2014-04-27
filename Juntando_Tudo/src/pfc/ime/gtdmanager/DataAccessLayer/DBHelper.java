@@ -35,6 +35,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	// ACTIONBOXES Table - column names
 	public static final String KEY_ACTIONBOXES_NAME = "name";
+	
+	// Default ACTIONBOXES names
+	public static final String INBOX = "Inbox";
+	
 
 	// CHECKLINES Table - column names
 	public static final String KEY_CHECKLINES_TEXT = 			"text";
@@ -75,7 +79,10 @@ public class DBHelper extends SQLiteOpenHelper {
 		
 		// creating required tables
 		db.execSQL(CREATE_TABLE_ACTIONBOXES);
-		db.execSQL(CREATE_TABLE_CHECKLINES);		
+		db.execSQL(CREATE_TABLE_CHECKLINES);
+		
+		//populate ActionBoxes
+		populateActionBoxesTable();
 	}
 
 	@Override
@@ -235,6 +242,22 @@ public class DBHelper extends SQLiteOpenHelper {
 
 					String selectQuery = "SELECT  * FROM " + TABLE_ACTIONBOXES + " WHERE " 
 							+ KEY_ID + " = " + id;
+
+					Log.e(LOG, selectQuery);
+
+					Cursor c = db.rawQuery(selectQuery, null);
+
+					if (c != null)
+						c.moveToFirst();
+					return new ActionBox(c);
+				}
+				
+				// get actionbox by name
+				public ActionBox getActionBoxByName(String name) {
+					SQLiteDatabase db = this.getReadableDatabase();
+
+					String selectQuery = "SELECT  * FROM " + TABLE_ACTIONBOXES + " WHERE " 
+							+ KEY_ACTIONBOXES_NAME + " = " + name;
 
 					Log.e(LOG, selectQuery);
 
