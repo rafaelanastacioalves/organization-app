@@ -38,6 +38,11 @@ public class DBHelper extends SQLiteOpenHelper {
 	
 	// Default ACTIONBOXES names
 	public static final String INBOX = "Inbox";
+	public static final String NEXT_ACTIONS = "Next_Actions";
+	public static final String INCUBATOR = "Incubator";
+	public static final String MAYBE_LATER = "Maybe_Later";
+	public static final String DELEGATED = "Delegated";
+	public static final String CALENDAR= "Calendar";
 	
 
 	// CHECKLINES Table - column names
