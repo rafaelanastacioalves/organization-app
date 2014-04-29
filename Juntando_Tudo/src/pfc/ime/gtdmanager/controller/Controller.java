@@ -27,6 +27,7 @@ public class Controller extends Application {
 	private ActionBox actBox;
 	public  SwipeListView swipelistview;
 	private DBHelper dbHelper;
+	private String strListName;
 	public ItemAdapter adapter;
 	public List<CheckLine> itemData;
 	public void setActionBox(ActionBox actBox){
@@ -47,13 +48,18 @@ public class Controller extends Application {
 		this.actBox = dbHelper.getActionBoxByName(strName);
 	}
 	
-	public void goToList(String strListName, Activity actCurrent){
+	public void goToList(String strListName, String strActBoxName, Activity actCurrent){
 		setActionBox(strListName);
+		this.strListName = strListName;
 		Intent iChamaLista = new Intent(actCurrent,Lista.class);
 		actCurrent.startActivity(iChamaLista);
 		actCurrent.overridePendingTransition(R.anim.slide2, R.anim.slide);
 		
 
+	}
+	
+	public String getActionBoxName(){
+		return actBox.getName();
 	}
 	/**
 	 * Loads by copying to the current List reference from the values from Database

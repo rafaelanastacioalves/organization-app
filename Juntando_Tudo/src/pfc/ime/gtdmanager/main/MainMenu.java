@@ -34,8 +34,8 @@ public class MainMenu extends Activity {
 	public void listar ( View v){
 		String sNome = getResources().getString(v.getId());
 //		mostrarMSG(sNome, "Info Button" );
-		aController.goToList(sNome, this);
-		
+		aController.goToList((String)v.getTag() ,sNome, this);
+		 
 	}
 	public void mostrarMSG(String strMSG, String strTitle){
 		AlertDialog adMensagem = new AlertDialog.Builder(this).create();
