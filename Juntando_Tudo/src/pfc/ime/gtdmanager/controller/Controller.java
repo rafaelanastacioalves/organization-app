@@ -19,6 +19,9 @@ import android.widget.Adapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.app.Activity;
+import android.content.Intent;
+import android.app.Activity;
+
 
 public class Controller extends Application {
 	private ActionBox actBox;
@@ -37,6 +40,21 @@ public class Controller extends Application {
 		this.actBox = dbHelper.getActionBoxById(id);
 	}
 	
+	public void setActionBox(String strName){
+		if(dbHelper == null){
+			dbHelper= new DBHelper(getApplicationContext());
+		}
+		this.actBox = dbHelper.getActionBoxByName(strName);
+	}
+	
+	public void goToList(String strListName, Activity actCurrent){
+		setActionBox(strListName);
+		Intent iChamaLista = new Intent(actCurrent,Lista.class);
+		actCurrent.startActivity(iChamaLista);
+		actCurrent.overridePendingTransition(R.anim.slide2, R.anim.slide);
+		
+
+	}
 	/**
 	 * Loads by copying to the current List reference from the values from Database
 	 */

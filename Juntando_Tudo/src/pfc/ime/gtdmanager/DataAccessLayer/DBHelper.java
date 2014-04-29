@@ -1,17 +1,22 @@
 package pfc.ime.gtdmanager.DataAccessLayer;
 
+import java.net.ContentHandler;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import pfc.ime.gtdmanager.model.ActionBox;
 import pfc.ime.gtdmanager.model.CheckLine;
-
+import com.juntando_tudo.R; 
+import android.view.*;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.*;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -37,12 +42,12 @@ public class DBHelper extends SQLiteOpenHelper {
 	public static final String KEY_ACTIONBOXES_NAME = "name";
 	
 	// Default ACTIONBOXES names
-	public static final String INBOX = "Inbox";
-	public static final String NEXT_ACTIONS = "Next_Actions";
-	public static final String INCUBATOR = "Incubator";
-	public static final String MAYBE_LATER = "Maybe_Later";
-	public static final String DELEGATED = "Delegated";
-	public static final String CALENDAR= "Calendar";
+	public static  String INBOX ;
+	public static  String NEXT_ACTIONS;
+	public static  String INCUBATOR ;
+	public static  String MAYBE_LATER;
+	public static  String DELEGATED ;
+	public static  String CALENDAR;
 	
 
 	// CHECKLINES Table - column names
@@ -77,6 +82,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	public DBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		DBHelper.INBOX = context.getResources().getString(R.string.dbINBOX);
+		DBHelper.CALENDAR = context.getResources().getString(R.string.dbCALENDAR);
+		DBHelper.INCUBATOR = context.getResources().getString(R.string.dbINCUBATOR);
+		DBHelper.DELEGATED = context.getResources().getString(R.string.dbDELEGATED);
+		DBHelper.NEXT_ACTIONS = context.getResources().getString(R.string.dbNEXT_ACTIONS);
+		DBHelper.MAYBE_LATER = context.getResources().getString(R.string.dbMAYBE_LATER);
+
+
+		
 	}
 	
 	@Override
@@ -262,7 +276,7 @@ public class DBHelper extends SQLiteOpenHelper {
 					SQLiteDatabase db = this.getReadableDatabase();
 
 					String selectQuery = "SELECT  * FROM " + TABLE_ACTIONBOXES + " WHERE " 
-							+ KEY_ACTIONBOXES_NAME + " = " + name;
+							+ KEY_ACTIONBOXES_NAME + " = " + "'" + name + "'";
 
 					Log.e(LOG, selectQuery);
 
@@ -329,10 +343,14 @@ public class DBHelper extends SQLiteOpenHelper {
 				}
 				
 				public void populateActionBoxesTable() {
-					createActionBox(new ActionBox("Inbox"));
-					createActionBox(new ActionBox("Maybe Later"));
-					createActionBox(new ActionBox("ASAP"));
-					createActionBox(new ActionBox("File"));
+					createActionBox(new ActionBox(INBOX));
+					createActionBox(new ActionBox(CALENDAR));
+					createActionBox(new ActionBox(NEXT_ACTIONS));
+					createActionBox(new ActionBox(INCUBATOR));
+					createActionBox(new ActionBox(MAYBE_LATER));
+					createActionBox(new ActionBox(DELEGATED));
+
+					
 				}
 
 				

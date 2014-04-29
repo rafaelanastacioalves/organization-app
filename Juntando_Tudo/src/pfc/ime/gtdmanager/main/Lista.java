@@ -35,7 +35,7 @@ public class Lista extends Activity {
         
         aController.setListView(swipelistview);
         
-        aController.setActionBox(1);
+        
         // Controller.LoadActionBox();
 //        aController.populaActionBoxTeste();
 //        Toast.makeText(this , String.valueOf(aController.getId() ), Toast.LENGTH_SHORT).show();

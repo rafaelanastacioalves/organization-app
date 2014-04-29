@@ -10,10 +10,10 @@
     tools:context=".MainMenu" >
 
     <ImageButton
-        android:id="@+id/btIncubar"
+        android:id="@string/dbINCUBATOR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btOther"
+        android:layout_above="@string/dbOTHER"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="29dp"
         android:layout_marginLeft="20dp"
@@ -21,7 +21,7 @@
         android:src="@drawable/ic_action_incubar" />
 
     <ImageButton
-        android:id="@+id/btAgenda"
+        android:id="@string/dbCALENDAR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -32,26 +32,26 @@
         android:src="@drawable/ic_action_agenda" />
 
     <ImageButton
-        android:id="@+id/btNextAction"
+        android:id="@string/dbNEXT_ACTIONS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/btAgenda"
+        android:layout_alignTop="@string/dbCALENDAR"
         android:layout_marginRight="25dp"
         android:onClick="listar"
         android:src="@drawable/ic_action_next_action" />
 
     <ImageButton
-        android:id="@+id/btTalvez"
+        android:id= "@string/dbMAYBE_LATER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/btNextAction"
-        android:layout_alignTop="@+id/btIncubar"
+        android:layout_alignRight="@string/dbNEXT_ACTIONS"
+        android:layout_alignTop="@string/dbINCUBATOR"
         android:onClick="listar"
         android:src="@drawable/ic_action_maybe" />
 
     <ImageButton
-        android:id="@+id/btOther"
+        android:id="@string/dbOTHER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -61,21 +61,21 @@
         android:src="@drawable/ib_other" />
 
     <ImageButton
-        android:id="@+id/btInbox"
+        android:id="@string/dbINBOX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btDelegados"
+        android:layout_above="@string/dbDELEGATED"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="84dp"
         android:onClick="listar"
         android:src="@drawable/ic_action_inbox" />
 
     <ImageButton
-        android:id="@+id/btDelegados"
+        android:id="@string/dbDELEGATED"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btInbox"
-        android:layout_alignTop="@+id/btIncubar"
+        android:layout_alignLeft="@string/dbINBOX"
+        android:layout_alignTop="@string/dbINCUBATOR"
         android:onClick="listar"
         android:src="@drawable/ic_action_delegados" />
 

@@ -10,7 +10,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ImageButton;
 
 public class MainMenu extends Activity {
 	
@@ -33,12 +32,10 @@ public class MainMenu extends Activity {
 	}
 	
 	public void listar ( View v){
-		ImageButton bTela = (ImageButton) findViewById(v.getId());
-		String sNome = bTela.toString();
-		mostrarMSG(sNome, "Info Button" );
-		Intent iChamaLista = new Intent(this,Lista.class);
-		startActivity(iChamaLista);
-		this.overridePendingTransition(R.anim.slide2, R.anim.slide);
+		String sNome = getResources().getString(v.getId());
+//		mostrarMSG(sNome, "Info Button" );
+		aController.goToList(sNome, this);
+		
 	}
 	public void mostrarMSG(String strMSG, String strTitle){
 		AlertDialog adMensagem = new AlertDialog.Builder(this).create();

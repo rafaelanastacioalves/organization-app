@@ -9,5 +9,28 @@
     <string name="add">Add</string>
     <string name="OK">OK</string>
     <string name="Cancel">Cancel</string>
+    
+    
+    <!-- Default Lists -->
+    <string name="INBOX">Inbox</string>
+    <string name="NEXT_ACTIONS">Next Actions</string>
+    <string name="INCUBATOR">Incubator</string>
+    <string name="MAYBE_LATER">Maybe Later</string>
+    <string name="DELEGATED">Delegated</string>
+    <string name="CALENDAR">Calendar</string>
+    <string name="OTHER">Other Lists</string>
+    
+    
+    <!--  DataBase Reference -->
+    
+    <string name="dbINBOX">Inbox</string>
+    <string name="dbNEXT_ACTIONS">Next_Actions</string>
+    <string name="dbINCUBATOR">Incubator</string>
+    <string name="dbMAYBE_LATER">Maybe_Later</string>
+    <string name="dbDELEGATED">Delegated</string>
+    <string name="dbCALENDAR">Calendar</string>
+    <string name="dbOTHER">Other</string>
+    
+    
 
 </resources>
