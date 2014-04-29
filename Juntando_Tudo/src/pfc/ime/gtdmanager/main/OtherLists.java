@@ -7,22 +7,19 @@ import com.juntando_tudo.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 
-public class MainMenu extends Activity {
+public class OtherLists extends ListActivity {
 	
 	 Controller aController; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main_menu);
-		aController = (Controller) getApplicationContext();
-		if(aController.deviceHasGoogleAccount()){
-			mostrarMSG("Voce tem uma conta Google!", "ContaGoogle");
-		}
-		aController.setupBD();
+		
+		
 		
 	}
 	
@@ -30,20 +27,11 @@ public class MainMenu extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main_menu, menu);
+//		getMenuInflater().inflate(R.menu.main_menu, menu);
 		return true;
 	}
 	
-	public void listar ( View v){
-		String sNome = getResources().getString(v.getId());
-//		mostrarMSG(sNome, "Info Button" );
-		aController.goToList((String)v.getTag() ,sNome, this);
-		 
-	}
 	
-	public void showOtherLists(View v){
-		aController.showOtherLists(this);
-	}
 	public void mostrarMSG(String strMSG, String strTitle){
 		AlertDialog adMensagem = new AlertDialog.Builder(this).create();
 		adMensagem.setMessage(strMSG);

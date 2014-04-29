@@ -10,9 +10,12 @@ import com.juntando_tudo.R;
 
 import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
 import pfc.ime.gtdmanager.main.Lista;
+import pfc.ime.gtdmanager.main.OtherLists;
 import pfc.ime.gtdmanager.model.ActionBox;
 import pfc.ime.gtdmanager.model.CheckLine;
 import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Application;
 import android.util.Log;
 import android.widget.Adapter;
@@ -232,6 +235,12 @@ public void setListView(ListView lv ){
 	this.swipelistview = (SwipeListView) lv;
 }
 
+public void showOtherLists(Activity actCurrent){
+	
+	Intent iOtherList = new Intent(actCurrent,OtherLists.class);
+	actCurrent.startActivity(iOtherList);
+}
+
 public void setAdapter(Lista lista){
 	 itemData=new ArrayList<CheckLine>();
 	 adapter=new ItemAdapter(lista ,R.layout.custom_row,itemData);
@@ -241,6 +250,11 @@ public void setAdapter(Lista lista){
 
      
 	
+}
+public boolean deviceHasGoogleAccount(){
+    AccountManager accMan = AccountManager.get(this);
+    Account[] accArray = accMan.getAccountsByType("com.google");
+    return accArray.length >= 1 ? true : false;
 }
 	
 	

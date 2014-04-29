@@ -141,6 +141,7 @@ containing a value of this type.
         public static final int RelativeLayout1=0x7f05000e;
         public static final int action_forgot_password=0x7f05001b;
         public static final int action_settings=0x7f050019;
+        public static final int activity_other_lists=0x7f05001c;
         public static final int add=0x7f05001a;
         public static final int back=0x7f050010;
         public static final int both=0x7f050001;
@@ -171,34 +172,35 @@ containing a value of this type.
         public static final int activity_lista=0x7f030000;
         public static final int activity_login_google=0x7f030001;
         public static final int activity_main_menu=0x7f030002;
-        public static final int add=0x7f030003;
-        public static final int custom_row=0x7f030004;
-        public static final int lista=0x7f030005;
-        public static final int main=0x7f030006;
+        public static final int activity_other_lists=0x7f030003;
+        public static final int add=0x7f030004;
+        public static final int custom_row=0x7f030005;
+        public static final int lista=0x7f030006;
+        public static final int main=0x7f030007;
     }
     public static final class menu {
         public static final int lista=0x7f090000;
         public static final int login_google=0x7f090001;
         public static final int main=0x7f090002;
         public static final int main_menu=0x7f090003;
+        public static final int other_lists=0x7f090004;
     }
     public static final class string {
-        public static final int CALENDAR=0x7f07000d;
-        public static final int Cancel=0x7f070007;
-        public static final int DELEGATED=0x7f07000c;
+        public static final int CALENDAR=0x7f07000e;
+        public static final int Cancel=0x7f070008;
+        public static final int DELEGATED=0x7f07000d;
         /**  Default Lists 
          */
-        public static final int INBOX=0x7f070008;
-        public static final int INCUBATOR=0x7f07000a;
-        public static final int MAYBE_LATER=0x7f07000b;
-        public static final int NEXT_ACTIONS=0x7f070009;
-        public static final int OK=0x7f070006;
-        public static final int OTHER=0x7f07000e;
+        public static final int INBOX=0x7f070009;
+        public static final int INCUBATOR=0x7f07000b;
+        public static final int MAYBE_LATER=0x7f07000c;
+        public static final int NEXT_ACTIONS=0x7f07000a;
+        public static final int OK=0x7f070007;
         public static final int action_forgot_password=0x7f07001b;
         public static final int action_settings=0x7f070001;
         public static final int action_sign_in_register=0x7f070019;
         public static final int action_sign_in_short=0x7f07001a;
-        public static final int add=0x7f070005;
+        public static final int add=0x7f070006;
         public static final int app_name=0x7f070000;
         public static final int dbCALENDAR=0x7f070014;
         public static final int dbDELEGATED=0x7f070013;
@@ -222,6 +224,7 @@ containing a value of this type.
         public static final int title_activity_lista=0x7f070004;
         public static final int title_activity_login_google=0x7f070016;
         public static final int title_activity_main_menu=0x7f070003;
+        public static final int title_activity_other_list=0x7f070005;
     }
     public static final class style {
         /** 

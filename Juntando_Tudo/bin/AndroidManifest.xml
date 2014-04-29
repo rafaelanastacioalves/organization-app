@@ -3,7 +3,7 @@
     package="com.juntando_tudo"
     android:versionCode="1"
     android:versionName="1.0" >
-
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="16" />
@@ -41,6 +41,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.juntando_tudo.MainMenu" />
         </activity>
+        <activity android:name="pfc.ime.gtdmanager.main.OtherLists" android:label="@string/title_activity_other_list" android:parentActivityName="pfc.ime.gtdmanager.main.MainMenu"></activity>
     </application>
 
 </manifest>

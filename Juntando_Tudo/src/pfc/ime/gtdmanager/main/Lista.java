@@ -198,7 +198,7 @@ public class Lista extends Activity {
         swipelistview.setSwipeActionRight(SwipeListView.SWIPE_MODE_NONE);
         swipelistview.setOffsetLeft(convertDpToPixel(80f)); // left side offset
         swipelistview.setOffsetRight(convertDpToPixel(0f)); // right side offset
-        swipelistview.setAnimationTime(500); // Animation time
+        swipelistview.setAnimationTime(64); // Animation time
         swipelistview.setSwipeOpenOnLongPress(true); // enable or disable SwipeOpenOnLongPress
 	
        

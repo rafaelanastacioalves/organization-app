@@ -55,13 +55,13 @@
 
     <ImageButton
         android:id="@string/dbOTHER"
-        android:tag="@string/OTHER"
+        android:tag="@string/title_activity_other_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="22dp"
-        android:onClick="listar"
+        android:onClick="showOtherLists"
         android:src="@drawable/ib_other" />
 
     <ImageButton
