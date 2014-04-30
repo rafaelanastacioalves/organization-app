@@ -62,8 +62,8 @@ public View getView(int position, View convertView, ViewGroup parent) {
             holder.itemText = (TextView)row.findViewById(R.id.example_itemname);
             holder.itemText.setTextAppearance(context, R.style.MyListTitle);
             holder.chk=(CheckBox)row.findViewById(R.id.example_image);
-            holder.button1=(ImageButton)row.findViewById(R.id.swipe_button1);
-            holder.button2=(Button)row.findViewById(R.id.swipe_button2);
+            holder.button1=(ImageButton)row.findViewById(R.id.swipe_delete);
+            holder.button2=(ImageButton)row.findViewById(R.id.swipe_share);
             holder.button3=(Button)row.findViewById(R.id.swipe_button3);
             row.setTag(holder);
         }
@@ -76,6 +76,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
         
         holder.chk.setTag(position);
         holder.button1.setTag(position);
+        holder.button2.setTag(position);
         
         holder.itemText.setText(itemdata.getText());
         holder.chk.setOnClickListener(chkClickListener);
@@ -110,6 +111,8 @@ public View getView(int position, View convertView, ViewGroup parent) {
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
 						Toast.makeText(context, "Button 2 Clicked",Toast.LENGTH_SHORT).show();
+						int position = (Integer) v.getTag();
+						aController.shareChecklineAt(position,(Activity)getContext());
 					}
 				});
 		 
@@ -161,7 +164,7 @@ static class NewsHolder{
 	TextView itemText;
 	CheckBox chk;
 	ImageButton button1;
-	Button button2;
+	ImageButton button2;
 	Button button3;
 	
 	}

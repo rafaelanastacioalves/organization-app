@@ -256,6 +256,14 @@ public boolean deviceHasGoogleAccount(){
     Account[] accArray = accMan.getAccountsByType("com.google");
     return accArray.length >= 1 ? true : false;
 }
+public void shareChecklineAt(int position, Activity actCurrent) {
+	// TODO Auto-generated method stub
+	String strShared = actBox.get(position).getText();
+	Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, strShared);
+    sharingIntent.setType("text/plain");
+    actCurrent.startActivity(Intent.createChooser(sharingIntent, getResources().getText(R.string.share_using)));
+}
 	
 	
 	

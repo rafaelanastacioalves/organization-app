@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainMenu extends Activity {
 	
@@ -20,7 +21,7 @@ public class MainMenu extends Activity {
 		setContentView(R.layout.activity_main_menu);
 		aController = (Controller) getApplicationContext();
 		if(aController.deviceHasGoogleAccount()){
-			mostrarMSG("Voce tem uma conta Google!", "ContaGoogle");
+			mostrarMSG("Voce tem uma conta Google!");
 		}
 		aController.setupBD();
 		
@@ -44,11 +45,9 @@ public class MainMenu extends Activity {
 	public void showOtherLists(View v){
 		aController.showOtherLists(this);
 	}
-	public void mostrarMSG(String strMSG, String strTitle){
-		AlertDialog adMensagem = new AlertDialog.Builder(this).create();
-		adMensagem.setMessage(strMSG);
-		adMensagem.setTitle(strTitle);
-		adMensagem.show();
+	public void mostrarMSG(String strMSG){
+		Toast t = Toast.makeText(this, strMSG, Toast.LENGTH_SHORT);
+		t.show();
 	}
 
 }
