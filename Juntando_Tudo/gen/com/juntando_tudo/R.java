@@ -139,94 +139,101 @@ containing a value of this type.
         public static final int ic_launcher=0x7f02000e;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f05000e;
-        public static final int action_forgot_password=0x7f05001b;
-        public static final int action_settings=0x7f050019;
-        public static final int activity_other_lists=0x7f05001c;
-        public static final int add=0x7f05001a;
-        public static final int back=0x7f050010;
+        public static final int RelativeLayout1=0x7f050013;
+        public static final int action_forgot_password=0x7f05001f;
+        public static final int action_settings=0x7f05001e;
+        public static final int activity_other_lists=0x7f050020;
+        public static final int add=0x7f05000b;
+        public static final int back=0x7f050015;
         public static final int both=0x7f050001;
         public static final int choice=0x7f050006;
+        public static final int data=0x7f050007;
         public static final int dismiss=0x7f050005;
-        public static final int email=0x7f05000a;
-        public static final int etItem_new=0x7f05000f;
-        public static final int example_image=0x7f050015;
-        public static final int example_itemname=0x7f050016;
-        public static final int example_swipe_lv_list=0x7f050017;
-        public static final int front=0x7f050014;
+        public static final int email=0x7f05000f;
+        public static final int etItem_new=0x7f050014;
+        public static final int eventoText=0x7f05000a;
+        public static final int example_image=0x7f05001a;
+        public static final int example_itemname=0x7f05001b;
+        public static final int example_swipe_lv_list=0x7f05001c;
+        public static final int front=0x7f050019;
         public static final int left=0x7f050003;
-        public static final int login=0x7f05000c;
-        public static final int login_form=0x7f050009;
-        public static final int login_status=0x7f050007;
-        public static final int login_status_message=0x7f050008;
-        public static final int lsvEstados=0x7f050018;
+        public static final int login=0x7f050011;
+        public static final int login_form=0x7f05000e;
+        public static final int login_status=0x7f05000c;
+        public static final int login_status_message=0x7f05000d;
+        public static final int lsvEstados=0x7f05001d;
+        public static final int next=0x7f050009;
         public static final int none=0x7f050000;
-        public static final int password=0x7f05000b;
+        public static final int password=0x7f050010;
+        public static final int previous=0x7f050008;
         public static final int reveal=0x7f050004;
         public static final int right=0x7f050002;
-        public static final int sign_in_button=0x7f05000d;
-        public static final int swipe_button3=0x7f050013;
-        public static final int swipe_delete=0x7f050011;
-        public static final int swipe_share=0x7f050012;
+        public static final int sign_in_button=0x7f050012;
+        public static final int swipe_button3=0x7f050018;
+        public static final int swipe_delete=0x7f050016;
+        public static final int swipe_share=0x7f050017;
     }
     public static final class layout {
         public static final int activity_lista=0x7f030000;
-        public static final int activity_login_google=0x7f030001;
-        public static final int activity_main_menu=0x7f030002;
-        public static final int activity_other_lists=0x7f030003;
-        public static final int add=0x7f030004;
-        public static final int custom_row=0x7f030005;
-        public static final int lista=0x7f030006;
-        public static final int main=0x7f030007;
+        public static final int activity_lista_calendar=0x7f030001;
+        public static final int activity_login_google=0x7f030002;
+        public static final int activity_main_menu=0x7f030003;
+        public static final int activity_other_lists=0x7f030004;
+        public static final int add=0x7f030005;
+        public static final int custom_row=0x7f030006;
+        public static final int lista=0x7f030007;
+        public static final int main=0x7f030008;
     }
     public static final class menu {
         public static final int lista=0x7f090000;
         public static final int login_google=0x7f090001;
         public static final int main=0x7f090002;
         public static final int main_menu=0x7f090003;
-        public static final int other_lists=0x7f090004;
+        public static final int menu_calendar=0x7f090004;
+        public static final int other_lists=0x7f090005;
     }
     public static final class string {
-        public static final int CALENDAR=0x7f07000f;
-        public static final int Cancel=0x7f070008;
-        public static final int DELEGATED=0x7f07000e;
+        public static final int CALENDAR=0x7f070010;
+        public static final int Cancel=0x7f070009;
+        public static final int DELEGATED=0x7f07000f;
         /**  Default Lists 
          */
-        public static final int INBOX=0x7f07000a;
-        public static final int INCUBATOR=0x7f07000c;
-        public static final int MAYBE_LATER=0x7f07000d;
-        public static final int NEXT_ACTIONS=0x7f07000b;
-        public static final int OK=0x7f070007;
-        public static final int action_forgot_password=0x7f07001c;
+        public static final int INBOX=0x7f07000b;
+        public static final int INCUBATOR=0x7f07000d;
+        public static final int MAYBE_LATER=0x7f07000e;
+        public static final int NEXT_ACTIONS=0x7f07000c;
+        public static final int OK=0x7f070008;
+        public static final int action_forgot_password=0x7f07001d;
         public static final int action_settings=0x7f070001;
-        public static final int action_sign_in_register=0x7f07001a;
-        public static final int action_sign_in_short=0x7f07001b;
-        public static final int add=0x7f070006;
+        public static final int action_sign_in_register=0x7f07001b;
+        public static final int action_sign_in_short=0x7f07001c;
+        public static final int add=0x7f070007;
         public static final int app_name=0x7f070000;
-        public static final int dbCALENDAR=0x7f070015;
-        public static final int dbDELEGATED=0x7f070014;
+        public static final int dbCALENDAR=0x7f070016;
+        public static final int dbDELEGATED=0x7f070015;
         /**   DataBase Reference 
          */
-        public static final int dbINBOX=0x7f070010;
-        public static final int dbINCUBATOR=0x7f070012;
-        public static final int dbMAYBE_LATER=0x7f070013;
-        public static final int dbNEXT_ACTIONS=0x7f070011;
-        public static final int dbOTHER=0x7f070016;
-        public static final int error_field_required=0x7f070021;
-        public static final int error_incorrect_password=0x7f070020;
-        public static final int error_invalid_email=0x7f07001e;
-        public static final int error_invalid_password=0x7f07001f;
+        public static final int dbINBOX=0x7f070011;
+        public static final int dbINCUBATOR=0x7f070013;
+        public static final int dbMAYBE_LATER=0x7f070014;
+        public static final int dbNEXT_ACTIONS=0x7f070012;
+        public static final int dbOTHER=0x7f070017;
+        public static final int error_field_required=0x7f070022;
+        public static final int error_incorrect_password=0x7f070021;
+        public static final int error_invalid_email=0x7f07001f;
+        public static final int error_invalid_password=0x7f070020;
         public static final int hello_world=0x7f070002;
-        public static final int login_progress_signing_in=0x7f07001d;
+        public static final int login_progress_signing_in=0x7f07001e;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f070018;
-        public static final int prompt_password=0x7f070019;
-        public static final int share_using=0x7f070009;
+        public static final int prompt_email=0x7f070019;
+        public static final int prompt_password=0x7f07001a;
+        public static final int share_using=0x7f07000a;
         public static final int title_activity_lista=0x7f070004;
-        public static final int title_activity_login_google=0x7f070017;
+        public static final int title_activity_lista_calendar=0x7f070005;
+        public static final int title_activity_login_google=0x7f070018;
         public static final int title_activity_main_menu=0x7f070003;
-        public static final int title_activity_other_list=0x7f070005;
+        public static final int title_activity_other_list=0x7f070006;
     }
     public static final class style {
         /** 

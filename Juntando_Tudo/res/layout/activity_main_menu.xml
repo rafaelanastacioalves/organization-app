@@ -29,7 +29,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="47dp"
-        android:onClick="listar"
+        android:onClick="listar_calendar"
         android:src="@drawable/ic_action_agenda" />
 
     <ImageButton

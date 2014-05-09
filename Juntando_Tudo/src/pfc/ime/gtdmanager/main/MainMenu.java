@@ -42,6 +42,19 @@ public class MainMenu extends Activity {
 		 
 	}
 	
+	/**
+	 * A (temporary) method to call a list of itens for Calendar. Requires refactory. Controller 
+	 * should be responsible for calling the activity, probably using a different method...
+	 * @param v
+	 */
+	public void listar_calendar ( View v){
+		String sNome = getResources().getString(v.getId());
+//		mostrarMSG(sNome, "Info Button" );
+		aController.goToList_Calendar((String)v.getTag() ,sNome, this);
+		 
+	} 
+	
+	
 	public void showOtherLists(View v){
 		aController.showOtherLists(this);
 	}

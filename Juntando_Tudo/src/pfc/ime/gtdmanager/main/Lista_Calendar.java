@@ -1,4 +1,4 @@
-package com.example.calendarreadtest;
+package pfc.ime.gtdmanager.main;
 
 import android.view.Menu;
 import java.text.Format;
@@ -10,10 +10,10 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+import com.juntando_tudo.R;
 
-public class MainActivity extends Activity implements OnClickListener{
+public class Lista_Calendar extends Activity implements OnClickListener{
 
 	
 	private Cursor mCursor = null;
@@ -24,7 +24,7 @@ public class MainActivity extends Activity implements OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-    	setContentView(R.layout.activity_main);
+    	setContentView(R.layout.activity_lista_calendar);
 
 
     	mCursor = getContentResolver().query(

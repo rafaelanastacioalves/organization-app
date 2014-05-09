@@ -6,6 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_main_menu">Main Menu</string>
     <string name="title_activity_lista">Lista</string>
+    <string name="title_activity_lista_calendar">Lista_Calendar</string>
     <string name="title_activity_other_list">Other Lists</string>
     <string name="add">Add</string>
     <string name="OK">OK</string>

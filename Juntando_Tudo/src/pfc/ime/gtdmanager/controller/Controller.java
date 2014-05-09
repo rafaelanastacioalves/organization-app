@@ -10,9 +10,11 @@ import com.juntando_tudo.R;
 
 import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
 import pfc.ime.gtdmanager.main.Lista;
+import pfc.ime.gtdmanager.main.Lista_Calendar;
 import pfc.ime.gtdmanager.main.OtherLists;
 import pfc.ime.gtdmanager.model.ActionBox;
 import pfc.ime.gtdmanager.model.CheckLine;
+import pfc.ime.gtdmanager.model.CalendarAdapter;
 import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -30,6 +32,7 @@ public class Controller extends Application {
 	private ActionBox actBox;
 	public  SwipeListView swipelistview;
 	private DBHelper dbHelper;
+	private CalendarAdapter calAdp;
 	private String strListName;
 	public ItemAdapter adapter;
 	public List<CheckLine> itemData;
@@ -37,18 +40,36 @@ public class Controller extends Application {
 		
 		this.actBox = actBox; 
 	}
+	//--------------------  descontinuado --------------//
 	public void setActionBox(int id){
 		if(dbHelper == null){
 			dbHelper = new DBHelper(getApplicationContext());
 		}
 		this.actBox = dbHelper.getActionBoxById(id);
+		
 	}
 	
 	public void setActionBox(String strName){
 		if(dbHelper == null){
 			dbHelper= new DBHelper(getApplicationContext());
 		}
+		
+		
 		this.actBox = dbHelper.getActionBoxByName(strName);
+		
+	}
+	public void setActionBox(String strName, Activity actCurrent){
+		if(dbHelper == null){
+			dbHelper= new DBHelper(getApplicationContext());
+		}
+		
+		
+		this.actBox = dbHelper.getActionBoxByName(strName);
+		if ( strName == getResources().getString(R.string.dbCALENDAR) ){
+			
+			calAdp = new CalendarAdapter(actBox.getId());
+			actBox.setCheckLines(calAdp.getCheckLines(actCurrent));
+		}
 	}
 	
 	public void goToList(String strListName, String strActBoxName, Activity actCurrent){
@@ -205,7 +226,7 @@ public void addCheckLine(String str){
  * Makes the Controller share the actionBox's List<Checkline> 
  * @param lstChk
  */
-public void shareListWith(List<CheckLine> lstChk){
+public void loadAndShareListWith(List<CheckLine> lstChk){
 	
 	// --- verifica se a lista de Checklines foi carregada ---//
 	if (actBox.getCheckLines() == null){
@@ -245,7 +266,7 @@ public void setAdapter(Lista lista){
 	 itemData=new ArrayList<CheckLine>();
 	 adapter=new ItemAdapter(lista ,R.layout.custom_row,itemData);
 	 swipelistview.setAdapter( adapter);
-	 this.shareListWith(itemData);
+	 this.loadAndShareListWith(itemData);
      adapter.notifyDataSetChanged();
 
      
@@ -264,6 +285,14 @@ public void shareChecklineAt(int position, Activity actCurrent) {
     sharingIntent.setType("text/plain");
     actCurrent.startActivity(Intent.createChooser(sharingIntent, getResources().getText(R.string.share_using)));
 }
+public void goToList_Calendar(String strListName, String strActBoxName, Activity actCurrent) {
+	setActionBox(strListName, actCurrent);
+	this.strListName = strListName;
+	Intent iChamaLista = new Intent(actCurrent, Lista.class);
+	actCurrent.startActivity(iChamaLista);
+	actCurrent.overridePendingTransition(R.anim.slide2, R.anim.slide);
+}
+
 	
 	
 	
