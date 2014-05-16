@@ -100,8 +100,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		db.execSQL(CREATE_TABLE_ACTIONBOXES);
 		db.execSQL(CREATE_TABLE_CHECKLINES);
 		
-		//populate ActionBoxes
-		populateActionBoxesTable();
+
 	}
 
 	@Override
@@ -251,7 +250,6 @@ public class DBHelper extends SQLiteOpenHelper {
 					
 					// insert row and return id
 					return db.insert(TABLE_ACTIONBOXES, null, values);
-					
 				
 				}
 

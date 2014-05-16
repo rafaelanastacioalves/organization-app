@@ -11,6 +11,7 @@
 
     <ImageButton
         android:id="@string/dbINCUBATOR"
+        android:tag="@string/INCUBATOR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@string/dbOTHER"

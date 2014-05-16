@@ -24,6 +24,7 @@ import android.widget.Adapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.app.Activity;
 
@@ -73,7 +74,7 @@ public class Controller extends Application {
 	}
 	
 	public void goToList(String strListName, String strActBoxName, Activity actCurrent){
-		setActionBox(strListName);
+		setActionBox(strActBoxName);
 		this.strListName = strListName;
 		Intent iChamaLista = new Intent(actCurrent,Lista.class);
 		actCurrent.startActivity(iChamaLista);
@@ -199,9 +200,9 @@ public void codigoTeste(){
 
 }
 
-public void setupBD(){
+public void setupBD(Activity actCurrent){
 	if(dbHelper == null){
-		dbHelper = new DBHelper(getApplicationContext());
+		dbHelper = new DBHelper(actCurrent);
 	}
 	dbHelper.populateActionBoxesTable();
 }
