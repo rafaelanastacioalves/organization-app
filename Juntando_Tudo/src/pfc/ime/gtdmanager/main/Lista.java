@@ -8,6 +8,7 @@ import com.juntando_tudo.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.support.v4.app.NavUtils;
 import android.util.DisplayMetrics;
@@ -85,52 +86,10 @@ public class Lista extends Activity {
     	aController.persist();
     }
     private boolean add_method(){
-		// get prompts.xml view
-		LayoutInflater liAdd = LayoutInflater.from(this);
-		View promptsView = liAdd.inflate(R.layout.add, null);
-
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-		// set prompts.xml to alertdialog builder
-		alertDialogBuilder.setView(promptsView);
-		final EditText userInput =  (EditText) promptsView.findViewById(R.id.etItem_new);
-		userInput.requestFocus();
-		alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				// get user input and set it to result
-				// edit text
-				String result = String.valueOf(userInput.getText());
-				Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-				aController.addCheckLine(result);
-				//aController.persist();
-				//aController.loadActionBox(); 
-				
-			}
-		});
-		alertDialogBuilder.setNegativeButton("Cancel",
-				new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				dialog.cancel();
-			}
-		});
-
-
-
-		// create alert dialog
-		AlertDialog alertDialog = alertDialogBuilder.create();
-
-		// settin position
-		//WindowManager.LayoutParams alDlgParemters = alertDialog.getWindow().getAttributes();
-		//	alDlgParemters.gravity = Gravity.TOP;
-		//	alDlgParemters.y = 100;
-
-
-		// forcing showing soft input
-		alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-
-		// show it
-		alertDialog.show();
+    	DialogFragment dFrag = new AddDialog();
+    	dFrag.show(getFragmentManager(), "Add");
 		return true;
+    	
 		
 	}
     

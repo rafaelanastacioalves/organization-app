@@ -3,6 +3,7 @@ package pfc.ime.gtdmanager.swipelistview;
 import java.util.List;
 
 import pfc.ime.gtdmanager.controller.Controller;
+import pfc.ime.gtdmanager.main.ChangeDialog;
 import pfc.ime.gtdmanager.model.CheckLine;
 
 
@@ -10,6 +11,7 @@ import com.fortysevendeg.swipelistview.SwipeListView;
 import com.juntando_tudo.R;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -77,6 +79,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
         holder.chk.setTag(position);
         holder.button1.setTag(position);
         holder.button2.setTag(position);
+        holder.button3.setTag(position);
         
         holder.itemText.setText(itemdata.getText());
         holder.chk.setOnClickListener(chkClickListener);
@@ -122,6 +125,8 @@ public View getView(int position, View convertView, ViewGroup parent) {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					Toast.makeText(context, "Button 3 Clicked",Toast.LENGTH_SHORT);
+					DialogFragment dfChange = new ChangeDialog();
+					dfChange.show(((Activity)getContext()).getFragmentManager() , "change");
 				}
 			});
         
