@@ -86,7 +86,7 @@ public class Lista extends Activity {
     	aController.persist();
     }
     private boolean add_method(){
-    	DialogFragment dFrag = new AddDialog();
+    	DialogFragment dFrag = new AddCheckLineDialog();
     	dFrag.show(getFragmentManager(), "Add");
 		return true;
     	

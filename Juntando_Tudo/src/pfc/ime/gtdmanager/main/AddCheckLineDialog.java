@@ -15,7 +15,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddDialog extends DialogFragment {
+public class AddCheckLineDialog extends DialogFragment {
 
 	private Controller aController;
 	@Override

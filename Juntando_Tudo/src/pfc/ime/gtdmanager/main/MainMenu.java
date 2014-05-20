@@ -23,7 +23,7 @@ public class MainMenu extends Activity {
 		if(aController.deviceHasGoogleAccount()){
 			mostrarMSG("Voce tem uma conta Google!");
 		}
-		aController.setupBD(this);
+		aController.setupBD();
 		
 	}
 	

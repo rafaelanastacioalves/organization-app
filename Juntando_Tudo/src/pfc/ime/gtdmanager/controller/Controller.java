@@ -15,10 +15,12 @@ import pfc.ime.gtdmanager.main.OtherLists;
 import pfc.ime.gtdmanager.model.ActionBox;
 import pfc.ime.gtdmanager.model.CheckLine;
 import pfc.ime.gtdmanager.model.CalendarAdapter;
+import pfc.ime.gtdmanager.otherListsView.OtherListAdapter;
 import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Application;
+import android.app.ListActivity;
 import android.util.Log;
 import android.widget.Adapter;
 import android.widget.ListAdapter;
@@ -35,8 +37,10 @@ public class Controller extends Application {
 	private DBHelper dbHelper;
 	private CalendarAdapter calAdp;
 	private String strListName;
-	public ItemAdapter adapter;
+	public ItemAdapter itAdapter;
+	public OtherListAdapter olAdapter;
 	public List<CheckLine> itemData;
+	public List<ActionBox> actBoxData;
 	public void setActionBox(ActionBox actBox){
 		
 		this.actBox = actBox; 
@@ -93,7 +97,17 @@ public class Controller extends Application {
 			this.actBox.getCheckLines().clear();
 			this.actBox.getCheckLines().addAll( dbHelper.getAllToDosByTag(actBox.getId())); 
 	}
-	
+	/** It's supposed to return the lists made by the user. dbHelper NEEDs 
+	 * another method!
+	 * @return List<ActionBox>
+	 */
+	public List<ActionBox> getOtherLists(){
+		if(dbHelper == null){
+			dbHelper = new DBHelper(getApplicationContext());
+		}
+		
+		return dbHelper.getAllActionBoxes();
+	}
 //	private List<CheckLine> getAllChecklines(DBHelper dbHlpCurrent){
 //		
 //		return    dbHlpCurrent.getAllToDosByTag(actBox.getId());
@@ -110,7 +124,12 @@ public class Controller extends Application {
 		actBox.setCheckLines(lstChk);
 	}
 	
+	
 
+	/** N‹o precisa dessa assinatura! Basta deixar tudo no addCheckline (String) ...
+	 * @param strText
+	 * @param dbHlpCurrent
+	 */
 	private void addCheckLine(String strText, DBHelper dbHlpCurrent){
 		CheckLine chkLnNew = new CheckLine();
 		
@@ -200,9 +219,9 @@ public void codigoTeste(){
 
 }
 
-public void setupBD(Activity actCurrent){
+public void setupBD(){
 	if(dbHelper == null){
-		dbHelper = new DBHelper(actCurrent);
+		dbHelper = new DBHelper(getApplicationContext());
 	}
 	dbHelper.populateActionBoxesTable();
 }
@@ -220,7 +239,7 @@ public long getId(){
 
 public void addCheckLine(String str){
 	addCheckLine(str, dbHelper);
-	adapter.notifyDataSetChanged();
+	itAdapter.notifyDataSetChanged();
 }
 
 /**
@@ -248,7 +267,7 @@ public void deleteChecklineAt(int position){
 	//swipelistview.closeAnimate(position );
 	dbHelper.deleteCheckLine(actBox.get(position).getId());
 	actBox.getCheckLines().remove(position);
-	adapter.notifyDataSetChanged();
+	itAdapter.notifyDataSetChanged();
 	swipelistview.closeAnimate(position);
 	 
 }
@@ -264,15 +283,22 @@ public void showOtherLists(Activity actCurrent){
 }
 
 public void setAdapter(Lista lista){
-	 itemData=new ArrayList<CheckLine>();
-	 adapter=new ItemAdapter(lista ,R.layout.custom_row,itemData);
-	 swipelistview.setAdapter( adapter);
-	 this.loadAndShareListWith(itemData);
-     adapter.notifyDataSetChanged();
-
-     
-	
+		 itemData=new ArrayList<CheckLine>();
+		 itAdapter=new ItemAdapter(lista ,R.layout.custom_row,itemData);
+		 swipelistview.setAdapter( itAdapter);
+		 this.loadAndShareListWith(itemData);
+	     itAdapter.notifyDataSetChanged();
 }
+public void setAdapter(OtherLists lista){
+		actBoxData = new ArrayList<ActionBox>();
+		actBoxData.addAll(dbHelper.getAllActionBoxes());
+		olAdapter = new OtherListAdapter(lista,R.layout.custom_row_lists, actBoxData);
+		swipelistview.setAdapter(olAdapter);
+		olAdapter.notifyDataSetChanged();
+	}
+	
+
+
 public boolean deviceHasGoogleAccount(){
     AccountManager accMan = AccountManager.get(this);
     Account[] accArray = accMan.getAccountsByType("com.google");
@@ -292,6 +318,30 @@ public void goToList_Calendar(String strListName, String strActBoxName, Activity
 	Intent iChamaLista = new Intent(actCurrent, Lista.class);
 	actCurrent.startActivity(iChamaLista);
 	actCurrent.overridePendingTransition(R.anim.slide2, R.anim.slide);
+}
+public void addActionBox(String result) {
+	ActionBox tempActBox = new ActionBox();
+	
+	//--------------- setting values ------------------//
+	
+	// text
+	
+	tempActBox.setName(result);
+	
+	dbHelper.createActionBox(tempActBox);
+	actBoxData.clear();
+	actBoxData.addAll(dbHelper.getAllActionBoxes());
+	olAdapter.notifyDataSetChanged();
+	
+}
+public void deleteActionBoxAt(int position) {
+	
+	dbHelper.deleteActionBox(actBoxData.get(position).getId());
+	actBoxData.clear();
+	actBoxData.addAll(dbHelper.getAllActionBoxes());
+	olAdapter.notifyDataSetChanged();
+	swipelistview.closeAnimate(position);
+
 }
 
 	
