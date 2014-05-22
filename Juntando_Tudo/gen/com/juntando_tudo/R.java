@@ -130,19 +130,20 @@ containing a value of this type.
         public static final int ic_action_agenda=0x7f020005;
         public static final int ic_action_delegados=0x7f020006;
         public static final int ic_action_discard=0x7f020007;
-        public static final int ic_action_inbox=0x7f020008;
-        public static final int ic_action_incubar=0x7f020009;
-        public static final int ic_action_maybe=0x7f02000a;
-        public static final int ic_action_new=0x7f02000b;
-        public static final int ic_action_next_action=0x7f02000c;
-        public static final int ic_action_share=0x7f02000d;
-        public static final int ic_launcher=0x7f02000e;
+        public static final int ic_action_forward=0x7f020008;
+        public static final int ic_action_inbox=0x7f020009;
+        public static final int ic_action_incubar=0x7f02000a;
+        public static final int ic_action_maybe=0x7f02000b;
+        public static final int ic_action_new=0x7f02000c;
+        public static final int ic_action_next_action=0x7f02000d;
+        public static final int ic_action_share=0x7f02000e;
+        public static final int ic_launcher=0x7f02000f;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f050013;
-        public static final int action_forgot_password=0x7f05001f;
-        public static final int action_settings=0x7f05001e;
-        public static final int activity_other_lists=0x7f050020;
+        public static final int action_forgot_password=0x7f050020;
+        public static final int action_settings=0x7f05001f;
+        public static final int activity_other_lists=0x7f050021;
         public static final int add=0x7f05000b;
         public static final int back=0x7f050015;
         public static final int both=0x7f050001;
@@ -154,14 +155,14 @@ containing a value of this type.
         public static final int eventoText=0x7f05000a;
         public static final int example_image=0x7f05001a;
         public static final int example_itemname=0x7f05001b;
-        public static final int example_swipe_lv_list=0x7f05001c;
+        public static final int example_swipe_lv_list=0x7f05001d;
         public static final int front=0x7f050019;
         public static final int left=0x7f050003;
         public static final int login=0x7f050011;
         public static final int login_form=0x7f05000e;
         public static final int login_status=0x7f05000c;
         public static final int login_status_message=0x7f05000d;
-        public static final int lsvEstados=0x7f05001d;
+        public static final int lsvEstados=0x7f05001e;
         public static final int next=0x7f050009;
         public static final int none=0x7f050000;
         public static final int password=0x7f050010;
@@ -169,8 +170,9 @@ containing a value of this type.
         public static final int reveal=0x7f050004;
         public static final int right=0x7f050002;
         public static final int sign_in_button=0x7f050012;
-        public static final int swipe_button3=0x7f050018;
+        public static final int swipe_button3=0x7f05001c;
         public static final int swipe_delete=0x7f050016;
+        public static final int swipe_forward=0x7f050018;
         public static final int swipe_share=0x7f050017;
     }
     public static final class layout {

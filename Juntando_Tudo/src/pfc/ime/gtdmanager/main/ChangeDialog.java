@@ -30,17 +30,13 @@ public class ChangeDialog extends DialogFragment {
         builderSingle.setTitle("Select One Name:-");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 getActivity(),
-                android.R.layout.select_dialog_singlechoice);
-        arrayAdapter.add("Hardik");
-        arrayAdapter.add("Archit");
-        arrayAdapter.add("Jignesh");
-        arrayAdapter.add("Umang");
-        arrayAdapter.add("Gatti");
+                android.R.layout.select_dialog_item);
+        arrayAdapter.addAll(aController.getAllListsName());
         builderSingle.setNegativeButton("cancel",
                 new DialogInterface.OnClickListener() {
 
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int listNamePosition) {
                         dialog.dismiss();
                     }
                 });
@@ -51,8 +47,11 @@ public class ChangeDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String strName = arrayAdapter.getItem(which);
+                        int position =  getArguments().getInt("position");
+                        
                         AlertDialog.Builder builderInner = new AlertDialog.Builder(
                                 getActivity());
+                        aController.forwardChecklineToAnotherList(position, which);
                         builderInner.setMessage(strName);
                         builderInner.setTitle("Your Selected Item is");
                         builderInner.setPositiveButton("Ok",

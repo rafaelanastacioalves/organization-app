@@ -1,6 +1,8 @@
 package pfc.ime.gtdmanager.main;
 
 import pfc.ime.gtdmanager.controller.Controller;
+import pfc.ime.gtdmanager.model.ActionBox;
+
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
 import com.juntando_tudo.R;
@@ -24,12 +26,14 @@ import android.widget.Toast;
 public class OtherLists extends Activity {
 
 	public static SwipeListView swipelistview;
-	Controller aController; 
+	Controller aController;
+	private OtherLists tempActivity; 
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista);
+        tempActivity = this;
        
         aController = (Controller ) getApplicationContext();
         setSwipeListView();
@@ -95,10 +99,7 @@ public class OtherLists extends Activity {
     public void setSwipeListView(){
     	swipelistview=(SwipeListView)findViewById(R.id.example_swipe_lv_list);
         
-        
-     
-        
-        swipelistview.setSwipeListViewListener(new BaseSwipeListViewListener() {
+         swipelistview.setSwipeListViewListener(new BaseSwipeListViewListener() {
             @Override
             public void onOpened(int position, boolean toRight) {
             }
@@ -128,8 +129,10 @@ public class OtherLists extends Activity {
             @Override
             public void onClickFrontView(int position) {
                 Log.d("swipe", String.format("onClickFrontView %d", position));
-                
-             
+                ActionBox tempActBox = new ActionBox();
+                tempActBox =  (ActionBox) swipelistview.getAdapter().getItem(position);
+                String othListName = tempActBox.getName();
+             aController.goToList(othListName, othListName,tempActivity );
                 //swipelistview.openAnimate(position); //when you touch front view it will open
                
              

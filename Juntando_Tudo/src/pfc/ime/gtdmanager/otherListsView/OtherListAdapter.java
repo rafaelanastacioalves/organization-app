@@ -120,6 +120,11 @@ public View getView(int position, View convertView, ViewGroup parent) {
         return row;
 	
 }
+
+@Override
+public ActionBox getItem(int position){
+	return data.get(position);
+}
 static class NewsHolder{
 	
 	TextView itemText;

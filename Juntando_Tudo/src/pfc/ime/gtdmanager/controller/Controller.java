@@ -2,6 +2,7 @@ package pfc.ime.gtdmanager.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
@@ -9,6 +10,7 @@ import com.fortysevendeg.swipelistview.SwipeListView;
 import com.juntando_tudo.R;
 
 import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
+import pfc.ime.gtdmanager.main.ChangeDialog;
 import pfc.ime.gtdmanager.main.Lista;
 import pfc.ime.gtdmanager.main.Lista_Calendar;
 import pfc.ime.gtdmanager.main.OtherLists;
@@ -17,10 +19,13 @@ import pfc.ime.gtdmanager.model.CheckLine;
 import pfc.ime.gtdmanager.model.CalendarAdapter;
 import pfc.ime.gtdmanager.otherListsView.OtherListAdapter;
 import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
+import android.R.array;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Application;
+import android.app.DialogFragment;
 import android.app.ListActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.Adapter;
 import android.widget.ListAdapter;
@@ -105,9 +110,92 @@ public class Controller extends Application {
 		if(dbHelper == null){
 			dbHelper = new DBHelper(getApplicationContext());
 		}
-		
-		return dbHelper.getAllActionBoxes();
+		setOtherLists();
+		return actBoxData;
 	}
+	
+	public void setOtherLists(){
+		if(dbHelper == null){
+			dbHelper = new DBHelper(getApplicationContext());
+		}
+		
+		if (actBoxData == null)
+		{
+			actBoxData = new  ArrayList<ActionBox>();
+		}
+		actBoxData.clear();
+		actBoxData.addAll(dbHelper.getAllActionBoxes());
+	}
+	
+	public void forwardChecklineToAnotherList(int position, int ActBoxDataPosition){
+		
+		CheckLine chkLnNew = new CheckLine();
+		CheckLine chkOrigin =   itemData.get(position);
+		ActionBox actBoxDestination = actBoxData.get(ActBoxDataPosition);
+
+		//----------------------setting values---------------------/
+		
+		// text
+		
+		chkLnNew.setText(chkOrigin.getText());
+		
+		// order
+		if(actBoxDestination.getCheckLines() == null) {
+			actBoxDestination.setCheckLines(getAllCheckLines());
+		}
+		chkLnNew.setOrder(actBoxDestination.size() + 1);
+		
+		//ActionBox
+		chkLnNew.setActionbox_id(actBoxDestination.getId());
+		
+		
+		
+		dbHelper.createCheckLine(chkLnNew);	
+		
+		
+
+		
+	}
+	public List<ActionBox> getAllLists(){
+		if(dbHelper == null){
+			dbHelper = new DBHelper(getApplicationContext());
+		}
+		
+		setAllLists();
+		return actBoxData;
+	}
+	
+	public List<String> getAllListsName(){
+		setAllLists();
+		Iterator<ActionBox> i = actBoxData.iterator();
+		ArrayList<String> lstName = new ArrayList<String>();
+		while (i.hasNext()) {
+			ActionBox actionBox = (ActionBox) i.next();
+			lstName.add(actionBox.getName());
+		}
+		
+		return lstName;
+	}
+	
+	public void setAllLists(){
+		if(dbHelper == null){
+			dbHelper = new DBHelper(getApplicationContext());
+		}
+		
+		if (actBoxData == null)
+		{
+			actBoxData = new  ArrayList<ActionBox>();
+		}
+		actBoxData.clear();
+		actBoxData.addAll(dbHelper.getAllActionBoxes()); 
+	}
+//	public List<String> getAllListsNames(){
+//		if(dbHelper == null){
+//			dbHelper = new DBHelper(getApplicationContext());
+//		}
+//		
+//		
+//	}
 //	private List<CheckLine> getAllChecklines(DBHelper dbHlpCurrent){
 //		
 //		return    dbHlpCurrent.getAllToDosByTag(actBox.getId());
@@ -290,8 +378,7 @@ public void setAdapter(Lista lista){
 	     itAdapter.notifyDataSetChanged();
 }
 public void setAdapter(OtherLists lista){
-		actBoxData = new ArrayList<ActionBox>();
-		actBoxData.addAll(dbHelper.getAllActionBoxes());
+		setOtherLists();
 		olAdapter = new OtherListAdapter(lista,R.layout.custom_row_lists, actBoxData);
 		swipelistview.setAdapter(olAdapter);
 		olAdapter.notifyDataSetChanged();

@@ -14,6 +14,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -66,7 +67,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
             holder.chk=(CheckBox)row.findViewById(R.id.example_image);
             holder.button1=(ImageButton)row.findViewById(R.id.swipe_delete);
             holder.button2=(ImageButton)row.findViewById(R.id.swipe_share);
-            holder.button3=(Button)row.findViewById(R.id.swipe_button3);
+            holder.button3=(ImageButton)row.findViewById(R.id.swipe_forward);
             row.setTag(holder);
         }
         else
@@ -125,7 +126,13 @@ public View getView(int position, View convertView, ViewGroup parent) {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					Toast.makeText(context, "Button 3 Clicked",Toast.LENGTH_SHORT);
+					int position = (Integer)v.getTag();
+					
 					DialogFragment dfChange = new ChangeDialog();
+					Bundle args = new Bundle();
+				    args.putInt("position", position);
+				    dfChange.setArguments(args);
+					
 					dfChange.show(((Activity)getContext()).getFragmentManager() , "change");
 				}
 			});
@@ -170,7 +177,7 @@ static class NewsHolder{
 	CheckBox chk;
 	ImageButton button1;
 	ImageButton button2;
-	Button button3;
+	ImageButton button3;
 	
 	}
 	
