@@ -1,114 +1,172 @@
 package pfc.ime.gtdmanager.main;
 
-import android.view.Menu;
-import java.text.Format;
-import android.app.Activity;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.text.format.DateFormat;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
+import java.sql.Date;
+import java.util.Calendar;
+import java.util.TimeZone;
+
+import pfc.ime.gtdmanager.controller.Controller;
+import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
+import com.fortysevendeg.swipelistview.SwipeListView;
 import com.juntando_tudo.R;
 
-public class Lista_Calendar extends Activity implements OnClickListener{
+import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.provider.CalendarContract.Events;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v4.app.NavUtils;
+import android.text.format.DateUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.Toast;
 
-	
-	private Cursor mCursor = null;
-	private static final String[] COLS = new String[]
-	{ CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART};
-	
+public class Lista_Calendar extends Activity {
 
+	public static SwipeListView swipelistview;
+	Controller aController; 
+	
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(savedInstanceState);
-    	setContentView(R.layout.activity_lista_calendar);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.lista);
+       
+        aController = (Controller ) getApplicationContext();
+        setSwipeListView();
+        
+        aController.setListView(swipelistview);
+        
+        
+        // Controller.LoadActionBox();
+//        aController.populaActionBoxTeste();
+//        Toast.makeText(this , String.valueOf(aController.getId() ), Toast.LENGTH_SHORT).show();
+        aController.setAdapter(this);
+        
+    
+    }
 
+    public int convertDpToPixel(float dp) {
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / 160f);
+        return (int) px;
+    }
+    
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			// This ID represents the Home or Up button. In the case of this
+			// activity, the Up button is shown. Use NavUtils to allow users
+			// to navigate up one level in the application structure. For
+			// more details, see the Navigation pattern on Android Design:
+			//
+			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
+			//
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		case R.id.add:
+			add_method();
 
-    	mCursor = getContentResolver().query(
-
-
-    	CalendarContract.Events.CONTENT_URI, COLS, null, null, null
-    	
-    			);
-    	mCursor.moveToFirst();
-
-
-    	Button b = (Button)findViewById(R.id.next);
-
-
-    	b.setOnClickListener(this);
-    	b = (Button)findViewById(R.id.previous);
-
-
-    	b.setOnClickListener(this);
-    	onClick(findViewById(R.id.previous));
-    	
-    	b = (Button)findViewById(R.id.add);
-    	b.setOnClickListener(this);
-    	onClick(findViewById(R.id.add));
-
-
-    	}
-
-
+		}
+		return super.onOptionsItemSelected(item);
+	}
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_calendar, menu);
+        getMenuInflater().inflate(R.menu.lista, menu);
+        getActionBar().setTitle(aController.getActionBoxName());
         return true;
     }
-    
-    
-    
     @Override
-    public void onClick(View v) {
-    TextView tv = (TextView)findViewById(R.id.data);
-    
-    //EditText mv = (EditText)findViewById(R.id.textBox);
-
-
-    String title = "N/A";
-
-
-    Long start = 0L;
-
-
-    switch(v.getId()) {
-    case R.id.next:
-    if(!mCursor.isLast()) mCursor.moveToNext();
-    break;
-    case R.id.previous:
-    if(!mCursor.isFirst()) mCursor.moveToPrevious();
-    break;
-    case R.id.add:
-    addDate();
-    break;
+    protected void onStop(){
+    	super.onStop();
+//    	Controller aController = (Controller) getApplicationContext();
+    	aController.persist();
     }
-
-
-    Format df = DateFormat.getDateFormat(this);
-    Format tf = DateFormat.getTimeFormat(this);
-    
-    
-    
-       
-    try {
-    title = mCursor.getString(0);
-
-    start = mCursor.getLong(1);
-
-    } catch (Exception e) {
-    //ignore
-
-    }
-    tv.setText(title+" on "+df.format(start)+" at "+tf.format(start));
-    }
-    
-    public void addDate(){
+    private boolean add_method(){
+      	aController.addEvent(this);
+		return true;
     	
-    }
+		
+	}
     
+    public void setSwipeListView(){
+    	swipelistview=(SwipeListView)findViewById(R.id.example_swipe_lv_list);
+        
+        
+     
+        
+        swipelistview.setSwipeListViewListener(new BaseSwipeListViewListener() {
+            @Override
+            public void onOpened(int position, boolean toRight) {
+            }
+
+            @Override
+            public void onClosed(int position, boolean fromRight) {
+            }
+
+            @Override
+            public void onListChanged() {
+            }
+
+            @Override
+            public void onMove(int position, float x) {
+            }
+
+            @Override
+            public void onStartOpen(int position, int action, boolean right) {
+                Log.d("swipe", String.format("onStartOpen %d - action %d", position, action));
+            }
+
+            @Override
+            public void onStartClose(int position, boolean right) {
+                Log.d("swipe", String.format("onStartClose %d", position));
+            }
+
+            @Override
+            public void onClickFrontView(int position) {
+                Log.d("swipe", String.format("onClickFrontView %d", position));
+                
+             
+                //swipelistview.openAnimate(position); //when you touch front view it will open
+               
+             
+            }
+
+            @Override
+            public void onClickBackView(int position) {
+                Log.d("swipe", String.format("onClickBackView %d", position));
+                
+                swipelistview.closeAnimate(position);//when you touch back view it will close
+            }
+
+            @Override
+            public void onDismiss(int[] reverseSortedPositions) {
+            	
+            }
+
+        });
+        
+        //These are the swipe listview settings. you can change these
+        //setting as your requirement 
+        swipelistview.setSwipeMode(SwipeListView.SWIPE_ACTION_NONE); // there are five swiping modes
+        swipelistview.setSwipeActionLeft(SwipeListView.SWIPE_MODE_LEFT); //there are four swipe actions 
+        swipelistview.setSwipeActionRight(SwipeListView.SWIPE_MODE_NONE);
+        swipelistview.setOffsetLeft(convertDpToPixel(80f)); // left side offset
+        swipelistview.setOffsetRight(convertDpToPixel(0f)); // right side offset
+        swipelistview.setAnimationTime(64); // Animation time
+        swipelistview.setSwipeOpenOnLongPress(true); // enable or disable SwipeOpenOnLongPress
+	
+       
+    }
 }

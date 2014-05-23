@@ -1,9 +1,11 @@
 package pfc.ime.gtdmanager.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.TimeZone;
 
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
@@ -26,6 +28,9 @@ import android.app.Application;
 import android.app.DialogFragment;
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.provider.CalendarContract.Events;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.widget.Adapter;
 import android.widget.ListAdapter;
@@ -77,7 +82,7 @@ public class Controller extends Application {
 		this.actBox = dbHelper.getActionBoxByName(strName);
 		if ( strName == getResources().getString(R.string.dbCALENDAR) ){
 			
-			calAdp = new CalendarAdapter(actBox.getId());
+			calAdp = new CalendarAdapter(actBox.getId(), this);
 			actBox.setCheckLines(calAdp.getCheckLines(actCurrent));
 		}
 	}
@@ -402,7 +407,7 @@ public void shareChecklineAt(int position, Activity actCurrent) {
 public void goToList_Calendar(String strListName, String strActBoxName, Activity actCurrent) {
 	setActionBox(strListName, actCurrent);
 	this.strListName = strListName;
-	Intent iChamaLista = new Intent(actCurrent, Lista.class);
+	Intent iChamaLista = new Intent(actCurrent, Lista_Calendar.class);
 	actCurrent.startActivity(iChamaLista);
 	actCurrent.overridePendingTransition(R.anim.slide2, R.anim.slide);
 }
@@ -429,6 +434,28 @@ public void deleteActionBoxAt(int position) {
 	olAdapter.notifyDataSetChanged();
 	swipelistview.closeAnimate(position);
 
+}
+public void setAdapter(Lista_Calendar lista_Calendar) {
+	 itemData=new ArrayList<CheckLine>();
+	 itAdapter=new ItemAdapter(lista_Calendar ,R.layout.custom_row,itemData);
+	 swipelistview.setAdapter( itAdapter);
+	 this.loadAndShareListWith(itemData);
+     itAdapter.notifyDataSetChanged();
+	
+}
+public void addEvent(Activity crtActivity) {
+	Calendar beginTime = Calendar.getInstance();
+	beginTime.set(2012, 0, 19, 7, 30);
+	Calendar endTime = Calendar.getInstance();
+	endTime.set(2012, 0, 19, 8, 30);
+	Intent intent = new Intent(Intent.ACTION_INSERT)
+	        .setData(Events.CONTENT_URI)
+	        .putExtra(Events.TITLE, "")
+	        .putExtra(Events.DESCRIPTION, "");
+	        
+	crtActivity.startActivity(intent);
+//	DialogFragment dFrag = new AddCheckLineDialog();
+//	dFrag.show(getFragmentManager(), "Add");
 }
 
 	
