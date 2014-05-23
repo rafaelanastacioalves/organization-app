@@ -5,6 +5,7 @@ import pfc.ime.gtdmanager.controller.Controller;
 import com.juntando_tudo.R;
 
 import android.os.Bundle;
+import android.provider.Settings;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -21,9 +22,16 @@ public class MainMenu extends Activity {
 		setContentView(R.layout.activity_main_menu);
 		aController = (Controller) getApplicationContext();
 		if(aController.deviceHasGoogleAccount()){
-			mostrarMSG("Voce tem uma conta Google!");
+			mostrarMSG("Voce tem uma conta Google!");		
+			aController.setupBD();
+
 		}
-		aController.setupBD();
+		
+		Intent addAccountIntent = new Intent(android.provider.Settings.ACTION_ADD_ACCOUNT)
+	    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	    addAccountIntent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[] {"com.google"});
+	    this.startActivity(addAccountIntent); 
+		
 		
 	}
 	

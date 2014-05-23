@@ -12,8 +12,10 @@ import java.text.Format;
 import pfc.ime.gtdmanager.controller.Controller;
 import android.app.Activity;
 import android.app.ListActivity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.text.format.Time;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -27,22 +29,22 @@ public class CalendarAdapter {
 	private Cursor mCursor = null;
 	private static final String[] COLS = new String[]{ CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART};
 	private Controller aController;
-
+	private Activity currAct;
 
 public List<CheckLine> getCheckLines(Activity curAct){
-	
-			mCursor = curAct.getContentResolver().query(
-
-
-	    	CalendarContract.Events.CONTENT_URI, COLS, null, null, null
-	    	
-	    			);
-	   
+			this.currAct = curAct;
 			Format df = DateFormat.getDateFormat(aController.getApplicationContext());
 		    Format tf = DateFormat.getTimeFormat(aController.getApplicationContext());
 		    
 		    String title = "N/A";
 		    Long start = 0L;
+			
+			mCursor = query3();
+	   
+			
+			
+			
+			
 	    	
 	    	if (mCursor.moveToFirst()) {
 				do {
@@ -81,6 +83,48 @@ public List<CheckLine> getCheckLines(Activity curAct){
 
 	
 	}	
+public Cursor query2(){
+	mCursor = currAct.getContentResolver().query(
+
+
+	    	CalendarContract.Events.CONTENT_URI, COLS, null, null, null
+	    	
+	    			);
+	return mCursor;
+}
+
+public Cursor query1(){
+	Cursor cur = null;
+	String selection = "((" + CalendarContract.Events.DTSTART + " <= ?) AND (" + CalendarContract.Events.DTEND + " >= ?))";
+
+    Time t = new Time();
+    t.setToNow();
+    String dtStart = Long.toString(t.toMillis(false));
+    t.set(59, 59, 23, t.monthDay, t.month, t.year);
+    String dtEnd = Long.toString(t.toMillis(false));
+    t.set(00, 00, 00, t.monthDay, t.month, t.year);
+    String[] selectionArgs = new String[] { dtStart, dtEnd };
+    cur = currAct.getContentResolver().query(CalendarContract.Events.CONTENT_URI,
+            COLS, selection, selectionArgs, null);
+    return cur;
+    
+}
+public Cursor query3(){
+	Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI
+            .buildUpon();
+	Time t = new Time();
+    t.setToNow();
+    String dtStart = Long.toString(t.toMillis(false));
+    t.set(59, 59, 23, t.monthDay, t.month, t.year);
+    String dtEnd = Long.toString(t.toMillis(false));
+ContentUris.appendId(eventsUriBuilder, t.toMillis(true));
+t.set(59, 59, 23, t.monthDay, t.month, t.year);
+ContentUris.appendId(eventsUriBuilder, t.toMillis(true));
+Uri eventsUri = eventsUriBuilder.build();
+Cursor cursor = null;       
+cursor = aController.getApplicationContext().getContentResolver().query(eventsUri, COLS, null, null, CalendarContract.Instances.DTSTART + " ASC");
+return cursor;
+}
 public CalendarAdapter(int actBoxID, Controller aController){
 	this.CALENDAR_ID = actBoxID;
 	lstChkLn = new ArrayList<CheckLine>() ;
