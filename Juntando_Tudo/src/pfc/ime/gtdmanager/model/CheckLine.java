@@ -2,7 +2,6 @@ package pfc.ime.gtdmanager.model;
 import java.util.Date;
 
 import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
-
 import android.database.Cursor;
 
 public class CheckLine extends Table {

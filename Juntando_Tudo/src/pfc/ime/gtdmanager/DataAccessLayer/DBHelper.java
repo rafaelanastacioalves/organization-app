@@ -1,23 +1,19 @@
 package pfc.ime.gtdmanager.DataAccessLayer;
 
-import java.net.ContentHandler;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import pfc.ime.gtdmanager.model.ActionBox;
 import pfc.ime.gtdmanager.model.CheckLine;
-import com.juntando_tudo.R; 
-import android.view.*;
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.*;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import android.util.Log;
+
+import com.juntando_tudo.R;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -82,12 +78,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	public DBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-		DBHelper.INBOX = context.getResources().getString(R.string.dbINBOX);
-		DBHelper.CALENDAR = context.getResources().getString(R.string.dbCALENDAR);
-		DBHelper.INCUBATOR = context.getResources().getString(R.string.dbINCUBATOR);
-		DBHelper.DELEGATED = context.getResources().getString(R.string.dbDELEGATED);
-		DBHelper.NEXT_ACTIONS = context.getResources().getString(R.string.dbNEXT_ACTIONS);
-		DBHelper.MAYBE_LATER = context.getResources().getString(R.string.dbMAYBE_LATER);
+		INBOX = context.getResources().getString(R.string.dbINBOX);
+		CALENDAR = context.getResources().getString(R.string.dbCALENDAR);
+		INCUBATOR = context.getResources().getString(R.string.dbINCUBATOR);
+		DELEGATED = context.getResources().getString(R.string.dbDELEGATED);
+		NEXT_ACTIONS = context.getResources().getString(R.string.dbNEXT_ACTIONS);
+		MAYBE_LATER = context.getResources().getString(R.string.dbMAYBE_LATER);
 
 
 		
@@ -289,6 +285,33 @@ public class DBHelper extends SQLiteOpenHelper {
 				public List<ActionBox> getAllActionBoxes() {
 					List<ActionBox> actionboxes = new ArrayList<ActionBox>();
 					String selectQuery = "SELECT  * FROM " + TABLE_ACTIONBOXES;
+
+					Log.e(LOG, selectQuery);
+
+					SQLiteDatabase db = this.getReadableDatabase();
+					Cursor c = db.rawQuery(selectQuery, null);
+
+					// looping through all rows and adding to list
+					if (c.moveToFirst()) {
+						do {
+							// adding to actionboxes list
+							actionboxes.add(new ActionBox(c));
+						} while (c.moveToNext());
+					}
+					return actionboxes;
+				}
+				
+				// getting all additional actionboxes
+				public List<ActionBox> getAllAdditionalActionBoxes() {
+					List<ActionBox> actionboxes = new ArrayList<ActionBox>();
+					String selectQuery = "SELECT  * FROM " + TABLE_ACTIONBOXES + 
+							" WHERE " + KEY_ACTIONBOXES_NAME + " NOT IN " +
+									"('" + INBOX + "', '" +
+									NEXT_ACTIONS + "', '" +
+									INCUBATOR + "', '" +
+									MAYBE_LATER + "', '" +
+									DELEGATED + "', '" +
+									CALENDAR + "');";
 
 					Log.e(LOG, selectQuery);
 

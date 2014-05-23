@@ -1,7 +1,5 @@
 package pfc.ime.gtdmanager.main;
 
-import com.juntando_tudo.R;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -13,11 +11,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.view.MenuItem;
+
+import com.juntando_tudo.R;
 
 /**
  * Activity which displays a login screen to the user, offering registration as

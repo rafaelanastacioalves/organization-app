@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
-
 import android.database.Cursor;
 
 /**

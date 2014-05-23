@@ -1,33 +1,17 @@
 package pfc.ime.gtdmanager.main;
 
-import java.sql.Date;
-import java.util.Calendar;
-import java.util.TimeZone;
-
 import pfc.ime.gtdmanager.controller.Controller;
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
 import com.juntando_tudo.R;
-
-import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.provider.CalendarContract.Events;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.DialogFragment;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v4.app.NavUtils;
-import android.text.format.DateUtils;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class Lista_Calendar extends Activity {
 

@@ -2,26 +2,18 @@ package pfc.ime.gtdmanager.main;
 
 import pfc.ime.gtdmanager.controller.Controller;
 import pfc.ime.gtdmanager.model.ActionBox;
+import android.app.Activity;
+import android.app.DialogFragment;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
 import com.juntando_tudo.R;
-
-import android.os.Bundle;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.DialogFragment;
-import android.content.DialogInterface;
-import android.support.v4.app.NavUtils;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class OtherLists extends Activity {
 

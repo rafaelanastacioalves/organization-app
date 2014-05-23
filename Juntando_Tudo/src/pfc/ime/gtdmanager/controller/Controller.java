@@ -5,40 +5,26 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.TimeZone;
-
-import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
-import com.fortysevendeg.swipelistview.SwipeListView;
-import com.juntando_tudo.R;
 
 import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
-import pfc.ime.gtdmanager.main.ChangeDialog;
 import pfc.ime.gtdmanager.main.Lista;
 import pfc.ime.gtdmanager.main.Lista_Calendar;
 import pfc.ime.gtdmanager.main.OtherLists;
 import pfc.ime.gtdmanager.model.ActionBox;
-import pfc.ime.gtdmanager.model.CheckLine;
 import pfc.ime.gtdmanager.model.CalendarAdapter;
+import pfc.ime.gtdmanager.model.CheckLine;
 import pfc.ime.gtdmanager.otherListsView.OtherListAdapter;
 import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
-import android.R.array;
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.app.Activity;
 import android.app.Application;
-import android.app.DialogFragment;
-import android.app.ListActivity;
-import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.provider.CalendarContract.Events;
-import android.text.format.DateUtils;
-import android.util.Log;
-import android.widget.Adapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.app.Activity;
+import android.provider.CalendarContract.Events;
+import android.widget.ListView;
+
+import com.fortysevendeg.swipelistview.SwipeListView;
+import com.juntando_tudo.R;
 
 
 public class Controller extends Application {
