@@ -51,7 +51,7 @@ public class ChangeDialog extends DialogFragment {
                         
                         AlertDialog.Builder builderInner = new AlertDialog.Builder(
                                 getActivity());
-                        aController.forwardChecklineToAnotherList(position, which);
+                        aController.forwardChecklineToAnotherList(position, which, getActivity());
                         builderInner.setMessage(strName);
                         builderInner.setTitle("Your Selected Item is");
                         builderInner.setPositiveButton("Ok",

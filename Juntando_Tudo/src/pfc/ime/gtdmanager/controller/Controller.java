@@ -132,11 +132,17 @@ public class Controller extends Application {
 		actBoxData.addAll(dbHelper.getAllActionBoxes());
 	}
 	
-	public void forwardChecklineToAnotherList(int position, int ActBoxDataPosition){
+	public void forwardChecklineToAnotherList(int position, int actBoxDataPosition, Activity currActivity){
 		
 		CheckLine chkLnNew = new CheckLine();
 		CheckLine chkOrigin =   itemData.get(position);
-		ActionBox actBoxDestination = actBoxData.get(ActBoxDataPosition);
+		ActionBox actBoxDestination = actBoxData.get(actBoxDataPosition);
+		String calendarName = getResources().getString( R.string.dbCALENDAR);
+		if(actBoxDestination.getName().equals(calendarName)){
+			chkLnNew.setText(chkOrigin.getText());
+			addEvent(currActivity, chkLnNew);
+		}
+		else{ 
 
 		//----------------------setting values---------------------/
 		
@@ -158,7 +164,7 @@ public class Controller extends Application {
 		dbHelper.createCheckLine(chkLnNew);	
 		
 		
-
+		}
 		
 	}
 	public List<ActionBox> getAllLists(){
@@ -452,15 +458,25 @@ public void addEvent(Activity crtActivity) {
 	        .setData(Events.CONTENT_URI)
 	        .putExtra(Events.TITLE, "")
 	        .putExtra(Events.DESCRIPTION, "");
-	        
 	crtActivity.startActivity(intent);
 //	DialogFragment dFrag = new AddCheckLineDialog();
 //	dFrag.show(getFragmentManager(), "Add");
 }
 
-	
-	
-	
-	
-	
+public void addEvent (Activity crtActivity, CheckLine chkLine){
+	Calendar beginTime = Calendar.getInstance();
+	beginTime.set(2012, 0, 19, 7, 30);
+	Calendar endTime = Calendar.getInstance();
+	endTime.set(2012, 0, 19, 8, 30);
+	Intent intent = new Intent(Intent.ACTION_INSERT)
+	        .setData(Events.CONTENT_URI)
+	        .putExtra(Events.TITLE, "")
+	        .putExtra(Events.DESCRIPTION, chkLine.getText());
+	crtActivity.startActivity(intent);
 }
+
+
+}
+
+	
+	
