@@ -22,12 +22,12 @@ public class ChangeDialog extends DialogFragment {
 		AlertDialog.Builder builderSingle = new AlertDialog.Builder(
                 getActivity());
         builderSingle.setIcon(R.drawable.ic_launcher);
-        builderSingle.setTitle("Select One Name:-");
+        builderSingle.setTitle(getResources().getString(R.string.change_list_select));
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.select_dialog_item);
         arrayAdapter.addAll(aController.getAllListsName());
-        builderSingle.setNegativeButton("cancel",
+        builderSingle.setNegativeButton(getResources().getString(R.string.Cancel),
                 new DialogInterface.OnClickListener() {
 
                     @Override

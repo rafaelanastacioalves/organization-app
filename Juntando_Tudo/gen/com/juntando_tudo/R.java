@@ -176,17 +176,15 @@ containing a value of this type.
         public static final int swipe_share=0x7f050017;
     }
     public static final class layout {
-        public static final int activity_lista=0x7f030000;
-        public static final int activity_lista_calendar=0x7f030001;
-        public static final int activity_login_google=0x7f030002;
-        public static final int activity_main_menu=0x7f030003;
-        public static final int activity_other_lists=0x7f030004;
-        public static final int add=0x7f030005;
-        public static final int custom_row=0x7f030006;
-        public static final int custom_row_lists=0x7f030007;
-        public static final int lista=0x7f030008;
-        public static final int main=0x7f030009;
-        public static final int outras_listas=0x7f03000a;
+        public static final int activity_lista_calendar=0x7f030000;
+        public static final int activity_login_google=0x7f030001;
+        public static final int activity_main_menu=0x7f030002;
+        public static final int add=0x7f030003;
+        public static final int custom_row=0x7f030004;
+        public static final int custom_row_lists=0x7f030005;
+        public static final int lista=0x7f030006;
+        public static final int main=0x7f030007;
+        public static final int outras_listas=0x7f030008;
     }
     public static final class menu {
         public static final int lista=0x7f090000;
@@ -198,7 +196,7 @@ containing a value of this type.
     }
     public static final class string {
         public static final int CALENDAR=0x7f070010;
-        public static final int Cancel=0x7f070009;
+        public static final int Cancel=0x7f070008;
         public static final int DELEGATED=0x7f07000f;
         /**  Default Lists 
          */
@@ -206,13 +204,14 @@ containing a value of this type.
         public static final int INCUBATOR=0x7f07000d;
         public static final int MAYBE_LATER=0x7f07000e;
         public static final int NEXT_ACTIONS=0x7f07000c;
-        public static final int OK=0x7f070008;
+        public static final int OK=0x7f070007;
         public static final int action_forgot_password=0x7f07001d;
         public static final int action_settings=0x7f070001;
         public static final int action_sign_in_register=0x7f07001b;
         public static final int action_sign_in_short=0x7f07001c;
-        public static final int add=0x7f070007;
+        public static final int add=0x7f070006;
         public static final int app_name=0x7f070000;
+        public static final int change_list_select=0x7f07000a;
         public static final int dbCALENDAR=0x7f070016;
         public static final int dbDELEGATED=0x7f070015;
         /**   DataBase Reference 
@@ -226,18 +225,17 @@ containing a value of this type.
         public static final int error_incorrect_password=0x7f070021;
         public static final int error_invalid_email=0x7f07001f;
         public static final int error_invalid_password=0x7f070020;
-        public static final int hello_world=0x7f070002;
         public static final int login_progress_signing_in=0x7f07001e;
         /**  Strings related to login 
          */
         public static final int prompt_email=0x7f070019;
         public static final int prompt_password=0x7f07001a;
-        public static final int share_using=0x7f07000a;
-        public static final int title_activity_lista=0x7f070004;
-        public static final int title_activity_lista_calendar=0x7f070005;
+        public static final int share_using=0x7f070009;
+        public static final int title_activity_lista=0x7f070003;
+        public static final int title_activity_lista_calendar=0x7f070004;
         public static final int title_activity_login_google=0x7f070018;
-        public static final int title_activity_main_menu=0x7f070003;
-        public static final int title_activity_other_list=0x7f070006;
+        public static final int title_activity_main_menu=0x7f070002;
+        public static final int title_activity_other_list=0x7f070005;
     }
     public static final class style {
         /** 

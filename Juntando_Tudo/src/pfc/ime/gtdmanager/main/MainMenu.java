@@ -21,16 +21,15 @@ public class MainMenu extends Activity {
 		aController = (Controller) getApplicationContext();
 		if(aController.deviceHasGoogleAccount()){
 			mostrarMSG("Voce tem uma conta Google!");		
-			aController.setupBD();
 
 		}
-		
+		else{
 		Intent addAccountIntent = new Intent(android.provider.Settings.ACTION_ADD_ACCOUNT)
 	    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	    addAccountIntent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[] {"com.google"});
 	    this.startActivity(addAccountIntent); 
-		
-		
+		}
+	    aController.setupBD();
 	}
 	
 
