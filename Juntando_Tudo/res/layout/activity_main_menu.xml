@@ -10,82 +10,92 @@
     tools:context=".MainMenu" >
 
     <ImageButton
-        android:id="@string/dbINCUBATOR"
-        android:tag="@string/INCUBATOR"
+        android:id="@string/dbOTHER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@string/dbOTHER"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="29dp"
-        android:layout_marginLeft="20dp"
-        android:onClick="listar"
-        android:src="@drawable/ic_action_incubar" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/ib_other"
+        android:onClick="showOtherLists"
+        android:src="@drawable/ib_other"
+        android:tag="@string/title_activity_other_list"
+        tools:ignore="ContentDescription" />
 
     <ImageButton
-        android:id="@string/dbCALENDAR"
-        android:tag="@string/CALENDAR"
+        android:id="@string/dbMAYBE_LATER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_below="@string/dbINBOX"
+        android:layout_marginTop="26dp"
+        android:layout_toLeftOf="@string/dbINCUBATOR"
+        android:background="@drawable/ic_action_maybe"
+        android:onClick="listar"
+        android:src="@drawable/ic_action_maybe"
+        android:tag="@string/MAYBE_LATER"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@string/dbINBOX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="47dp"
-        android:onClick="listar_calendar"
-        android:src="@drawable/ic_action_agenda" />
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@string/dbDELEGATED"
+        android:background="@drawable/ic_action_inbox"
+        android:onClick="listar"
+        android:src="@drawable/ic_action_inbox"
+        android:tag="@string/INBOX"
+        tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@string/dbNEXT_ACTIONS"
         style="@style/AppBaseTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@string/dbCALENDAR"
-        android:layout_marginRight="25dp"
-        android:layout_toRightOf="@string/dbINBOX"
+        android:layout_alignLeft="@string/dbDELEGATED"
+        android:layout_alignTop="@string/dbMAYBE_LATER"
+        android:background="@drawable/ic_action_next_action"
         android:onClick="listar"
         android:src="@drawable/ic_action_next_action"
-        android:tag="@string/NEXT_ACTIONS" />
+        android:tag="@string/NEXT_ACTIONS"
+        tools:ignore="ContentDescription" />
 
     <ImageButton
-        android:id= "@string/dbMAYBE_LATER"
-        android:tag="@string/MAYBE_LATER"
+        android:id="@string/dbCALENDAR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@string/dbNEXT_ACTIONS"
-        android:layout_alignTop="@string/dbINCUBATOR"
-        android:onClick="listar"
-        android:src="@drawable/ic_action_maybe" />
-
-    <ImageButton
-        android:id="@string/dbOTHER"
-        android:tag="@string/title_activity_other_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp"
-        android:onClick="showOtherLists"
-        android:src="@drawable/ib_other" />
-
-    <ImageButton
-        android:id="@string/dbINBOX"
-        android:tag="@string/INBOX"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@string/dbDELEGATED"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="84dp"
-        android:onClick="listar"
-        android:src="@drawable/ic_action_inbox" />
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@string/dbINCUBATOR"
+        android:background="@drawable/ic_action_agenda"
+        android:onClick="listar_calendar"
+        android:src="@drawable/ic_action_agenda"
+        android:tag="@string/CALENDAR"
+        tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@string/dbDELEGATED"
-        android:tag="@string/DELEGATED"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@string/dbINBOX"
-        android:layout_alignTop="@string/dbINCUBATOR"
+        android:layout_alignTop="@string/dbCALENDAR"
+        android:layout_toRightOf="@string/dbOTHER"
+        android:background="@drawable/ic_action_delegados"
         android:onClick="listar"
-        android:src="@drawable/ic_action_delegados" />
+        android:src="@drawable/ic_action_delegados"
+        android:tag="@string/DELEGATED"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@string/dbINCUBATOR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@string/dbOTHER"
+        android:layout_alignLeft="@string/dbOTHER"
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/ic_action_incubar"
+        android:onClick="listar"
+        android:src="@drawable/ic_action_incubar"
+        android:tag="@string/INCUBATOR"
+        tools:ignore="ContentDescription" />
 
 </RelativeLayout>
