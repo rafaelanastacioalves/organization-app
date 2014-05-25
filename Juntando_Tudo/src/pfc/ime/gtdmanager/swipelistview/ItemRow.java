@@ -7,8 +7,6 @@ public class ItemRow {
 	String itemName;
 	CheckBox icon;
 	
-	
-	
 	public ItemRow(String itemName) {
 		super();
 		this.itemName = itemName;

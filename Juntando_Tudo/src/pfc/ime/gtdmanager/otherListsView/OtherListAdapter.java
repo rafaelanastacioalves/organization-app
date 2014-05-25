@@ -32,9 +32,6 @@ public OtherListAdapter(Context context, int layoutResourceId,List<ActionBox> da
 	this.context=context;
 	this.layoutResID=layoutResourceId;
 	aController = (Controller) context.getApplicationContext();
-//	aController.
-
-	// TODO Auto-generated constructor stub
 }
  
 @Override
@@ -98,7 +95,6 @@ public View getView(int position, View convertView, ViewGroup parent) {
 				
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
 					Toast.makeText(context, "Button 3 Clicked",Toast.LENGTH_SHORT);
 //					DialogFragment dfChange = new ChangeDialog();
 //					dfChange.show(((Activity)getContext()).getFragmentManager() , "change");

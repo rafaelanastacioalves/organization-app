@@ -84,9 +84,6 @@ public class DBHelper extends SQLiteOpenHelper {
 		DELEGATED = context.getResources().getString(R.string.dbDELEGATED);
 		NEXT_ACTIONS = context.getResources().getString(R.string.dbNEXT_ACTIONS);
 		MAYBE_LATER = context.getResources().getString(R.string.dbMAYBE_LATER);
-
-
-		
 	}
 	
 	@Override
@@ -370,8 +367,6 @@ public class DBHelper extends SQLiteOpenHelper {
 					createActionBox(new ActionBox(INCUBATOR));
 					createActionBox(new ActionBox(MAYBE_LATER));
 					createActionBox(new ActionBox(DELEGATED));
-
-					
 				}
 
 				

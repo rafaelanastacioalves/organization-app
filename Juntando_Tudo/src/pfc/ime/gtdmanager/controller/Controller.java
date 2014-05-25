@@ -41,7 +41,7 @@ public class Controller extends Application {
 		
 		this.actBox = actBox; 
 	}
-	//--------------------  descontinuado --------------//
+
 	public void setActionBox(int id){
 		if(dbHelper == null){
 			dbHelper = new DBHelper(getApplicationContext());
@@ -267,9 +267,6 @@ private void addCheckLine(String strText, DBHelper dbHlpCurrent, String strDateC
 
 	}
 
-/**
- *TODO: comentar funcionamento depois! E sua utiliza�‹o
- */
 public void persist(){
 	if(dbHelper == null){
 		dbHelper = new DBHelper(getApplicationContext());

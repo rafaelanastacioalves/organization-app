@@ -36,9 +36,6 @@ public ItemAdapter(Context context, int layoutResourceId,List<CheckLine> data) {
 	this.context=context;
 	this.layoutResID=layoutResourceId;
 	aController = (Controller) context.getApplicationContext();
-//	aController.
-
-	// TODO Auto-generated constructor stub
 }
  
 @Override
@@ -94,7 +91,6 @@ public View getView(int position, View convertView, ViewGroup parent) {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Toast.makeText(context, "Button 1 Clicked",Toast.LENGTH_SHORT).show();
 				int position = (Integer) v.getTag();
 				aController.deleteChecklineAt(position);
@@ -106,7 +102,6 @@ public View getView(int position, View convertView, ViewGroup parent) {
 					
 					@Override
 					public void onClick(View v) {
-						// TODO Auto-generated method stub
 						Toast.makeText(context, "Button 2 Clicked",Toast.LENGTH_SHORT).show();
 						int position = (Integer) v.getTag();
 						aController.shareChecklineAt(position,(Activity)getContext());
@@ -117,7 +112,6 @@ public View getView(int position, View convertView, ViewGroup parent) {
 				
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
 					Toast.makeText(context, "Button 3 Clicked",Toast.LENGTH_SHORT);
 					int position = (Integer)v.getTag();
 					
