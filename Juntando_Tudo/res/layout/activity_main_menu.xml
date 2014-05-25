@@ -35,14 +35,16 @@
 
     <ImageButton
         android:id="@string/dbNEXT_ACTIONS"
-        android:tag="@string/NEXT_ACTIONS"
+        style="@style/AppBaseTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@string/dbCALENDAR"
         android:layout_marginRight="25dp"
+        android:layout_toRightOf="@string/dbINBOX"
         android:onClick="listar"
-        android:src="@drawable/ic_action_next_action" />
+        android:src="@drawable/ic_action_next_action"
+        android:tag="@string/NEXT_ACTIONS" />
 
     <ImageButton
         android:id= "@string/dbMAYBE_LATER"

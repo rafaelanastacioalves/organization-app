@@ -115,7 +115,7 @@ public class Controller extends Application {
 			actBoxData = new  ArrayList<ActionBox>();
 		}
 		actBoxData.clear();
-		actBoxData.addAll(dbHelper.getAllActionBoxes());
+		actBoxData.addAll(dbHelper.getAllAdditionalActionBoxes());
 	}
 	
 	public void forwardChecklineToAnotherList(int position, int actBoxDataPosition, Activity currActivity){
