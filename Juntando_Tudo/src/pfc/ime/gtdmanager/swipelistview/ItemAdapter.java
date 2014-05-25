@@ -139,7 +139,7 @@ public class ItemAdapter extends ArrayAdapter<CheckLine> {
 			// CheckLine chlnTemp = actBxInbox.getCheckLineByID(chlnID);
 			if (chk.isChecked()) {
 
-				tbTxt.setTextAppearance(context, R.style.MyListTitleChecked);
+				//tbTxt.setTextAppearance(context, R.style.MyListTitleChecked);
 				Toast.makeText(
 						context,
 						"Checbox de ID "
