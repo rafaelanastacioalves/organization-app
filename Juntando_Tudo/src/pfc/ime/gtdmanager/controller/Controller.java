@@ -26,10 +26,9 @@ import android.widget.ListView;
 import com.fortysevendeg.swipelistview.SwipeListView;
 import com.juntando_tudo.R;
 
-
 public class Controller extends Application {
 	private ActionBox actBox;
-	public  SwipeListView swipelistview;
+	public SwipeListView swipelistview;
 	private DBHelper dbHelper;
 	private CalendarAdapter calAdp;
 	private String strListName;
@@ -37,132 +36,135 @@ public class Controller extends Application {
 	public OtherListAdapter olAdapter;
 	public List<CheckLine> itemData;
 	public List<ActionBox> actBoxData;
-	public void setActionBox(ActionBox actBox){
-		
-		this.actBox = actBox; 
+
+	public void setActionBox(ActionBox actBox) {
+
+		this.actBox = actBox;
 	}
 
-	public void setActionBox(int id){
-		if(dbHelper == null){
+	public void setActionBox(int id) {
+		if (dbHelper == null) {
 			dbHelper = new DBHelper(getApplicationContext());
 		}
 		this.actBox = dbHelper.getActionBoxById(id);
-		
+
 	}
-	
-	public void setActionBox(String strName){
-		if(dbHelper == null){
-			dbHelper= new DBHelper(getApplicationContext());
+
+	public void setActionBox(String strName) {
+		if (dbHelper == null) {
+			dbHelper = new DBHelper(getApplicationContext());
 		}
-		
-		
+
 		this.actBox = dbHelper.getActionBoxByName(strName);
-		
+
 	}
-	public void setActionBox(String strName, Activity actCurrent){
-		if(dbHelper == null){
-			dbHelper= new DBHelper(getApplicationContext());
+
+	public void setActionBox(String strName, Activity actCurrent) {
+		if (dbHelper == null) {
+			dbHelper = new DBHelper(getApplicationContext());
 		}
-		
-		
+
 		this.actBox = dbHelper.getActionBoxByName(strName);
-		if ( strName == getResources().getString(R.string.dbCALENDAR) ){
-			
+		if (strName == getResources().getString(R.string.dbCALENDAR)) {
+
 			calAdp = new CalendarAdapter(actBox.getId(), this);
 			actBox.setCheckLines(calAdp.getCheckLines(actCurrent));
 		}
 	}
-	
-	public void goToList(String strListName, String strActBoxName, Activity actCurrent){
+
+	public void goToList(String strListName, String strActBoxName,
+			Activity actCurrent) {
 		setActionBox(strActBoxName);
 		this.strListName = strListName;
-		Intent iChamaLista = new Intent(actCurrent,Lista.class);
+		Intent iChamaLista = new Intent(actCurrent, Lista.class);
 		actCurrent.startActivity(iChamaLista);
 		actCurrent.overridePendingTransition(R.anim.slide2, R.anim.slide);
-		
 
 	}
-	
-	public String getActionBoxName(){
+
+	public String getActionBoxName() {
 		return actBox.getName();
 	}
+
 	/**
-	 * Loads by copying to the current List reference from the values from Database
+	 * Loads by copying to the current List reference from the values from
+	 * Database
 	 */
-	public void loadActionBox(){
-			this.actBox.getCheckLines().clear();
-			this.actBox.getCheckLines().addAll( dbHelper.getAllToDosByTag(actBox.getId())); 
+	public void loadActionBox() {
+		this.actBox.getCheckLines().clear();
+		this.actBox.getCheckLines().addAll(
+				dbHelper.getAllToDosByTag(actBox.getId()));
 	}
-	/** It's supposed to return the lists made by the user. dbHelper NEEDs 
+
+	/**
+	 * It's supposed to return the lists made by the user. dbHelper NEEDs
 	 * another method!
+	 * 
 	 * @return List<ActionBox>
 	 */
-	public List<ActionBox> getOtherLists(){
-		if(dbHelper == null){
+	public List<ActionBox> getOtherLists() {
+		if (dbHelper == null) {
 			dbHelper = new DBHelper(getApplicationContext());
 		}
 		setOtherLists();
 		return actBoxData;
 	}
-	
-	public void setOtherLists(){
-		if(dbHelper == null){
+
+	public void setOtherLists() {
+		if (dbHelper == null) {
 			dbHelper = new DBHelper(getApplicationContext());
 		}
-		
-		if (actBoxData == null)
-		{
-			actBoxData = new  ArrayList<ActionBox>();
+
+		if (actBoxData == null) {
+			actBoxData = new ArrayList<ActionBox>();
 		}
 		actBoxData.clear();
 		actBoxData.addAll(dbHelper.getAllAdditionalActionBoxes());
 	}
-	
-	public void forwardChecklineToAnotherList(int position, int actBoxDataPosition, Activity currActivity){
-		
+
+	public void forwardChecklineToAnotherList(int position,
+			int actBoxDataPosition, Activity currActivity) {
+
 		CheckLine chkLnNew = new CheckLine();
-		CheckLine chkOrigin =   itemData.get(position);
+		CheckLine chkOrigin = itemData.get(position);
 		ActionBox actBoxDestination = actBoxData.get(actBoxDataPosition);
-		String calendarName = getResources().getString( R.string.dbCALENDAR);
-		if(actBoxDestination.getName().equals(calendarName)){
+		String calendarName = getResources().getString(R.string.dbCALENDAR);
+		if (actBoxDestination.getName().equals(calendarName)) {
 			chkLnNew.setText(chkOrigin.getText());
 			addEvent(currActivity, chkLnNew);
-		}
-		else{ 
+		} else {
 
-		//----------------------setting values---------------------/
-		
-		// text
-		
-		chkLnNew.setText(chkOrigin.getText());
-		
-		// order
-		if(actBoxDestination.getCheckLines() == null) {
-			actBoxDestination.setCheckLines(getAllCheckLines());
+			// ----------------------setting values---------------------/
+
+			// text
+
+			chkLnNew.setText(chkOrigin.getText());
+
+			// order
+			if (actBoxDestination.getCheckLines() == null) {
+				actBoxDestination.setCheckLines(getAllCheckLines());
+			}
+			chkLnNew.setOrder(actBoxDestination.size() + 1);
+
+			// ActionBox
+			chkLnNew.setActionbox_id(actBoxDestination.getId());
+
+			dbHelper.createCheckLine(chkLnNew);
+
 		}
-		chkLnNew.setOrder(actBoxDestination.size() + 1);
-		
-		//ActionBox
-		chkLnNew.setActionbox_id(actBoxDestination.getId());
-		
-		
-		
-		dbHelper.createCheckLine(chkLnNew);	
-		
-		
-		}
-		
+
 	}
-	public List<ActionBox> getAllLists(){
-		if(dbHelper == null){
+
+	public List<ActionBox> getAllLists() {
+		if (dbHelper == null) {
 			dbHelper = new DBHelper(getApplicationContext());
 		}
-		
+
 		setAllLists();
 		return actBoxData;
 	}
-	
-	public List<String> getAllListsName(){
+
+	public List<String> getAllListsName() {
 		setAllLists();
 		Iterator<ActionBox> i = actBoxData.iterator();
 		ArrayList<String> lstName = new ArrayList<String>();
@@ -170,296 +172,308 @@ public class Controller extends Application {
 			ActionBox actionBox = (ActionBox) i.next();
 			lstName.add(actionBox.getName());
 		}
-		
+
 		return lstName;
 	}
-	
-	public void setAllLists(){
-		if(dbHelper == null){
+
+	public void setAllLists() {
+		if (dbHelper == null) {
 			dbHelper = new DBHelper(getApplicationContext());
 		}
-		
-		if (actBoxData == null)
-		{
-			actBoxData = new  ArrayList<ActionBox>();
+
+		if (actBoxData == null) {
+			actBoxData = new ArrayList<ActionBox>();
 		}
 		actBoxData.clear();
-		actBoxData.addAll(dbHelper.getAllActionBoxes()); 
+		actBoxData.addAll(dbHelper.getAllActionBoxes());
 	}
-//	public List<String> getAllListsNames(){
-//		if(dbHelper == null){
-//			dbHelper = new DBHelper(getApplicationContext());
-//		}
-//		
-//		
-//	}
-//	private List<CheckLine> getAllChecklines(DBHelper dbHlpCurrent){
-//		
-//		return    dbHlpCurrent.getAllToDosByTag(actBox.getId());
-//	
-//}
-	public List<CheckLine> getAllCheckLines(){
-		if ((actBox.getCheckLines()) == null){
+
+	// public List<String> getAllListsNames(){
+	// if(dbHelper == null){
+	// dbHelper = new DBHelper(getApplicationContext());
+	// }
+	//
+	//
+	// }
+	// private List<CheckLine> getAllChecklines(DBHelper dbHlpCurrent){
+	//
+	// return dbHlpCurrent.getAllToDosByTag(actBox.getId());
+	//
+	// }
+	public List<CheckLine> getAllCheckLines() {
+		if ((actBox.getCheckLines()) == null) {
 			actBox.setCheckLines(dbHelper.getAllToDosByTag(actBox.getId()));
 		}
-		return actBox.getCheckLines(); 
+		return actBox.getCheckLines();
 	}
-	
-	public void setCheckline(List<CheckLine> lstChk){
+
+	public void setCheckline(List<CheckLine> lstChk) {
 		actBox.setCheckLines(lstChk);
 	}
-	
-	
 
-	/** N‹o precisa dessa assinatura! Basta deixar tudo no addCheckline (String) ...
+	/**
+	 * N‹o precisa dessa assinatura! Basta deixar tudo no addCheckline (String)
+	 * ...
+	 * 
 	 * @param strText
 	 * @param dbHlpCurrent
 	 */
-	private void addCheckLine(String strText, DBHelper dbHlpCurrent){
+	private void addCheckLine(String strText, DBHelper dbHlpCurrent) {
 		CheckLine chkLnNew = new CheckLine();
-		
-		//----------------------setting values---------------------/
-		
+
+		// ----------------------setting values---------------------/
+
 		// text
-		chkLnNew.setText(strText); 
-		
+		chkLnNew.setText(strText);
+
 		// order
-		if(actBox.getCheckLines() == null) {
+		if (actBox.getCheckLines() == null) {
 			actBox.setCheckLines(getAllCheckLines());
 		}
 		chkLnNew.setOrder(actBox.size() + 1);
-		
-		//ActionBox
+
+		// ActionBox
 		chkLnNew.setActionbox_id(actBox.getId());
-		
-		chkLnNew = 	dbHlpCurrent.createCheckLine(chkLnNew);	
-		
+
+		chkLnNew = dbHlpCurrent.createCheckLine(chkLnNew);
+
 		actBox.addCheckLine(chkLnNew);
 
-		
 	}
-private void addCheckLine(String strText, DBHelper dbHlpCurrent, String strDateCreated){
-		
+
+	private void addCheckLine(String strText, DBHelper dbHlpCurrent,
+			String strDateCreated) {
+
 		CheckLine chkLnNew = new CheckLine();
-		
-		//----------------------setting values---------------------//
-		
+
+		// ----------------------setting values---------------------//
+
 		// text
-		chkLnNew.setText(strText); 
-		
+		chkLnNew.setText(strText);
+
 		// order
-		if(actBox.getCheckLines() == null) {
+		if (actBox.getCheckLines() == null) {
 			actBox.setCheckLines(getAllCheckLines());
 		}
 		chkLnNew.setOrder(actBox.size() + 1);
-		
-		//ActionBox
+
+		// ActionBox
 		chkLnNew.setActionbox_id(actBox.getId());
-		
-	
-		//Created at..
-		
+
+		// Created at..
+
 		chkLnNew.setCreated_at(strDateCreated);
-		
+
 		// ------------inserting---------------------------------//
-		dbHlpCurrent.createCheckLine(chkLnNew);	
-
+		dbHlpCurrent.createCheckLine(chkLnNew);
 
 	}
 
-public void persist(){
-	if(dbHelper == null){
-		dbHelper = new DBHelper(getApplicationContext());
-	}
-	
-	// ----                             atualiza informacao sobre ActionBox                       ----//
-	dbHelper.updateActionBox(actBox); 
-	
-	// ----                  atualiza informacao sobre as Checkline contidas no ActionBox         ----//
-	for (int i = 0; i < actBox.size(); i++) {
-		dbHelper.updateCheckLine(actBox.getCheckLines().get(i));
-	}
-	
-}
-public void codigoTeste(){
-	dbHelper = new DBHelper(this);
-//	    ActionBox listaTeste = new ActionBox("bla");
-	    
-	// getAllActionBoxes
-	//    List<ActionBox> lAB = new 	ArrayList<ActionBox>();
-	//    lAB = dbHelper.getAllActionBoxes();
-	//    Iterator<ActionBox> iAB = lAB.iterator();
-	//    String strActionBox = "";
-	//    while (iAB.hasNext()) {
-	//		ActionBox actionBox = (ActionBox) iAB.next();
-	//		strActionBox +=  "" + actionBox.getName() + "ID: "+ actionBox.getId() +  " \n";
-	//		}
-	//    loadList(1, dbHelper);
-	loadActionBox();
-//	lstCheckLine = getAllChecklines(dbHelper);
-//	actBox.loadAllCheckLines(dbHelper);
+	public void persist() {
+		if (dbHelper == null) {
+			dbHelper = new DBHelper(getApplicationContext());
+		}
 
-}
+		// ---- atualiza informacao sobre ActionBox ----//
+		dbHelper.updateActionBox(actBox);
 
-public void setupBD(){
-	if(dbHelper == null){
-		dbHelper = new DBHelper(getApplicationContext());
+		// ---- atualiza informacao sobre as Checkline contidas no ActionBox
+		// ----//
+		for (int i = 0; i < actBox.size(); i++) {
+			dbHelper.updateCheckLine(actBox.getCheckLines().get(i));
+		}
+
 	}
-	dbHelper.populateActionBoxesTable();
-}
-public void populaActionBoxTeste(){
-	for (int j = 0; j < 20; j++) {
-		addCheckLine("itemTeste" + j, dbHelper, (new Date()).toString());
+
+	public void codigoTeste() {
+		dbHelper = new DBHelper(this);
+		// ActionBox listaTeste = new ActionBox("bla");
+
+		// getAllActionBoxes
+		// List<ActionBox> lAB = new ArrayList<ActionBox>();
+		// lAB = dbHelper.getAllActionBoxes();
+		// Iterator<ActionBox> iAB = lAB.iterator();
+		// String strActionBox = "";
+		// while (iAB.hasNext()) {
+		// ActionBox actionBox = (ActionBox) iAB.next();
+		// strActionBox += "" + actionBox.getName() + "ID: "+ actionBox.getId()
+		// + " \n";
+		// }
+		// loadList(1, dbHelper);
 		loadActionBox();
+		// lstCheckLine = getAllChecklines(dbHelper);
+		// actBox.loadAllCheckLines(dbHelper);
 
 	}
-}
 
-public long getId(){
-	return actBox.getId();
-}
-
-public void addCheckLine(String str){
-	addCheckLine(str, dbHelper);
-	itAdapter.notifyDataSetChanged();
-}
-
-/**
- * Makes the Controller share the actionBox's List<Checkline> 
- * @param lstChk
- */
-public void loadAndShareListWith(List<CheckLine> lstChk){
-	
-	// --- verifica se a lista de Checklines foi carregada ---//
-	if (actBox.getCheckLines() == null){
-		actBox.setCheckLines(dbHelper.getAllToDosByTag(actBox.getId()));
+	public void setupBD() {
+		if (dbHelper == null) {
+			dbHelper = new DBHelper(getApplicationContext());
+		}
+		dbHelper.populateActionBoxesTable();
 	}
-	
-	// --- agora faz o ActBox ter suas listas referenciando a lista ser compartilhada 
-	
+
+	public void populaActionBoxTeste() {
+		for (int j = 0; j < 20; j++) {
+			addCheckLine("itemTeste" + j, dbHelper, (new Date()).toString());
+			loadActionBox();
+
+		}
+	}
+
+	public long getId() {
+		return actBox.getId();
+	}
+
+	public void addCheckLine(String str) {
+		addCheckLine(str, dbHelper);
+		itAdapter.notifyDataSetChanged();
+	}
+
+	/**
+	 * Makes the Controller share the actionBox's List<Checkline>
+	 * 
+	 * @param lstChk
+	 */
+	public void loadAndShareListWith(List<CheckLine> lstChk) {
+
+		// --- verifica se a lista de Checklines foi carregada ---//
+		if (actBox.getCheckLines() == null) {
+			actBox.setCheckLines(dbHelper.getAllToDosByTag(actBox.getId()));
+		}
+
+		// --- agora faz o ActBox ter suas listas referenciando a lista ser
+		// compartilhada
+
 		lstChk.addAll(actBox.getCheckLines());
 		actBox.setCheckLines(lstChk);
-	
-}
-/**
- * Removes the Checkline at the referenced position holded by the current ActionBox and holded by the dataBase. No need for loadActionBox()...
- * @param position
- */
-public void deleteChecklineAt(int position){
-	//swipelistview.closeAnimate(position );
-	dbHelper.deleteCheckLine(actBox.get(position).getId());
-	actBox.getCheckLines().remove(position);
-	itAdapter.notifyDataSetChanged();
-	swipelistview.closeAnimate(position);
-	 
-}
 
-public void setListView(ListView lv ){
-	this.swipelistview = (SwipeListView) lv;
-}
+	}
 
-public void showOtherLists(Activity actCurrent){
-	
-	Intent iOtherList = new Intent(actCurrent,OtherLists.class);
-	actCurrent.startActivity(iOtherList);
-}
+	/**
+	 * Removes the Checkline at the referenced position holded by the current
+	 * ActionBox and holded by the dataBase. No need for loadActionBox()...
+	 * 
+	 * @param position
+	 */
+	public void deleteChecklineAt(int position) {
+		// swipelistview.closeAnimate(position );
+		dbHelper.deleteCheckLine(actBox.get(position).getId());
+		actBox.getCheckLines().remove(position);
+		itAdapter.notifyDataSetChanged();
+		swipelistview.closeAnimate(position);
 
-public void setAdapter(Lista lista){
-		 itemData=new ArrayList<CheckLine>();
-		 itAdapter=new ItemAdapter(lista ,R.layout.custom_row,itemData);
-		 swipelistview.setAdapter( itAdapter);
-		 this.loadAndShareListWith(itemData);
-	     itAdapter.notifyDataSetChanged();
-}
-public void setAdapter(OtherLists lista){
+	}
+
+	public void setListView(ListView lv) {
+		this.swipelistview = (SwipeListView) lv;
+	}
+
+	public void showOtherLists(Activity actCurrent) {
+
+		Intent iOtherList = new Intent(actCurrent, OtherLists.class);
+		actCurrent.startActivity(iOtherList);
+	}
+
+	public void setAdapter(Lista lista) {
+		itemData = new ArrayList<CheckLine>();
+		itAdapter = new ItemAdapter(lista, R.layout.custom_row, itemData);
+		swipelistview.setAdapter(itAdapter);
+		this.loadAndShareListWith(itemData);
+		itAdapter.notifyDataSetChanged();
+	}
+
+	public void setAdapter(OtherLists lista) {
 		setOtherLists();
-		olAdapter = new OtherListAdapter(lista,R.layout.custom_row_lists, actBoxData);
+		olAdapter = new OtherListAdapter(lista, R.layout.custom_row_lists,
+				actBoxData);
 		swipelistview.setAdapter(olAdapter);
 		olAdapter.notifyDataSetChanged();
 	}
-	
 
+	public boolean deviceHasGoogleAccount() {
+		AccountManager accMan = AccountManager.get(this);
+		Account[] accArray = accMan.getAccountsByType("com.google");
+		return accArray.length >= 1 ? true : false;
+	}
 
-public boolean deviceHasGoogleAccount(){
-    AccountManager accMan = AccountManager.get(this);
-    Account[] accArray = accMan.getAccountsByType("com.google");
-    return accArray.length >= 1 ? true : false;
-}
-public void shareChecklineAt(int position, Activity actCurrent) {
-	// TODO Auto-generated method stub
-	String strShared = actBox.get(position).getText();
-	Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, strShared);
-    sharingIntent.setType("text/plain");
-    actCurrent.startActivity(Intent.createChooser(sharingIntent, getResources().getText(R.string.share_using)));
-}
-public void goToList_Calendar(String strListName, String strActBoxName, Activity actCurrent) {
-	setActionBox(strListName, actCurrent);
-	this.strListName = strListName;
-	Intent iChamaLista = new Intent(actCurrent, Lista_Calendar.class);
-	actCurrent.startActivity(iChamaLista);
-	actCurrent.overridePendingTransition(R.anim.slide2, R.anim.slide);
-}
-public void addActionBox(String result) {
-	ActionBox tempActBox = new ActionBox();
-	
-	//--------------- setting values ------------------//
-	
-	// text
-	
-	tempActBox.setName(result);
-	
-	dbHelper.createActionBox(tempActBox);
-	actBoxData.clear();
-	actBoxData.addAll(dbHelper.getAllActionBoxes());
-	olAdapter.notifyDataSetChanged();
-	
-}
-public void deleteActionBoxAt(int position) {
-	
-	dbHelper.deleteActionBox(actBoxData.get(position).getId());
-	actBoxData.clear();
-	actBoxData.addAll(dbHelper.getAllActionBoxes());
-	olAdapter.notifyDataSetChanged();
-	swipelistview.closeAnimate(position);
+	public void shareChecklineAt(int position, Activity actCurrent) {
+		// TODO Auto-generated method stub
+		String strShared = actBox.get(position).getText();
+		Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+		sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, strShared);
+		sharingIntent.setType("text/plain");
+		actCurrent.startActivity(Intent.createChooser(sharingIntent,
+				getResources().getText(R.string.share_using)));
+	}
+
+	public void goToList_Calendar(String strListName, String strActBoxName,
+			Activity actCurrent) {
+		setActionBox(strListName, actCurrent);
+		this.strListName = strListName;
+		Intent iChamaLista = new Intent(actCurrent, Lista_Calendar.class);
+		actCurrent.startActivity(iChamaLista);
+		actCurrent.overridePendingTransition(R.anim.slide2, R.anim.slide);
+	}
+
+	public void addActionBox(String result) {
+		ActionBox tempActBox = new ActionBox();
+
+		// --------------- setting values ------------------//
+
+		// text
+
+		tempActBox.setName(result);
+
+		dbHelper.createActionBox(tempActBox);
+		actBoxData.clear();
+		actBoxData.addAll(dbHelper.getAllActionBoxes());
+		olAdapter.notifyDataSetChanged();
+
+	}
+
+	public void deleteActionBoxAt(int position) {
+
+		dbHelper.deleteActionBox(actBoxData.get(position).getId());
+		actBoxData.clear();
+		actBoxData.addAll(dbHelper.getAllActionBoxes());
+		olAdapter.notifyDataSetChanged();
+		swipelistview.closeAnimate(position);
+
+	}
+
+	public void setAdapter(Lista_Calendar lista_Calendar) {
+		itemData = new ArrayList<CheckLine>();
+		itAdapter = new ItemAdapter(lista_Calendar, R.layout.custom_row,
+				itemData);
+		swipelistview.setAdapter(itAdapter);
+		this.loadAndShareListWith(itemData);
+		itAdapter.notifyDataSetChanged();
+
+	}
+
+	public void addEvent(Activity crtActivity) {
+		Calendar beginTime = Calendar.getInstance();
+		beginTime.set(2012, 0, 19, 7, 30);
+		Calendar endTime = Calendar.getInstance();
+		endTime.set(2012, 0, 19, 8, 30);
+		Intent intent = new Intent(Intent.ACTION_INSERT)
+				.setData(Events.CONTENT_URI).putExtra(Events.TITLE, "")
+				.putExtra(Events.DESCRIPTION, "");
+		crtActivity.startActivity(intent);
+		// DialogFragment dFrag = new AddCheckLineDialog();
+		// dFrag.show(getFragmentManager(), "Add");
+	}
+
+	public void addEvent(Activity crtActivity, CheckLine chkLine) {
+		Calendar beginTime = Calendar.getInstance();
+		beginTime.set(2012, 0, 19, 7, 30);
+		Calendar endTime = Calendar.getInstance();
+		endTime.set(2012, 0, 19, 8, 30);
+		Intent intent = new Intent(Intent.ACTION_INSERT)
+				.setData(Events.CONTENT_URI).putExtra(Events.TITLE, "")
+				.putExtra(Events.DESCRIPTION, chkLine.getText());
+		crtActivity.startActivity(intent);
+	}
 
 }
-public void setAdapter(Lista_Calendar lista_Calendar) {
-	 itemData=new ArrayList<CheckLine>();
-	 itAdapter=new ItemAdapter(lista_Calendar ,R.layout.custom_row,itemData);
-	 swipelistview.setAdapter( itAdapter);
-	 this.loadAndShareListWith(itemData);
-     itAdapter.notifyDataSetChanged();
-	
-}
-public void addEvent(Activity crtActivity) {
-	Calendar beginTime = Calendar.getInstance();
-	beginTime.set(2012, 0, 19, 7, 30);
-	Calendar endTime = Calendar.getInstance();
-	endTime.set(2012, 0, 19, 8, 30);
-	Intent intent = new Intent(Intent.ACTION_INSERT)
-	        .setData(Events.CONTENT_URI)
-	        .putExtra(Events.TITLE, "")
-	        .putExtra(Events.DESCRIPTION, "");
-	crtActivity.startActivity(intent);
-//	DialogFragment dFrag = new AddCheckLineDialog();
-//	dFrag.show(getFragmentManager(), "Add");
-}
-
-public void addEvent (Activity crtActivity, CheckLine chkLine){
-	Calendar beginTime = Calendar.getInstance();
-	beginTime.set(2012, 0, 19, 7, 30);
-	Calendar endTime = Calendar.getInstance();
-	endTime.set(2012, 0, 19, 8, 30);
-	Intent intent = new Intent(Intent.ACTION_INSERT)
-	        .setData(Events.CONTENT_URI)
-	        .putExtra(Events.TITLE, "")
-	        .putExtra(Events.DESCRIPTION, chkLine.getText());
-	crtActivity.startActivity(intent);
-}
-
-
-}
-
-	
-	

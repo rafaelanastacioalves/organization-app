@@ -17,35 +17,33 @@ import com.juntando_tudo.R;
 public class Lista extends Activity {
 
 	public static SwipeListView swipelistview;
-	Controller aController; 
-	
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.lista);
-       
-        aController = (Controller ) getApplicationContext();
-        setSwipeListView();
-        
-        aController.setListView(swipelistview);
-        
-        
-        // Controller.LoadActionBox();
-//        aController.populaActionBoxTeste();
-//        Toast.makeText(this , String.valueOf(aController.getId() ), Toast.LENGTH_SHORT).show();
-        aController.setAdapter(this);
-        
-    
-    }
+	Controller aController;
 
-    public int convertDpToPixel(float dp) {
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        float px = dp * (metrics.densityDpi / 160f);
-        return (int) px;
-    }
-    
-    
-    @Override
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.lista);
+
+		aController = (Controller) getApplicationContext();
+		setSwipeListView();
+
+		aController.setListView(swipelistview);
+
+		// Controller.LoadActionBox();
+		// aController.populaActionBoxTeste();
+		// Toast.makeText(this , String.valueOf(aController.getId() ),
+		// Toast.LENGTH_SHORT).show();
+		aController.setAdapter(this);
+
+	}
+
+	public int convertDpToPixel(float dp) {
+		DisplayMetrics metrics = getResources().getDisplayMetrics();
+		float px = dp * (metrics.densityDpi / 160f);
+		return (int) px;
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
@@ -64,95 +62,102 @@ public class Lista extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-    
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.lista, menu);
-        getActionBar().setTitle(aController.getActionBoxName());
-        return true;
-    }
-    @Override
-    protected void onStop(){
-    	super.onStop();
-//    	Controller aController = (Controller) getApplicationContext();
-    	aController.persist();
-    }
-    private boolean add_method(){
-    	DialogFragment dFrag = new AddCheckLineDialog();
-    	dFrag.show(getFragmentManager(), "Add");
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.lista, menu);
+		getActionBar().setTitle(aController.getActionBoxName());
 		return true;
-    	
-		
 	}
-    
-    public void setSwipeListView(){
-    	swipelistview=(SwipeListView)findViewById(R.id.example_swipe_lv_list);
-        
-        
-     
-        
-        swipelistview.setSwipeListViewListener(new BaseSwipeListViewListener() {
-            @Override
-            public void onOpened(int position, boolean toRight) {
-            }
 
-            @Override
-            public void onClosed(int position, boolean fromRight) {
-            }
+	@Override
+	protected void onStop() {
+		super.onStop();
+		// Controller aController = (Controller) getApplicationContext();
+		aController.persist();
+	}
 
-            @Override
-            public void onListChanged() {
-            }
+	private boolean add_method() {
+		DialogFragment dFrag = new AddCheckLineDialog();
+		dFrag.show(getFragmentManager(), "Add");
+		return true;
 
-            @Override
-            public void onMove(int position, float x) {
-            }
+	}
 
-            @Override
-            public void onStartOpen(int position, int action, boolean right) {
-                Log.d("swipe", String.format("onStartOpen %d - action %d", position, action));
-            }
+	public void setSwipeListView() {
+		swipelistview = (SwipeListView) findViewById(R.id.example_swipe_lv_list);
 
-            @Override
-            public void onStartClose(int position, boolean right) {
-                Log.d("swipe", String.format("onStartClose %d", position));
-            }
+		swipelistview.setSwipeListViewListener(new BaseSwipeListViewListener() {
+			@Override
+			public void onOpened(int position, boolean toRight) {
+			}
 
-            @Override
-            public void onClickFrontView(int position) {
-                Log.d("swipe", String.format("onClickFrontView %d", position));
-                
-             
-                //swipelistview.openAnimate(position); //when you touch front view it will open
-               
-             
-            }
+			@Override
+			public void onClosed(int position, boolean fromRight) {
+			}
 
-            @Override
-            public void onClickBackView(int position) {
-                Log.d("swipe", String.format("onClickBackView %d", position));
-                
-                swipelistview.closeAnimate(position);//when you touch back view it will close
-            }
+			@Override
+			public void onListChanged() {
+			}
 
-            @Override
-            public void onDismiss(int[] reverseSortedPositions) {
-            	
-            }
+			@Override
+			public void onMove(int position, float x) {
+			}
 
-        });
-        
-        //These are the swipe listview settings. you can change these
-        //setting as your requirement 
-        swipelistview.setSwipeMode(SwipeListView.SWIPE_ACTION_NONE); // there are five swiping modes
-        swipelistview.setSwipeActionLeft(SwipeListView.SWIPE_MODE_LEFT); //there are four swipe actions 
-        swipelistview.setSwipeActionRight(SwipeListView.SWIPE_MODE_NONE);
-        swipelistview.setOffsetLeft(convertDpToPixel(80f)); // left side offset
-        swipelistview.setOffsetRight(convertDpToPixel(0f)); // right side offset
-        swipelistview.setAnimationTime(64); // Animation time
-        swipelistview.setSwipeOpenOnLongPress(true); // enable or disable SwipeOpenOnLongPress
-	
-       
-    }
+			@Override
+			public void onStartOpen(int position, int action, boolean right) {
+				Log.d("swipe", String.format("onStartOpen %d - action %d",
+						position, action));
+			}
+
+			@Override
+			public void onStartClose(int position, boolean right) {
+				Log.d("swipe", String.format("onStartClose %d", position));
+			}
+
+			@Override
+			public void onClickFrontView(int position) {
+				Log.d("swipe", String.format("onClickFrontView %d", position));
+
+				// swipelistview.openAnimate(position); //when you touch front
+				// view it will open
+
+			}
+
+			@Override
+			public void onClickBackView(int position) {
+				Log.d("swipe", String.format("onClickBackView %d", position));
+
+				swipelistview.closeAnimate(position);// when you touch back view
+														// it will close
+			}
+
+			@Override
+			public void onDismiss(int[] reverseSortedPositions) {
+
+			}
+
+		});
+
+		// These are the swipe listview settings. you can change these
+		// setting as your requirement
+		swipelistview.setSwipeMode(SwipeListView.SWIPE_ACTION_NONE); // there
+																		// are
+																		// five
+																		// swiping
+																		// modes
+		swipelistview.setSwipeActionLeft(SwipeListView.SWIPE_MODE_LEFT); // there
+																			// are
+																			// four
+																			// swipe
+																			// actions
+		swipelistview.setSwipeActionRight(SwipeListView.SWIPE_MODE_NONE);
+		swipelistview.setOffsetLeft(convertDpToPixel(80f)); // left side offset
+		swipelistview.setOffsetRight(convertDpToPixel(0f)); // right side offset
+		swipelistview.setAnimationTime(64); // Animation time
+		swipelistview.setSwipeOpenOnLongPress(true); // enable or disable
+														// SwipeOpenOnLongPress
+
+	}
 }

@@ -1,4 +1,5 @@
 package pfc.ime.gtdmanager.model;
+
 import java.util.Date;
 
 import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
@@ -12,7 +13,7 @@ public class CheckLine extends Table {
 	boolean checked;
 	String update_time;
 	String check_time;
-	
+
 	public String getText() {
 		return text;
 	}
@@ -39,7 +40,7 @@ public class CheckLine extends Table {
 	public void setOrder(int order) {
 		this.order = order;
 	}
-	
+
 	public boolean isChecked() {
 		return checked;
 	}
@@ -49,7 +50,7 @@ public class CheckLine extends Table {
 		setCheck_time(new Date().toString());
 		setUpdate_time(new Date().toString());
 	}
-	
+
 	public void setChecked(int checked) {
 		this.checked = (checked != 0);
 		setCheck_time(new Date().toString());
@@ -65,8 +66,8 @@ public class CheckLine extends Table {
 	}
 
 	public String getCheck_time() {
-		if(check_time == null){
-			check_time= new Date().toString();
+		if (check_time == null) {
+			check_time = new Date().toString();
 		}
 		return check_time;
 	}
@@ -74,30 +75,36 @@ public class CheckLine extends Table {
 	public void setCheck_time(String check_time) {
 		this.check_time = check_time;
 	}
-	
-	public CheckLine() { }
-	
-	public CheckLine(Cursor c) {
-		this.setId				(c.getInt	(c.getColumnIndex(DBHelper.KEY_ID)));
-		this.setText			(c.getString(c.getColumnIndex(DBHelper.KEY_CHECKLINES_TEXT)));
-		this.setActionbox_id	(c.getInt	(c.getColumnIndex(DBHelper.KEY_CHECKLINES_ACTIONBOX_ID)));
-		this.setOrder			(c.getInt	(c.getColumnIndex(DBHelper.KEY_CHECKLINES_ORDER)));
-		this.setChecked			(c.getInt	(c.getColumnIndex(DBHelper.KEY_CHECKLINES_CHECKED)));
-		this.setUpdate_time		(c.getString(c.getColumnIndex(DBHelper.KEY_CHECKLINES_UPDATE_TIME)));
-		this.setCheck_time		(c.getString(c.getColumnIndex(DBHelper.KEY_CHECKLINES_CHECK_TIME)));
-		this.setCreated_at		(c.getString(c.getColumnIndex(DBHelper.KEY_CREATED_AT)));
+
+	public CheckLine() {
 	}
-	
-	public void toogleCheck()
-	{
+
+	public CheckLine(Cursor c) {
+		this.setId(c.getInt(c.getColumnIndex(DBHelper.KEY_ID)));
+		this.setText(c.getString(c.getColumnIndex(DBHelper.KEY_CHECKLINES_TEXT)));
+		this.setActionbox_id(c.getInt(c
+				.getColumnIndex(DBHelper.KEY_CHECKLINES_ACTIONBOX_ID)));
+		this.setOrder(c.getInt(c.getColumnIndex(DBHelper.KEY_CHECKLINES_ORDER)));
+		this.setChecked(c.getInt(c
+				.getColumnIndex(DBHelper.KEY_CHECKLINES_CHECKED)));
+		this.setUpdate_time(c.getString(c
+				.getColumnIndex(DBHelper.KEY_CHECKLINES_UPDATE_TIME)));
+		this.setCheck_time(c.getString(c
+				.getColumnIndex(DBHelper.KEY_CHECKLINES_CHECK_TIME)));
+		this.setCreated_at(c.getString(c
+				.getColumnIndex(DBHelper.KEY_CREATED_AT)));
+	}
+
+	public void toogleCheck() {
 		checked = !checked;
 		setCheck_time((new Date()).toString());
 	}
-	
-	public String toS(){
+
+	public String toS() {
 		return "(" + getId() + "," + getText() + "," + getActionbox_id() + ","
-				+ getOrder() + "," + isChecked() + "," + (new Date()).toString() + ","
-				+ getCreated_at() + "," + getCheck_time().toString() + ")";
+				+ getOrder() + "," + isChecked() + ","
+				+ (new Date()).toString() + "," + getCreated_at() + ","
+				+ getCheck_time().toString() + ")";
 	}
 
 }

@@ -17,41 +17,48 @@ import com.juntando_tudo.R;
 public class AddActionBoxDialog extends DialogFragment {
 
 	private Controller aController;
+
 	@Override
-    public Dialog onCreateDialog(Bundle savedInstanceState){
-		
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+
 		aController = (Controller) (getActivity()).getApplicationContext();
 		LayoutInflater liAdd = LayoutInflater.from(getActivity());
 		View promptsView = liAdd.inflate(R.layout.add, null);
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+				getActivity());
 
 		// set prompts.xml to alertdialog builder
 		alertDialogBuilder.setView(promptsView);
-		final EditText userInput =  (EditText) promptsView.findViewById(R.id.etItem_new);
+		final EditText userInput = (EditText) promptsView
+				.findViewById(R.id.etItem_new);
 		userInput.requestFocus();
-		alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				// get user input and set it to result
-				// edit text
-				String result = String.valueOf(userInput.getText());
-				Toast.makeText((Controller) (getActivity()).getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-				aController.addActionBox(result);
-				//aController.persist();
-				//aController.loadActionBox(); 
-				
-			}
-		});
+		alertDialogBuilder.setCancelable(false).setPositiveButton("OK",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						// get user input and set it to result
+						// edit text
+						String result = String.valueOf(userInput.getText());
+						Toast.makeText(
+								(Controller) (getActivity())
+										.getApplicationContext(), result,
+								Toast.LENGTH_SHORT).show();
+						aController.addActionBox(result);
+						// aController.persist();
+						// aController.loadActionBox();
+
+					}
+				});
 		alertDialogBuilder.setNegativeButton("Cancel",
 				new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				dialog.cancel();
-			}
-		});
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+					}
+				});
 		// forcing showing soft input
-		AlertDialog aDialog =   alertDialogBuilder.create();
-		aDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+		AlertDialog aDialog = alertDialogBuilder.create();
+		aDialog.getWindow().setSoftInputMode(
+				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 		return aDialog;
-
 
 	}
 }

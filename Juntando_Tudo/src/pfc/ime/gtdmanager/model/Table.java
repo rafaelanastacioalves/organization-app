@@ -11,7 +11,7 @@ public abstract class Table {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getCreated_at() {
 		return created_at;
 	}

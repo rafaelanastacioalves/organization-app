@@ -12,26 +12,27 @@ import android.widget.Toast;
 import com.juntando_tudo.R;
 
 public class MainMenu extends Activity {
-	
-	 Controller aController; 
+
+	Controller aController;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_menu);
 		aController = (Controller) getApplicationContext();
-		if(aController.deviceHasGoogleAccount()){
-			mostrarMSG("Voce tem uma conta Google!");		
+		if (aController.deviceHasGoogleAccount()) {
+			mostrarMSG("Voce tem uma conta Google!");
 
+		} else {
+			Intent addAccountIntent = new Intent(
+					android.provider.Settings.ACTION_ADD_ACCOUNT)
+					.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			addAccountIntent.putExtra(Settings.EXTRA_ACCOUNT_TYPES,
+					new String[] { "com.google" });
+			this.startActivity(addAccountIntent);
 		}
-		else{
-		Intent addAccountIntent = new Intent(android.provider.Settings.ACTION_ADD_ACCOUNT)
-	    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	    addAccountIntent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[] {"com.google"});
-	    this.startActivity(addAccountIntent); 
-		}
-	    aController.setupBD();
+		aController.setupBD();
 	}
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,31 +40,33 @@ public class MainMenu extends Activity {
 		getMenuInflater().inflate(R.menu.main_menu, menu);
 		return true;
 	}
-	
-	public void listar ( View v){
+
+	public void listar(View v) {
 		String sNome = getResources().getString(v.getId());
-//		mostrarMSG(sNome, "Info Button" );
-		aController.goToList((String)v.getTag() ,sNome, this);
-		 
+		// mostrarMSG(sNome, "Info Button" );
+		aController.goToList((String) v.getTag(), sNome, this);
+
 	}
-	
+
 	/**
-	 * A (temporary) method to call a list of itens for Calendar. Requires refactory. Controller 
-	 * should be responsible for calling the activity, probably using a different method...
+	 * A (temporary) method to call a list of itens for Calendar. Requires
+	 * refactory. Controller should be responsible for calling the activity,
+	 * probably using a different method...
+	 * 
 	 * @param v
 	 */
-	public void listar_calendar ( View v){
+	public void listar_calendar(View v) {
 		String sNome = getResources().getString(v.getId());
-//		mostrarMSG(sNome, "Info Button" );
-		aController.goToList_Calendar((String)v.getTag() ,sNome, this);
-		 
-	} 
-	
-	
-	public void showOtherLists(View v){
+		// mostrarMSG(sNome, "Info Button" );
+		aController.goToList_Calendar((String) v.getTag(), sNome, this);
+
+	}
+
+	public void showOtherLists(View v) {
 		aController.showOtherLists(this);
 	}
-	public void mostrarMSG(String strMSG){
+
+	public void mostrarMSG(String strMSG) {
 		Toast t = Toast.makeText(this, strMSG, Toast.LENGTH_SHORT);
 		t.show();
 	}

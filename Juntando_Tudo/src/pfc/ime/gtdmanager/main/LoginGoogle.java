@@ -115,8 +115,8 @@ public class LoginGoogle extends Activity {
 			//
 			// TODO: If Settings has multiple levels, Up should navigate up
 			// that hierarchy.
-			//NavUtils.navigateUpFromSameTask(this);
-			Intent iChamaMenuPrincipal =  new Intent(this, MainMenu.class);
+			// NavUtils.navigateUpFromSameTask(this);
+			Intent iChamaMenuPrincipal = new Intent(this, MainMenu.class);
 			iChamaMenuPrincipal.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(iChamaMenuPrincipal);
 			return true;
