@@ -468,7 +468,6 @@ public class Controller extends Application {
 		crtActivity.startActivity(intent);
 		// DialogFragment dFrag = new AddCheckLineDialog();
 		// dFrag.show(getFragmentManager(), "Add");
-		
 	}
 
 	

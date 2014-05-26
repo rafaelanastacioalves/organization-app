@@ -13,7 +13,7 @@ public class CheckLine extends Table {
 	boolean checked;
 	String update_time;
 	String check_time;
-	int calendar_id;
+	long calendar_id=-1;
 
 	public String getText() {
 		return text;
@@ -77,11 +77,11 @@ public class CheckLine extends Table {
 		this.check_time = check_time;
 	}
 
-	public int getCalendarId() {
+	public long getCalendarId() {
 		return calendar_id;
 	}
 
-	public void setCalendarId(int calendar_id) {
+	public void setCalendarId(long calendar_id) {
 		this.calendar_id = calendar_id;
 	}
 
@@ -102,7 +102,7 @@ public class CheckLine extends Table {
 				.getColumnIndex(DBHelper.KEY_CHECKLINES_CHECK_TIME)));
 		this.setCreated_at(c.getString(c
 				.getColumnIndex(DBHelper.KEY_CREATED_AT)));
-		this.setCalendarId(c.getInt(c
+		this.setCalendarId(c.getLong(c
 				.getColumnIndex(DBHelper.KEY_CHECKLINES_CALENDAR_ID)));
 	}
 

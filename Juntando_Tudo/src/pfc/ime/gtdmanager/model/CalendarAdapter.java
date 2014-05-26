@@ -1,7 +1,10 @@
 package pfc.ime.gtdmanager.model;
 
+import java.sql.Date;
 import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import pfc.ime.gtdmanager.controller.Controller;
@@ -31,24 +34,26 @@ public class CalendarAdapter {
 				.getApplicationContext());
 		String title = "N/A";
 		Long start = 0L;
-
-		mCursor = query3();
-
+		long id = 2L;
+		mCursor = query5();
+		
+		//if(mCursor == null) return lstChkLn;
+		
 		if (mCursor.moveToFirst()) {
 			do {
 				// adding to checklines list
 				CheckLine chkLnNew = new CheckLine();
 
 				try {
-					title = mCursor.getString(0);
-
-					start = mCursor.getLong(1);
+					title = mCursor.getString(1);
+					start = mCursor.getLong(3);
+					id = mCursor.getLong(0);
 				} catch (Exception e) {
 					// ignore
 
 				}
 				chkLnNew.setText(title + " on " + df.format(start) + " at "
-						+ tf.format(start));
+						+ tf.format(start) + "ID --> " + id);
 
 				// order
 
@@ -56,6 +61,7 @@ public class CalendarAdapter {
 
 				// ActionBox
 				chkLnNew.setActionbox_id(CALENDAR_ID);
+				chkLnNew.setCalendarId(id);
 
 				lstChkLn.add(chkLnNew);
 
@@ -64,7 +70,35 @@ public class CalendarAdapter {
 		return lstChkLn;
 
 	}
+	public Cursor query5() {
+		Time t = new Time(Time.getCurrentTimezone());
+		t.setToNow();
+		long dtStart = t.toMillis(true);
+		t.set(59, 59, 23, 30, t.month, t.year);
+		long dtEnd = t.toMillis(false);
 
+	    
+		mCursor = currAct.getContentResolver().query(
+		CalendarContract.Events.CONTENT_URI, new String[]{ "_id", "title", "description", "dtstart" },
+		"( dtstart > " + dtStart + " and dtend < " + dtEnd + " )", null, "dtstart ASC");
+		return mCursor;
+	}
+
+	public Cursor query4(){
+		
+		Time t = new Time(Time.getCurrentTimezone());
+		t.setToNow();
+		//long start = t.toMillis(false);
+		String dtStart = Long.toString(t.toMillis(false));
+		t.set(59, 59, 23, t.monthDay, t.month, t.year);
+		//long end = t.toMillis(false);
+		String dtEnd = Long.toString(t.toMillis(false));
+		Cursor cursor = currAct.getContentResolver().query(
+				CalendarContract.Events.CONTENT_URI, 
+				new String[]{ "_id", "title", "description", "dtstart" }, 
+				"( dtstart > " + dtStart + " and + )", null, "dtstart ASC");
+		return mCursor;
+	}
 	public Cursor query2() {
 		mCursor = currAct.getContentResolver().query(
 

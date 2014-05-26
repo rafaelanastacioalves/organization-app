@@ -11,6 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.CalendarContract.Events;
 import android.util.Log;
 
 import com.juntando_tudo.R;
@@ -98,8 +99,8 @@ public class DBHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
 		// on upgrade drop older tables
-		db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_ACTIONBOXES);
-		db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_CHECKLINES);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACTIONBOXES);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHECKLINES);
 
 		// create new tables
 		onCreate(db);
@@ -224,9 +225,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	// delete a checkline
 	public void deleteCheckLine(long id) {
+		
+		
+		long calendarId = getCheckLineById(id).getCalendarId();
+		if(calendarId != -1){
+			
+		}
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.delete(TABLE_CHECKLINES, KEY_ID + " = ?",
-				new String[] { String.valueOf(id) });
+		//db.delete(TABLE_CHECKLINES, KEY_ID + " = ?",
+				//new String[] { String.valueOf(id) });
+		db.delete(TABLE_CHECKLINES, KEY_ID + " = " + String.valueOf(id), null);
+		
 	}
 
 	// ------------------------ ACTIONBOXES table methods ----------------//
