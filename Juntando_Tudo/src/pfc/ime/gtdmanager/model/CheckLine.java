@@ -13,6 +13,7 @@ public class CheckLine extends Table {
 	boolean checked;
 	String update_time;
 	String check_time;
+	int calendar_id;
 	
 	public String getText() {
 		return text;
@@ -39,6 +40,14 @@ public class CheckLine extends Table {
 
 	public void setOrder(int order) {
 		this.order = order;
+	}
+
+	public int getCalendarId() {
+		return calendar_id;
+	}
+
+	public void setCalendarId(int calendar_id) {
+		this.calendar_id = calendar_id;
 	}
 	
 	public boolean isChecked() {
@@ -87,6 +96,7 @@ public class CheckLine extends Table {
 		this.setUpdate_time		(c.getString(c.getColumnIndex(DBHelper.KEY_CHECKLINES_UPDATE_TIME)));
 		this.setCheck_time		(c.getString(c.getColumnIndex(DBHelper.KEY_CHECKLINES_CHECK_TIME)));
 		this.setCreated_at		(c.getString(c.getColumnIndex(DBHelper.KEY_CREATED_AT)));
+		this.setCalendarId		(c.getString(c.getColumnIndex(DBHelper.KEY_CHECKLINES_CALENDAR_ID)));
 	}
 	
 	public void toogleCheck()
@@ -98,7 +108,7 @@ public class CheckLine extends Table {
 	public String toS(){
 		return "(" + getId() + "," + getText() + "," + getActionbox_id() + ","
 				+ getOrder() + "," + isChecked() + "," + (new Date()).toString() + ","
-				+ getCreated_at() + "," + getCheck_time().toString() + ")";
+				+ getCreated_at() + "," + getCheck_time().toString() + "," + setCalendarId().toString() + ")";
 	}
 
 }
