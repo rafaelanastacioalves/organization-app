@@ -225,18 +225,25 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	// delete a checkline
 	public void deleteCheckLine(long id) {
-		//Log.e("lol", "cl id: "+id);
-		//Log.e("lol", "cl: "+getCheckLineById(id).toS());
+		
+		
 		long calendarId = getCheckLineById(id).getCalendarId();
 		//if(calendarId != -1){
-
+			
 		//}
 		SQLiteDatabase db = this.getWritableDatabase();
 		//db.delete(TABLE_CHECKLINES, KEY_ID + " = ?",
 				//new String[] { String.valueOf(id) });
 		db.delete(TABLE_CHECKLINES, KEY_ID + " = " + String.valueOf(id), null);
 		
+		
 	}
+	
+	// delete all calendar checklines
+	   public void deleteCalendarCheckLines() {
+	    SQLiteDatabase db = this.getWritableDatabase();
+	    db.delete(TABLE_CHECKLINES, KEY_CHECKLINES_CALENDAR_ID + " > 0", null);  
+	   }
 
 	// ------------------------ ACTIONBOXES table methods ----------------//
 

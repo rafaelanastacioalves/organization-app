@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import pfc.ime.gtdmanager.DataAccessLayer.DBHelper;
 import pfc.ime.gtdmanager.controller.Controller;
 import android.app.Activity;
+import android.app.Application;
 import android.content.ContentUris;
 import android.database.Cursor;
 import android.net.Uri;
@@ -16,7 +18,7 @@ import android.provider.CalendarContract;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 
-public class CalendarAdapter {
+public class CalendarAdapter{
 
 	private int CALENDAR_ID;
 	private List<CheckLine> lstChkLn;
@@ -27,6 +29,8 @@ public class CalendarAdapter {
 	private Activity currAct;
 
 	public List<CheckLine> getCheckLines(Activity curAct) {
+		(new DBHelper(aController
+			    .getApplicationContext())).deleteCalendarCheckLines();
 		this.currAct = curAct;
 		Format df = DateFormat.getDateFormat(aController
 				.getApplicationContext());
@@ -62,7 +66,10 @@ public class CalendarAdapter {
 				// ActionBox
 				chkLnNew.setActionbox_id(CALENDAR_ID);
 				chkLnNew.setCalendarId(id);
-
+				
+				(new DBHelper(aController
+					    .getApplicationContext())).createCheckLine(chkLnNew);
+				
 				lstChkLn.add(chkLnNew);
 
 			} while (mCursor.moveToNext());
