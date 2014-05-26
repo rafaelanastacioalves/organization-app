@@ -29,7 +29,7 @@ public class CalendarAdapter {
 				.getApplicationContext());
 		Format tf = DateFormat.getTimeFormat(aController
 				.getApplicationContext());
-
+		Long id = 0L;
 		String title = "N/A";
 		Long start = 0L;
 
@@ -44,6 +44,7 @@ public class CalendarAdapter {
 					title = mCursor.getString(0);
 
 					start = mCursor.getLong(1);
+				
 
 				} catch (Exception e) {
 					// ignore
@@ -98,7 +99,7 @@ public class CalendarAdapter {
 	public Cursor query3() {
 		Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI
 				.buildUpon();
-		Time t = new Time();
+		Time t = new Time(Time.getCurrentTimezone());
 		t.setToNow();
 		String dtStart = Long.toString(t.toMillis(false));
 		t.set(59, 59, 23, t.monthDay, t.month, t.year);

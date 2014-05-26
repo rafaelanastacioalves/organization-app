@@ -65,7 +65,7 @@ public class Controller extends Application {
 		}
 
 		this.actBox = dbHelper.getActionBoxByName(strName);
-		if (strName == getResources().getString(R.string.dbCALENDAR)) {
+		if (strName.equals(getResources().getString(R.string.dbCALENDAR))) {
 
 			calAdp = new CalendarAdapter(actBox.getId(), this);
 			actBox.setCheckLines(calAdp.getCheckLines(actCurrent));
@@ -463,6 +463,7 @@ public class Controller extends Application {
 		crtActivity.startActivity(intent);
 		// DialogFragment dFrag = new AddCheckLineDialog();
 		// dFrag.show(getFragmentManager(), "Add");
+	
 	}
 
 	public void addEvent(Activity crtActivity, CheckLine chkLine) {
@@ -474,6 +475,7 @@ public class Controller extends Application {
 				.setData(Events.CONTENT_URI).putExtra(Events.TITLE, "")
 				.putExtra(Events.DESCRIPTION, chkLine.getText());
 		crtActivity.startActivity(intent);
+		
 	}
 
 }
