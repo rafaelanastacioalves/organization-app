@@ -21,7 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	public static final String LOG = "DBHelper";
 
 	// Database Version
-	public static final int DATABASE_VERSION = 1;
+	public static final int DATABASE_VERSION = 2;
 
 	// Database Name
 	public static final String DATABASE_NAME = "GTDManagerDB";
@@ -52,6 +52,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	public static final String KEY_CHECKLINES_CHECKED = "checked";
 	public static final String KEY_CHECKLINES_UPDATE_TIME = "update_time";
 	public static final String KEY_CHECKLINES_CHECK_TIME = "check_time";
+	public static final String KEY_CHECKLINES_CALENDAR_ID = "calendar_id";
 
 	// Table Create Statements
 	// ACTIONBOXES table create statement
@@ -70,7 +71,8 @@ public class DBHelper extends SQLiteOpenHelper {
 			+ KEY_CHECKLINES_UPDATE_TIME
 			+ " DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,"
 			+ KEY_CHECKLINES_CHECK_TIME + " DATETIME," + KEY_CREATED_AT
-			+ " DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP" + ")";
+			+ " DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,"
+			+ KEY_CHECKLINES_CALENDAR_ID + " INTEGER DEFAULT -1" + ")";
 
 	public DBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -116,6 +118,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		values.put(KEY_CHECKLINES_ACTIONBOX_ID, checkline.getActionbox_id());
 		values.put(KEY_CHECKLINES_ORDER, checkline.getOrder());
 		values.put(KEY_CHECKLINES_CHECKED, checkline.isChecked());
+		values.put(KEY_CHECKLINES_CALENDAR_ID, checkline.getCalendarId());
 
 		if (checkline.getCheck_time() != null)
 			values.put(KEY_CHECKLINES_CHECK_TIME, checkline.getCheck_time()
@@ -208,6 +211,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		values.put(KEY_CHECKLINES_CHECKED, checkline.isChecked());
 		values.put(KEY_CHECKLINES_UPDATE_TIME, (new Date()).toString());
 		values.put(KEY_CREATED_AT, checkline.getCreated_at());
+		values.put(KEY_CHECKLINES_CALENDAR_ID, checkline.getCalendarId());
 
 		if (checkline.getCheck_time() != null)
 			values.put(KEY_CHECKLINES_CHECK_TIME, checkline.getCheck_time()
