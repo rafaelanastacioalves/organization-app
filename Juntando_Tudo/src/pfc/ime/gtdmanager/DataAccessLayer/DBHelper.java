@@ -225,12 +225,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	// delete a checkline
 	public void deleteCheckLine(long id) {
-		
-		
+		//Log.e("lol", "cl id: "+id);
+		//Log.e("lol", "cl: "+getCheckLineById(id).toS());
 		long calendarId = getCheckLineById(id).getCalendarId();
-		if(calendarId != -1){
-			
-		}
+		//if(calendarId != -1){
+
+		//}
 		SQLiteDatabase db = this.getWritableDatabase();
 		//db.delete(TABLE_CHECKLINES, KEY_ID + " = ?",
 				//new String[] { String.valueOf(id) });
