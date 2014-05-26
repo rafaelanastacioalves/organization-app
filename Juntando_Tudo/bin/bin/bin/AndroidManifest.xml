@@ -9,20 +9,20 @@
         android:targetSdkVersion="16" />
 
     <application
-        android:name="pfc.ime.gtdmanager.controller.Controller"
+        android:name="ime.pfc.CheckApp.Business.Controller"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
         <activity
-            android:name="pfc.ime.gtdmanager.main.LoginGoogle"
+            android:name="ime.pfc.CheckApp.Presentation.LoginGoogle"
             android:label="@string/title_activity_login_google"
             android:parentActivityName="@string/title_activity_main_menu"
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
         <activity
-            android:name="pfc.ime.gtdmanager.main.MainMenu"
+            android:name="ime.pfc.CheckApp.Presentation.MainMenu"
             android:label="@string/title_activity_main_menu" 
             >
             <intent-filter>
@@ -34,9 +34,9 @@
                 android:value="com.juntando_tudo.MainMenu" />
         </activity>
         <activity
-            android:name="pfc.ime.gtdmanager.main.Lista"
+            android:name="ime.pfc.CheckApp.Presentation.activity.Lista"
             android:label="@string/title_activity_lista"
-            android:parentActivityName="pfc.ime.gtdmanager.main.MainMenu" >
+            android:parentActivityName="ime.pfc.CheckApp.Presentation.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.juntando_tudo.MainMenu" />
