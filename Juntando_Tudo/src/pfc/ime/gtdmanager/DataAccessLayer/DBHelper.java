@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import pfc.ime.gtdmanager.model.ActionBox;
+import pfc.ime.gtdmanager.model.CalendarAdapter;
 import pfc.ime.gtdmanager.model.CheckLine;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -124,8 +126,10 @@ public class DBHelper extends SQLiteOpenHelper {
 		if (checkline.getCheck_time() != null)
 			values.put(KEY_CHECKLINES_CHECK_TIME, checkline.getCheck_time()
 					.toString());
-
-		return getCheckLineById(db.insert(TABLE_CHECKLINES, null, values));
+		
+		CheckLine aux = getCheckLineById(db.insert(TABLE_CHECKLINES, null, values));
+		Log.e(LOG, "Creating CHECKLINE at: " + aux.toS());
+		return aux;
 	}
 
 	// get checkline by id
@@ -224,13 +228,22 @@ public class DBHelper extends SQLiteOpenHelper {
 	}
 
 	// delete a checkline
-	public void deleteCheckLine(long id) {
+	public void deleteCheckLine(long id,Activity current) {
 		
-		
+		Log.e("lol", "cl id: "+id);
 		long calendarId = getCheckLineById(id).getCalendarId();
-		//if(calendarId != -1){
-			
-		//}
+		if(calendarId != -1){
+			Log.e("lol", "cl id: "+id);
+			String[] selArgs = 
+	    		      new String[]{Long.toString(calendarId)};
+	    		int deleted = 
+	    		      current.getContentResolver().
+	    		            delete(
+	    		               Events.CONTENT_URI, 
+	    		               Events._ID + " = ?", 
+	    		               selArgs);
+	    		Log.e("lol", "Linhas deletadas: "+deleted);
+		}
 		SQLiteDatabase db = this.getWritableDatabase();
 		//db.delete(TABLE_CHECKLINES, KEY_ID + " = ?",
 				//new String[] { String.valueOf(id) });

@@ -67,10 +67,9 @@ public class CalendarAdapter{
 				chkLnNew.setActionbox_id(CALENDAR_ID);
 				chkLnNew.setCalendarId(id);
 				
-				(new DBHelper(aController
-					    .getApplicationContext())).createCheckLine(chkLnNew);
 				
-				lstChkLn.add(chkLnNew);
+				lstChkLn.add((new DBHelper(aController
+					    .getApplicationContext())).createCheckLine(chkLnNew));
 
 			} while (mCursor.moveToNext());
 		}

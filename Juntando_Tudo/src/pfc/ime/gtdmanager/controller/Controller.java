@@ -19,11 +19,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.Application;
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.provider.CalendarContract.Events;
 import android.util.Log;
 import android.widget.ListView;
@@ -41,6 +37,7 @@ public class Controller extends Application {
 	public OtherListAdapter olAdapter;
 	public List<CheckLine> itemData;
 	public List<ActionBox> actBoxData;
+	private Activity act;
 
 	public void setActionBox(ActionBox actBox) {
 
@@ -71,7 +68,7 @@ public class Controller extends Application {
 
 		this.actBox = dbHelper.getActionBoxByName(strName);
 		if (strName.equals(getResources().getString(R.string.dbCALENDAR))) {
-
+			this.act = actCurrent;
 			calAdp = new CalendarAdapter(actBox.getId(), this);
 			actBox.setCheckLines(calAdp.getCheckLines(actCurrent));
 		}
@@ -352,7 +349,6 @@ public class Controller extends Application {
 
 		lstChk.addAll(actBox.getCheckLines());
 		actBox.setCheckLines(lstChk);
-
 	}
 
 	/**
@@ -363,7 +359,9 @@ public class Controller extends Application {
 	 */
 	public void deleteChecklineAt(int position) {
 		// swipelistview.closeAnimate(position );
-		dbHelper.deleteCheckLine(actBox.get(position).getId());
+		Log.e("lol", "cl id: "+actBox.toS());
+		Log.e("lol", "cl id: "+actBox.get(position).toS());
+		dbHelper.deleteCheckLine(actBox.get(position).getId(),act);
 		actBox.getCheckLines().remove(position);
 		itAdapter.notifyDataSetChanged();
 		swipelistview.closeAnimate(position);
