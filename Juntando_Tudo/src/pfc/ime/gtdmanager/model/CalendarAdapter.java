@@ -29,7 +29,6 @@ public class CalendarAdapter {
 				.getApplicationContext());
 		Format tf = DateFormat.getTimeFormat(aController
 				.getApplicationContext());
-		Long id = 0L;
 		String title = "N/A";
 		Long start = 0L;
 
@@ -44,14 +43,12 @@ public class CalendarAdapter {
 					title = mCursor.getString(0);
 
 					start = mCursor.getLong(1);
-				
-
 				} catch (Exception e) {
 					// ignore
 
 				}
 				chkLnNew.setText(title + " on " + df.format(start) + " at "
-						+ tf.format(start));
+						+ tf.format(start) + "ID-->" + id);
 
 				// order
 

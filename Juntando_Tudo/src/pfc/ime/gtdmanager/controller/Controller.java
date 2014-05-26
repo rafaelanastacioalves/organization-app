@@ -19,8 +19,13 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.Application;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.provider.CalendarContract.Events;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.fortysevendeg.swipelistview.SwipeListView;
@@ -463,9 +468,10 @@ public class Controller extends Application {
 		crtActivity.startActivity(intent);
 		// DialogFragment dFrag = new AddCheckLineDialog();
 		// dFrag.show(getFragmentManager(), "Add");
-	
+		
 	}
 
+	
 	public void addEvent(Activity crtActivity, CheckLine chkLine) {
 		Calendar beginTime = Calendar.getInstance();
 		beginTime.set(2012, 0, 19, 7, 30);
