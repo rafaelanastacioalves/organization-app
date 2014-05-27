@@ -3,15 +3,11 @@ package ime.pfc.CheckApp.Data.model;
 import ime.pfc.CheckApp.Business.Controller;
 import ime.pfc.CheckApp.Data.DBHelper;
 
-import java.sql.Date;
 import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.Application;
 import android.content.ContentUris;
 import android.database.Cursor;
 import android.net.Uri;
@@ -19,10 +15,11 @@ import android.provider.CalendarContract;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 
-public class CalendarAdapter{
+public class CalendarAdapter {
 
 	private int CALENDAR_ID;
 	private List<CheckLine> lstChkLn;
+	private StringBuilder calendar_ids = new StringBuilder("(");
 	private Cursor mCursor = null;
 	private static final String[] COLS = new String[] {
 			CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART };
@@ -30,8 +27,6 @@ public class CalendarAdapter{
 	private Activity currAct;
 
 	public List<CheckLine> getCheckLines(Activity curAct) {
-		(new DBHelper(aController
-			    .getApplicationContext())).deleteCalendarCheckLines();
 		this.currAct = curAct;
 		Format df = DateFormat.getDateFormat(aController
 				.getApplicationContext());
@@ -41,9 +36,9 @@ public class CalendarAdapter{
 		Long start = 0L;
 		long id = 2L;
 		mCursor = query5();
-		
-		//if(mCursor == null) return lstChkLn;
-		
+
+		// if(mCursor == null) return lstChkLn;
+
 		if (mCursor.moveToFirst()) {
 			do {
 				// adding to checklines list
@@ -67,16 +62,25 @@ public class CalendarAdapter{
 				// ActionBox
 				chkLnNew.setActionbox_id(CALENDAR_ID);
 				chkLnNew.setCalendarId(id);
-				
-				
-				lstChkLn.add((new DBHelper(aController
-					    .getApplicationContext())).createCheckLine(chkLnNew));
+
+				chkLnNew = (new DBHelper(aController.getApplicationContext()))
+						.updateCalendarCheckLine(chkLnNew);
+
+				calendar_ids.append(chkLnNew.getId());
+				calendar_ids.append(", ");
+
+				lstChkLn.add(chkLnNew);
 
 			} while (mCursor.moveToNext());
 		}
+		calendar_ids.delete(calendar_ids.length() - 2, calendar_ids.length());
+		calendar_ids.append(")");
+		(new DBHelper(aController.getApplicationContext()))
+				.deleteCalendarCheckLines(calendar_ids.toString());
 		return lstChkLn;
 
 	}
+
 	public Cursor query5() {
 		Time t = new Time(Time.getCurrentTimezone());
 		t.setToNow();
@@ -84,28 +88,30 @@ public class CalendarAdapter{
 		t.set(59, 59, 23, 30, t.month, t.year);
 		long dtEnd = t.toMillis(false);
 
-	    
 		mCursor = currAct.getContentResolver().query(
-		CalendarContract.Events.CONTENT_URI, new String[]{ "_id", "title", "description", "dtstart" },
-		"( dtstart > " + dtStart + " and dtend < " + dtEnd + " )", null, "dtstart ASC");
+				CalendarContract.Events.CONTENT_URI,
+				new String[] { "_id", "title", "description", "dtstart" },
+				"( dtstart > " + dtStart + " and dtend < " + dtEnd + " )",
+				null, "dtstart ASC");
 		return mCursor;
 	}
 
-	public Cursor query4(){
-		
+	public Cursor query4() {
+
 		Time t = new Time(Time.getCurrentTimezone());
 		t.setToNow();
-		//long start = t.toMillis(false);
+		// long start = t.toMillis(false);
 		String dtStart = Long.toString(t.toMillis(false));
 		t.set(59, 59, 23, t.monthDay, t.month, t.year);
-		//long end = t.toMillis(false);
+		// long end = t.toMillis(false);
 		String dtEnd = Long.toString(t.toMillis(false));
 		Cursor cursor = currAct.getContentResolver().query(
-				CalendarContract.Events.CONTENT_URI, 
-				new String[]{ "_id", "title", "description", "dtstart" }, 
+				CalendarContract.Events.CONTENT_URI,
+				new String[] { "_id", "title", "description", "dtstart" },
 				"( dtstart > " + dtStart + " and + )", null, "dtstart ASC");
 		return mCursor;
 	}
+
 	public Cursor query2() {
 		mCursor = currAct.getContentResolver().query(
 
