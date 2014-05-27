@@ -83,11 +83,11 @@ public class CalendarAdapter {
 
 	public Cursor query5() {
 		Time t = new Time(Time.getCurrentTimezone());
-		  t.setToNow();
-		  t.set(0, 0, 0, t.monthDay, t.month, t.year);
-		  long dtStart = t.toMillis(true);
-		  t.set(59, 59, 23, 31, t.month, t.year);
-		  long dtEnd = t.toMillis(false);
+		t.setToNow();
+		t.set(0, 0, 0, t.monthDay, t.month, t.year);
+		long dtStart = t.toMillis(true);
+		t.set(59, 59, 23, 31, t.month, t.year);
+		long dtEnd = t.toMillis(false);
 
 		mCursor = currAct.getContentResolver().query(
 				CalendarContract.Events.CONTENT_URI,

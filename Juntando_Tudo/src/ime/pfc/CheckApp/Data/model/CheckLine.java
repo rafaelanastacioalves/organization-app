@@ -14,7 +14,7 @@ public class CheckLine extends Table {
 	boolean checked;
 	String update_time;
 	String check_time;
-	long calendar_id=-1;
+	long calendar_id = -1;
 
 	public String getText() {
 		return text;

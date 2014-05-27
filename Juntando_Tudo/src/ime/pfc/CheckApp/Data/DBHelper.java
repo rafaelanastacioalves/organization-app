@@ -1,7 +1,6 @@
 package ime.pfc.CheckApp.Data;
 
 import ime.pfc.CheckApp.Data.model.ActionBox;
-import ime.pfc.CheckApp.Data.model.CalendarAdapter;
 import ime.pfc.CheckApp.Data.model.CheckLine;
 
 import java.util.ArrayList;
@@ -127,8 +126,9 @@ public class DBHelper extends SQLiteOpenHelper {
 		if (checkline.getCheck_time() != null)
 			values.put(KEY_CHECKLINES_CHECK_TIME, checkline.getCheck_time()
 					.toString());
-		
-		CheckLine aux = getCheckLineById(db.insert(TABLE_CHECKLINES, null, values));
+
+		CheckLine aux = getCheckLineById(db.insert(TABLE_CHECKLINES, null,
+				values));
 		Log.e(LOG, "Creating CHECKLINE at: " + aux.toS());
 		return aux;
 	}
@@ -227,12 +227,13 @@ public class DBHelper extends SQLiteOpenHelper {
 		return db.update(TABLE_CHECKLINES, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(checkline.getId()) });
 	}
-	
+
 	public CheckLine updateCalendarCheckLine(CheckLine checkline) {
 		SQLiteDatabase dbr = this.getReadableDatabase();
 
 		String selectQuery = "SELECT  * FROM " + TABLE_CHECKLINES + " WHERE "
-				+ KEY_CHECKLINES_CALENDAR_ID + " = " + checkline.getCalendarId();
+				+ KEY_CHECKLINES_CALENDAR_ID + " = "
+				+ checkline.getCalendarId();
 
 		Log.e(LOG, selectQuery);
 
@@ -240,15 +241,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
 		if (c != null)
 			c.moveToFirst();
-		
-		if(c.getCount() == 1){
+
+		if (c.getCount() == 1) {
 			CheckLine localckl = new CheckLine(c);
 			SQLiteDatabase db = this.getWritableDatabase();
-			
+
 			checkline.setId(localckl.getId());
 			checkline.setCreated_at(localckl.getCreated_at());
-			
-			ContentValues values = new ContentValues();	
+			checkline.setChecked(localckl.isChecked());
+
+			ContentValues values = new ContentValues();
 			values.put(KEY_ID, checkline.getId());
 			values.put(KEY_CHECKLINES_TEXT, checkline.getText());
 			values.put(KEY_CHECKLINES_ACTIONBOX_ID, checkline.getActionbox_id());
@@ -257,17 +259,16 @@ public class DBHelper extends SQLiteOpenHelper {
 			values.put(KEY_CHECKLINES_UPDATE_TIME, (new Date()).toString());
 			values.put(KEY_CREATED_AT, checkline.getCreated_at());
 			values.put(KEY_CHECKLINES_CALENDAR_ID, checkline.getCalendarId());
-			if (checkline.getCheck_time() != null){
+			if (checkline.getCheck_time() != null) {
 				checkline.setCheck_time(localckl.getCheck_time());
 				values.put(KEY_CHECKLINES_CHECK_TIME, checkline.getCheck_time()
 						.toString());
 			}
 			Log.e(LOG, "Updating CHECKLINE at: " + checkline.toS());
-			
+
 			db.update(TABLE_CHECKLINES, values, KEY_ID + " = ?",
 					new String[] { String.valueOf(checkline.getId()) });
-		}
-		else if(c.getCount() == 0){
+		} else if (c.getCount() == 0) {
 			SQLiteDatabase db = this.getWritableDatabase();
 
 			ContentValues values = new ContentValues();
@@ -280,49 +281,45 @@ public class DBHelper extends SQLiteOpenHelper {
 			if (checkline.getCheck_time() != null)
 				values.put(KEY_CHECKLINES_CHECK_TIME, checkline.getCheck_time()
 						.toString());
-			
-			checkline = getCheckLineById(db.insert(TABLE_CHECKLINES, null, values));
+
+			checkline = getCheckLineById(db.insert(TABLE_CHECKLINES, null,
+					values));
 			Log.e(LOG, "Creating CHECKLINE at: " + checkline.toS());
 		}
 		return checkline;
 	}
 
 	// delete a checkline
-	public void deleteCheckLine(long id,Activity current) {
-		
-		Log.e("lol", "cl id: "+id);
+	public void deleteCheckLine(long id, Activity current) {
+
+		Log.e("lol", "cl id: " + id);
 		long calendarId = getCheckLineById(id).getCalendarId();
-		if(calendarId != -1){
-			Log.e("lol", "cl id: "+id);
-			String[] selArgs = 
-	    		      new String[]{Long.toString(calendarId)};
-	    		int deleted = 
-	    		      current.getContentResolver().
-	    		            delete(
-	    		               Events.CONTENT_URI, 
-	    		               Events._ID + " = ?", 
-	    		               selArgs);
-	    		Log.e("lol", "Linhas deletadas: "+deleted);
+		if (calendarId != -1) {
+			Log.e("lol", "cl id: " + id);
+			String[] selArgs = new String[] { Long.toString(calendarId) };
+			int deleted = current.getContentResolver().delete(
+					Events.CONTENT_URI, Events._ID + " = ?", selArgs);
+			Log.e("lol", "Linhas deletadas: " + deleted);
 		}
 		SQLiteDatabase db = this.getWritableDatabase();
-		//db.delete(TABLE_CHECKLINES, KEY_ID + " = ?",
-				//new String[] { String.valueOf(id) });
+		// db.delete(TABLE_CHECKLINES, KEY_ID + " = ?",
+		// new String[] { String.valueOf(id) });
 		db.delete(TABLE_CHECKLINES, KEY_ID + " = " + String.valueOf(id), null);
-		
-		
+
 	}
-	
+
 	// delete all calendar checklines
-	   public void deleteCalendarCheckLines() {
-	    SQLiteDatabase db = this.getWritableDatabase();
-	    db.delete(TABLE_CHECKLINES, KEY_CHECKLINES_CALENDAR_ID + " > 0", null);  
-	   }
-	   
+	public void deleteCalendarCheckLines() {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE_CHECKLINES, KEY_CHECKLINES_CALENDAR_ID + " > 0", null);
+	}
+
 	// delete all calendar checklines not in notin
-	   public void deleteCalendarCheckLines(String notin) {
-	    SQLiteDatabase db = this.getWritableDatabase();
-	    db.delete(TABLE_CHECKLINES, KEY_CHECKLINES_CALENDAR_ID + " > 0 AND " + KEY_ID + " NOT IN " + notin, null);
-	   }
+	public void deleteCalendarCheckLines(String notin) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE_CHECKLINES, KEY_CHECKLINES_CALENDAR_ID + " > 0 AND "
+				+ KEY_ID + " NOT IN " + notin, null);
+	}
 
 	// ------------------------ ACTIONBOXES table methods ----------------//
 

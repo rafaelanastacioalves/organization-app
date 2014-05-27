@@ -360,9 +360,9 @@ public class Controller extends Application {
 	 */
 	public void deleteChecklineAt(int position) {
 		// swipelistview.closeAnimate(position );
-		Log.e("lol", "cl id: "+actBox.toS());
-		Log.e("lol", "cl id: "+actBox.get(position).toS());
-		dbHelper.deleteCheckLine(actBox.get(position).getId(),act);
+		Log.e("lol", "cl id: " + actBox.toS());
+		Log.e("lol", "cl id: " + actBox.get(position).toS());
+		dbHelper.deleteCheckLine(actBox.get(position).getId(), act);
 		actBox.getCheckLines().remove(position);
 		itAdapter.notifyDataSetChanged();
 		swipelistview.closeAnimate(position);
@@ -469,7 +469,6 @@ public class Controller extends Application {
 		// dFrag.show(getFragmentManager(), "Add");
 	}
 
-	
 	public void addEvent(Activity crtActivity, CheckLine chkLine) {
 		Calendar beginTime = Calendar.getInstance();
 		beginTime.set(2012, 0, 19, 7, 30);
@@ -479,7 +478,7 @@ public class Controller extends Application {
 				.setData(Events.CONTENT_URI).putExtra(Events.TITLE, "")
 				.putExtra(Events.DESCRIPTION, chkLine.getText());
 		crtActivity.startActivity(intent);
-		
+
 	}
 
 }
