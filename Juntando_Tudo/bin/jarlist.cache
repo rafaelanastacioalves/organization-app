@@ -1,10 +1,5 @@
 # cache for current jar dependency. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-<<<<<<< HEAD
 1401153699901 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\Users\Wilson\Documents\GitHub\codigo\Juntando_Tudo\libs\android-support-v4.jar
 1401153700184 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\Users\Wilson\Documents\GitHub\codigo\swipelistview\libs\android-support-v4.jar
-=======
-1401156010026 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\Users\Alan\Documents\GitHub\codigo\swipelistview\libs\android-support-v4.jar
-1401156009245 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\Users\Alan\Documents\GitHub\codigo\Juntando_Tudo\libs\android-support-v4.jar
->>>>>>> 25d10e3917d33b8555669434aec69f00807dc657
