@@ -431,7 +431,7 @@ public class Controller extends Application {
 
 		dbHelper.createActionBox(tempActBox);
 		actBoxData.clear();
-		actBoxData.addAll(dbHelper.getAllActionBoxes());
+		actBoxData.addAll(dbHelper.getAllAdditionalActionBoxes());
 		olAdapter.notifyDataSetChanged();
 
 	}

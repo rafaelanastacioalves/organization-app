@@ -33,13 +33,13 @@
         </activity>
         <activity
             android:name="ime.pfc.CheckApp.Presentation.activity.Lista"         android:label="@string/title_activity_lista"
-            android:parentActivityName="pfc.ime.gtdmanager.Presentation.activity.MainMenu" >
+            android:parentActivityName="ime.pfc.CheckApp.Presentation.activity.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.juntando_tudo.MainMenu" />
         </activity>
-        <activity android:name="ime.pfc.CheckApp.Presentation.activity.OtherListsandroid" android:label="@string/title_activity_other_list" android:parentActivityName="pfc.ime.gtdmanager.Presentation.activity.MainMenu"></activity>
-        <activity android:name = "ime.pfc.CheckApp.Presentation.activity.Lista_Calendar" android:label="@string/title_activity_lista_calendar" android:parentActivityName="pfc.ime.gtdmanager.Presentation.activity.MainMenu"></activity>
+        <activity android:name="ime.pfc.CheckApp.Presentation.activity.OtherLists" android:label="@string/title_activity_other_list" android:parentActivityName="ime.pfc.CheckApp.Presentation.activity.MainMenu"></activity>
+        <activity android:name = "ime.pfc.CheckApp.Presentation.activity.Lista_Calendar" android:label="@string/title_activity_lista_calendar" android:parentActivityName="ime.pfc.CheckApp.Presentation.activity.MainMenu"></activity>
         
     </application>
 
