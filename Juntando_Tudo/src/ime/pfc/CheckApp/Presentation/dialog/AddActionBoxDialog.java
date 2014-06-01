@@ -38,10 +38,10 @@ public class AddActionBoxDialog extends DialogFragment {
 						// get user input and set it to result
 						// edit text
 						String result = String.valueOf(userInput.getText());
-						Toast.makeText(
-								(Controller) (getActivity())
-										.getApplicationContext(), result + "lalalal",
-								Toast.LENGTH_SHORT).show();
+//						Toast.makeText(
+//								(Controller) (getActivity())
+//										.getApplicationContext(), result,
+//								Toast.LENGTH_SHORT).show();
 						aController.addActionBox(result);
 						// aController.persist();
 						// aController.loadActionBox();
