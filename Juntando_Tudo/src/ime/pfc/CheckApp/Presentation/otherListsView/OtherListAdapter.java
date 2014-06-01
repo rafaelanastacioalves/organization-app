@@ -72,8 +72,8 @@ public class OtherListAdapter extends ArrayAdapter<ActionBox> {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Toast.makeText(context, "Button 1 Clicked", Toast.LENGTH_SHORT)
-						.show();
+//				Toast.makeText(context, "Button 1 Clicked", Toast.LENGTH_SHORT)
+//						.show();
 				int position = (Integer) v.getTag();
 				aController.deleteActionBoxAt(position);
 
@@ -85,8 +85,8 @@ public class OtherListAdapter extends ArrayAdapter<ActionBox> {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Toast.makeText(context, "Button 2 Clicked", Toast.LENGTH_SHORT)
-						.show();
+//				Toast.makeText(context, "Button 2 Clicked", Toast.LENGTH_SHORT)
+//						.show();
 				int position = (Integer) v.getTag();
 				// aController.shareChecklineAt(position,(Activity)getContext());
 			}
@@ -96,7 +96,7 @@ public class OtherListAdapter extends ArrayAdapter<ActionBox> {
 
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(context, "Button 3 Clicked", Toast.LENGTH_SHORT);
+//				Toast.makeText(context, "Button 3 Clicked", Toast.LENGTH_SHORT);
 				// DialogFragment dfChange = new ChangeDialog();
 				// dfChange.show(((Activity)getContext()).getFragmentManager() ,
 				// "change");

@@ -88,8 +88,8 @@ public class ItemAdapter extends ArrayAdapter<CheckLine> {
 
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(context, "Button 1 Clicked", Toast.LENGTH_SHORT)
-						.show();
+//				Toast.makeText(context, "Button 1 Clicked", Toast.LENGTH_SHORT)
+//						.show();
 				int position = (Integer) v.getTag();
 				aController.deleteChecklineAt(position);
 
@@ -100,8 +100,8 @@ public class ItemAdapter extends ArrayAdapter<CheckLine> {
 
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(context, "Button 2 Clicked", Toast.LENGTH_SHORT)
-						.show();
+//				Toast.makeText(context, "Button 2 Clicked", Toast.LENGTH_SHORT)
+//						.show();
 				int position = (Integer) v.getTag();
 				aController.shareChecklineAt(position, (Activity) getContext());
 			}
@@ -111,7 +111,7 @@ public class ItemAdapter extends ArrayAdapter<CheckLine> {
 
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(context, "Button 3 Clicked", Toast.LENGTH_SHORT);
+//				Toast.makeText(context, "Button 3 Clicked", Toast.LENGTH_SHORT);
 				int position = (Integer) v.getTag();
 
 				DialogFragment dfChange = new ChangeDialog();
@@ -141,24 +141,24 @@ public class ItemAdapter extends ArrayAdapter<CheckLine> {
 			if (chk.isChecked()) {
 
 				// tbTxt.setTextAppearance(context, R.style.MyListTitleChecked);
-				Toast.makeText(
-						context,
-						"Checbox de ID "
-								+ String.valueOf(data.get(position).getId())
-								+ " marcado! Seu texto Ž: " + tbTxt.getText(),
-						Toast.LENGTH_SHORT).show();
+//				Toast.makeText(
+//						context,
+//						"Checbox de ID "
+//								+ String.valueOf(data.get(position).getId())
+//								+ " marcado! Seu texto Ž: " + tbTxt.getText(),
+//						Toast.LENGTH_SHORT).show();
 				data.get(position).setChecked(true);
 				// if(!selecionados.contains(chlnID))
 				// selecionados.add(chlnID);
 			} else {
 				tbTxt.setTextAppearance(context, R.style.MyListTitle);
 				// tbTxt.setTextColor(Color.BLACK);
-				Toast.makeText(
-						context,
-						"Checbox de ID "
-								+ String.valueOf(data.get(position).getId())
-								+ " desmarcado!Seu texto Ž: " + tbTxt.getText(),
-						Toast.LENGTH_SHORT).show();
+//				Toast.makeText(
+//						context,
+//						"Checbox de ID "
+//								+ String.valueOf(data.get(position).getId())
+//								+ " desmarcado!Seu texto Ž: " + tbTxt.getText(),
+//						Toast.LENGTH_SHORT).show();
 				data.get(position).setChecked(false);
 				// if(selecionados.contains(chlnID))
 				// selecionados.remove(Integer.valueOf(chlnID));
