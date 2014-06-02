@@ -22,7 +22,7 @@ public class MainMenu extends Activity {
 		setContentView(R.layout.activity_main_menu);
 		aController = (Controller) getApplicationContext();
 		if (aController.deviceHasGoogleAccount()) {
-			mostrarMSG("Você tem uma conta Google!");
+			mostrarMSG("Voce tem uma conta Google!");
 
 		} else {
 			Intent addAccountIntent = new Intent(

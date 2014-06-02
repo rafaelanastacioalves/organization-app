@@ -78,8 +78,6 @@ public class CalendarAdapter {
 		(new DBHelper(aController.getApplicationContext()))
 				.deleteCalendarCheckLines(calendar_ids.toString());
 		
-		aController.itAdapter.notifyDataSetChanged();
-		
 		return lstChkLn;
 	}
 
