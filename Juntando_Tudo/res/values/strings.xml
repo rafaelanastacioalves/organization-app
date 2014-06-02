@@ -3,7 +3,7 @@
 
     <string name="app_name">CheckApp</string>
     <string name="action_settings">Configurações</string>
-    <string name="title_activity_main_menu">Menu Principal</string>
+    <string name="title_activity_main_menu">CheckApp</string>
     <string name="title_activity_lista">Lista</string>
     <string name="title_activity_lista_calendar">Lista de Calendário</string>
     <string name="title_activity_other_list">Outras Listas</string>
@@ -13,6 +13,7 @@
     <string name="share_using">Compartilhar usando:</string>
     <string name="change_list_select">Selecione uma lista</string>
     
+    <string name="menu_add_google_user">Adicionar conta Google</string>
     
     <!-- Default Lists -->
     <string name="INBOX">Caixa de Entrada</string>

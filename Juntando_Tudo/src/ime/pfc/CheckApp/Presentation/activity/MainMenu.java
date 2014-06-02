@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,7 +22,7 @@ public class MainMenu extends Activity {
 		setContentView(R.layout.activity_main_menu);
 		aController = (Controller) getApplicationContext();
 		if (aController.deviceHasGoogleAccount()) {
-			mostrarMSG("VocÍ tem uma conta Google!");
+			mostrarMSG("Você tem uma conta Google!");
 
 		} else {
 			Intent addAccountIntent = new Intent(
@@ -40,6 +41,25 @@ public class MainMenu extends Activity {
 		getMenuInflater().inflate(R.menu.main_menu, menu);
 		return true;
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected (MenuItem item){
+		switch (item.getItemId()) {
+		case R.id.add_Google_User:
+			Intent addAccountIntent = new Intent(
+					android.provider.Settings.ACTION_ADD_ACCOUNT)
+					.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			addAccountIntent.putExtra(Settings.EXTRA_ACCOUNT_TYPES,
+					new String[] { "com.google" });
+			this.startActivity(addAccountIntent);
+			break;
+
+		default:
+			break;
+		}
+		return true;
+	}
+
 
 	public void listar(View v) {
 		String sNome = getResources().getString(v.getId());

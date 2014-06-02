@@ -52,8 +52,7 @@ public class OtherListAdapter extends ArrayAdapter<ActionBox> {
 					.findViewById(R.id.example_itemname);
 			holder.itemText.setTextAppearance(context, R.style.MyListTitle);
 			holder.button1 = (ImageButton) row.findViewById(R.id.swipe_delete);
-			holder.button2 = (ImageButton) row.findViewById(R.id.swipe_share);
-			holder.button3 = (Button) row.findViewById(R.id.swipe_button3);
+			
 			row.setTag(holder);
 		} else {
 			holder = (NewsHolder) row.getTag();
@@ -62,8 +61,7 @@ public class OtherListAdapter extends ArrayAdapter<ActionBox> {
 		itemdata = data.get(position);
 
 		holder.button1.setTag(position);
-		holder.button2.setTag(position);
-		holder.button3.setTag(position);
+		
 
 		holder.itemText.setText(itemdata.getName());
 
@@ -80,29 +78,7 @@ public class OtherListAdapter extends ArrayAdapter<ActionBox> {
 			}
 		});
 
-		holder.button2.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-//				Toast.makeText(context, "Button 2 Clicked", Toast.LENGTH_SHORT)
-//						.show();
-				int position = (Integer) v.getTag();
-				// aController.shareChecklineAt(position,(Activity)getContext());
-			}
-		});
-
-		holder.button3.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-//				Toast.makeText(context, "Button 3 Clicked", Toast.LENGTH_SHORT);
-				// DialogFragment dfChange = new ChangeDialog();
-				// dfChange.show(((Activity)getContext()).getFragmentManager() ,
-				// "change");
-			}
-		});
-
+		
 		return row;
 
 	}
@@ -116,8 +92,7 @@ public class OtherListAdapter extends ArrayAdapter<ActionBox> {
 
 		TextView itemText;
 		ImageButton button1;
-		ImageButton button2;
-		Button button3;
+		
 
 	}
 

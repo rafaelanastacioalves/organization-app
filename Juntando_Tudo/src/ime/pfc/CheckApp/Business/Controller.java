@@ -112,6 +112,10 @@ public class Controller extends Application {
 		setOtherLists();
 		return actBoxData;
 	}
+	public void reloadActionBox() {
+		this.actBox.getCheckLines().clear();
+		this.actBox.getCheckLines().addAll(dbHelper.getAllToDosByTag(this.actBox.getId()));
+	}
 
 	public void setOtherLists() {
 		if (dbHelper == null) {
@@ -153,7 +157,8 @@ public class Controller extends Application {
 			chkLnNew.setActionbox_id(actBoxDestination.getId());
 
 			dbHelper.createCheckLine(chkLnNew);
-
+			reloadActionBox();
+			itAdapter.notifyDataSetChanged();
 		}
 
 	}
