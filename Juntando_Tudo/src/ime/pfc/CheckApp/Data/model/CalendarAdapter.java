@@ -77,8 +77,10 @@ public class CalendarAdapter {
 		calendar_ids.append(")");
 		(new DBHelper(aController.getApplicationContext()))
 				.deleteCalendarCheckLines(calendar_ids.toString());
+		
+		aController.itAdapter.notifyDataSetChanged();
+		
 		return lstChkLn;
-
 	}
 
 	public Cursor query5() {
