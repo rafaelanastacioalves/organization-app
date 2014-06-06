@@ -72,7 +72,7 @@ public class Controller extends Application {
 			this.act = actCurrent;
 			calAdp = new CalendarAdapter(actBox.getId(), this);
 			actBox.setCheckLines(calAdp.getCheckLines(actCurrent));
-			itAdapter.notifyDataSetChanged();
+			
 		}
 	}
 
