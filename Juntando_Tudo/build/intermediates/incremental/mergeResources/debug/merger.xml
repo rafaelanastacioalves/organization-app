@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="unspecified" >
+        <source path="/Users/rafaelanastacioalves/GitHub/codigo/build/intermediates/exploded-aar/codigo/swipelistview/unspecified/res" >
+            <file
+                path="/Users/rafaelanastacioalves/GitHub/codigo/build/intermediates/exploded-aar/codigo/swipelistview/unspecified/res/values/values.xml"
+                qualifiers="" >
+                <declare-styleable name="SwipeListView" >
+                    <attr
+                        name="swipeOpenOnLongPress"
+                        format="boolean" />
+                    <attr
+                        name="swipeAnimationTime"
+                        format="integer" />
+                    <attr
+                        name="swipeOffsetLeft"
+                        format="dimension" />
+                    <attr
+                        name="swipeOffsetRight"
+                        format="dimension" />
+                    <attr
+                        name="swipeCloseAllItemsWhenMoveList"
+                        format="boolean" />
+                    <attr
+                        name="swipeFrontView"
+                        format="reference" />
+                    <attr
+                        name="swipeBackView"
+                        format="reference" />
+                    <attr
+                        name="swipeMode"
+                        format="enum" >
+                        <enum
+                            name="none"
+                            value="0" />
+                        <enum
+                            name="both"
+                            value="1" />
+                        <enum
+                            name="right"
+                            value="2" />
+                        <enum
+                            name="left"
+                            value="3" />
+                    </attr>
+                    <attr
+                        name="swipeActionLeft"
+                        format="enum" >
+                        <enum
+                            name="reveal"
+                            value="0" />
+                        <enum
+                            name="dismiss"
+                            value="1" />
+                        <enum
+                            name="choice"
+                            value="2" />
+                    </attr>
+                    <attr
+                        name="swipeActionRight"
+                        format="enum" >
+                        <enum
+                            name="reveal"
+                            value="0" />
+                        <enum
+                            name="dismiss"
+                            value="1" />
+                        <enum
+                            name="choice"
+                            value="2" />
+                    </attr>
+                    <attr
+                        name="swipeDrawableChecked"
+                        format="reference" />
+                    <attr
+                        name="swipeDrawableUnchecked"
+                        format="reference" />
+                </declare-styleable>
+            </file>
+        </source>
+    </dataSet>
+    <dataSet config="main" >
+        <source path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res" >
+            <file
+                name="slide"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/anim/slide.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="slide2"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/anim/slide2.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="choice_selected"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable/choice_selected.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="choice_unselected"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable/choice_unselected.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ib_other"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable/ib_other.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_action_agenda"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable/ic_action_agenda.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_action_delegados"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable/ic_action_delegados.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_action_inbox"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable/ic_action_inbox.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_action_incubar"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable/ic_action_incubar.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_action_maybe"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable/ic_action_maybe.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_action_next_action"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable/ic_action_next_action.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable/ic_launcher.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="background_back"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/background_back.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="background_front"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/background_front.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ib_other"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ib_other.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_agenda"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_action_agenda.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_delegados"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_action_delegados.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_discard"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_action_discard.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_forward"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_action_forward.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_inbox"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_action_inbox.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_incubar"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_action_incubar.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_maybe"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_action_maybe.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_new"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_action_new.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_next_action"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_action_next_action.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_share"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_action_share.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-hdpi/ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ib_other"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ib_other.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_agenda"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_action_agenda.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_delegados"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_action_delegados.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_discard"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_action_discard.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_forward"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_action_forward.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_inbox"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_action_inbox.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_incubar"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_action_incubar.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_maybe"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_action_maybe.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_new"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_action_new.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_next_action"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_action_next_action.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_share"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_action_share.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ib_other"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ib_other.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_agenda"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_action_agenda.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_delegados"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_action_delegados.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_discard"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_action_discard.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_forward"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_action_forward.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_inbox"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_action_inbox.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_incubar"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_action_incubar.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_maybe"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_action_maybe.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_new"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_action_new.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_next_action"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_action_next_action.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_share"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_action_share.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ib_other"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ib_other.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_agenda"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_action_agenda.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_delegados"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_action_delegados.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_discard"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_action_discard.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_forward"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_action_forward.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_inbox"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_action_inbox.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_incubar"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_action_incubar.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_maybe"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_action_maybe.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_new"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_action_new.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_next_action"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_action_next_action.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_share"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_action_share.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/drawable-xxhdpi/ic_launcher.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="activity_lista_calendar"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/activity_lista_calendar.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_login_google"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/activity_login_google.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_main_menu"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/activity_main_menu.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="add"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/add.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="custom_row"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/custom_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="custom_row_lists"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/custom_row_lists.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="lista"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/lista.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="outras_listas"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/outras_listas.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="lista"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/menu/lista.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="login_google"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/menu/login_google.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="main"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/menu/main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="main_menu"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/menu/main_menu.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="menu_calendar"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/menu/menu_calendar.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="other_lists"
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/menu/other_lists.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/values/dimens.xml"
+                qualifiers="" >
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+            </file>
+            <file
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/values/strings.xml"
+                qualifiers="" >
+                <string name="title_activity_lista_calendar" >Lista de Calendário
+                </string>
+                <string name="INBOX" >Caixa de Entrada
+                </string>
+                <string name="action_settings" >Configurações
+                </string>
+                <string name="CALENDAR" >Calendário
+                </string>
+                <string name="dbINBOX" >Caixa de Entrada
+                </string>
+                <string name="OK" >OK
+                </string>
+                <string name="title_activity_lista" >Lista
+                </string>
+                <string name="dbMAYBE_LATER" >Talvez
+                </string>
+                <string name="INCUBATOR" >Incubadora
+                </string>
+                <string name="Cancel" >Cancelar
+                </string>
+                <string name="dbCALENDAR" >Calendário
+                </string>
+                <string name="share_using" >Compartilhar usando:
+                </string>
+                <string name="dbNEXT_ACTIONS" >Próximas Ações
+                </string>
+                <string name="title_activity_other_list" >Outras Listas
+                </string>
+                <string name="change_list_select" >Selecione uma lista
+                </string>
+                <string name="title_activity_main_menu" >CheckApp
+                </string>
+                <string name="MAYBE_LATER" >Talvez
+                </string>
+                <string name="menu_add_google_user" >Adicionar conta Google
+                </string>
+                <string name="NEXT_ACTIONS" >Próximas Ações
+                </string>
+                <string name="DELEGATED" >Delegados
+                </string>
+                <string name="dbDELEGATED" >Delegados
+                </string>
+                <string name="add" >Adicionar
+                </string>
+                <string name="dbOTHER" >Outros
+                </string>
+                <string name="app_name" >CheckApp
+                </string>
+                <string name="dbINCUBATOR" >Incubadora
+                </string>
+            </file>
+            <file
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/values/strings_activity_login_google.xml"
+                qualifiers="" >
+                <string name="error_field_required" >Campo obrigatório
+                </string>
+                <string name="error_invalid_email" >Email Inválido
+                </string>
+                <string name="login_progress_signing_in" >Entrando...
+                </string>
+                <string name="action_sign_in_register" ><b>
+Sign in
+                    </b>Registre-se
+                </string>
+                <string name="prompt_email" >Email
+                </string>
+                <string name="title_activity_login_google" >Usuário Google
+                </string>
+                <string name="action_sign_in_short" >Entrar
+                </string>
+                <string name="prompt_password" >Senha
+                </string>
+                <string name="error_incorrect_password" >Senha incorreta
+                </string>
+                <string name="action_forgot_password" >Recuperar Senha Perdida
+                </string>
+                <string name="error_invalid_password" >Senha muito pequena
+                </string>
+            </file>
+            <file
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/values/styles.xml"
+                qualifiers="" >
+
+                <style name="MyListTitleChecked" >
+                    <item name="android:paddingBottom">
+8dp
+                    </item>
+                    <item name="android:textSize">
+17sp
+                    </item>
+                    <item name="android:textStyle">
+bold
+                    </item>
+                    <item name="android:textColor">
+@android:color/white
+                    </item>
+                    <!-- <item name="android:maxLines">2</item> -->
+                    <item name="android:ellipsize">
+end
+                    </item>
+                </style>
+
+                <style name="MyListButtonAction" >
+                    <item name="android:layout_margin">
+5dp
+                    </item>
+                    <item name="android:layout_width">
+80dp
+                    </item>
+                    <item name="android:layout_height">
+30dp
+                    </item>
+                </style>
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style name="MyListBackContent" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:background">
+@drawable/background_back
+                    </item>
+                    <item name="android:gravity">
+right
+                    </item>
+                </style>
+
+                <style name="MyListImageButtonAction" >
+                    <item name="android:background">
+@android:color/transparent
+                    </item>
+                    <item name="android:layout_margin">
+5dp
+                    </item>
+                    <item name="android:layout_width">
+80dp
+                    </item>
+                    <item name="android:layout_height">
+30dp
+                    </item>
+                    <item name="android:gravity">
+center_vertical
+                    </item>
+                </style>
+
+                <style name="MyListFrontContent" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:background">
+@drawable/background_front
+                    </item>
+                    <item name="android:padding">
+8dp
+                    </item>
+                </style>
+
+                <style name="MyListTitle" >
+                    <item name="android:paddingBottom">
+8dp
+                    </item>
+                    <item name="android:textSize">
+17sp
+                    </item>
+                    <item name="android:textStyle">
+bold
+                    </item>
+                    <item name="android:textColor">
+@android:color/black
+                    </item>
+
+                    <!-- <item name="android:maxLines">2</item> -->
+                    <item name="android:ellipsize">
+end
+                    </item>
+                </style>
+
+                <style name="MyListImage" >
+                    <item name="android:layout_width">
+28dp
+                    </item>
+                    <item name="android:layout_height">
+24dp
+                    </item>
+                    <item name="android:scaleGravity">
+fill
+                    </item>
+                    <item name="android:layout_marginRight">
+10dp
+                    </item>
+                    <item name="android:scaleX">
+1.3
+                    </item>
+                    <item name="android:scaleY">
+1.3
+                    </item>
+                </style>
+
+                <style name="LoginFormContainer" >
+                    <item name="android:layout_width">
+match_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:padding">
+16dp
+                    </item>
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/values-large/styles.xml"
+                qualifiers="large-v4" >
+
+                <style name="LoginFormContainer" >
+                    <item name="android:layout_width">
+400dp
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:layout_gravity">
+center
+                    </item>
+                    <item name="android:padding">
+16dp
+                    </item>
+                </style>
+            </file>
+            <file
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/values-sw720dp-land/dimens.xml"
+                qualifiers="sw720dp-land-v13" >
+                <dimen name="activity_horizontal_margin" >128dp
+                </dimen>
+            </file>
+            <file
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/values-v11/styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/values-v14/styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+        </source>
+        <source path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/build/generated/res/rs/debug" />
+        <source path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/build/generated/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/build-types/debug/res" />
+    </dataSet>
+
+</merger>

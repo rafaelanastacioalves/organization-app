@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:id="@+id/back"
+            android:tag="back"
+            style="@style/MyListBackContent"
+            >
+
+       
+            
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/swipe_delete"
+                android:src= "@drawable/ic_action_discard"
+                style="@style/MyListImageButtonAction"/>
+        
+               
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/swipe_share"
+                style="@style/MyListImageButtonAction"
+                android:src= "@drawable/ic_action_share"
+                />
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/swipe_forward"
+                style="@style/MyListImageButtonAction"
+                android:src="@drawable/ic_action_forward"
+                />
+
+    </LinearLayout>
+     <RelativeLayout
+            android:orientation="vertical"
+            android:id="@+id/front"
+            android:tag="front"
+            style="@style/MyListFrontContent">
+
+        <CheckBox 
+                style="@style/MyListImage"
+                android:id="@+id/example_image"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/example_image"
+                android:id="@+id/example_itemname"/>
+        <!-- style="@style/MyListTitle" -->
+                
+
+
+    </RelativeLayout>
+
+</FrameLayout><!-- From: file:/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/custom_row.xml -->

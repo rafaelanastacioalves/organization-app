@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.juntando_tudo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <application
+        android:name="ime.pfc.CheckApp.Business.Controller"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="ime.pfc.CheckApp.Presentation.activity.MainMenu"
+            android:label="@string/title_activity_main_menu" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.juntando_tudo.MainMenu" />
+        </activity>
+        <activity
+            android:name="ime.pfc.CheckApp.Presentation.activity.Lista"
+            android:label="@string/title_activity_lista"
+            android:parentActivityName="ime.pfc.CheckApp.Presentation.activity.MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.juntando_tudo.MainMenu" />
+        </activity>
+        <activity
+            android:name="ime.pfc.CheckApp.Presentation.activity.OtherLists"
+            android:label="@string/title_activity_other_list"
+            android:parentActivityName="ime.pfc.CheckApp.Presentation.activity.MainMenu" />
+        <activity
+            android:name="ime.pfc.CheckApp.Presentation.activity.Lista_Calendar"
+            android:label="@string/title_activity_lista_calendar"
+            android:parentActivityName="ime.pfc.CheckApp.Presentation.activity.MainMenu" />
+    </application>
+
+</manifest>

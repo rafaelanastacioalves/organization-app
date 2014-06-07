@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="unspecified" >
+        <source path="/Users/rafaelanastacioalves/GitHub/codigo/build/intermediates/exploded-aar/codigo/swipelistview/unspecified/assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/build-types/debug/assets" />
+    </dataSet>
+
+</merger>

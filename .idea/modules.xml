@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Juntando_Tudo/Juntando_Tudo.iml" filepath="$PROJECT_DIR$/Juntando_Tudo/Juntando_Tudo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codigo.iml" filepath="$PROJECT_DIR$/codigo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swipelistview/swipelistview.iml" filepath="$PROJECT_DIR$/swipelistview/swipelistview.iml" />
+    </modules>
+  </component>
+</project>
+

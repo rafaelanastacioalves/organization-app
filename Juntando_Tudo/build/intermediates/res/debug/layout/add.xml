@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+<!--     <Button -->
+<!--         android:id="@+id/add_ok" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignParentLeft="true" -->
+<!--         android:layout_below="@+id/item_new" -->
+<!--         android:layout_marginLeft="60dp" -->
+<!--         android:text="@string/add" /> -->
+
+<!--     <Button -->
+<!--         android:id="@+id/add_cancel" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignBaseline="@+id/add_ok" -->
+<!--         android:layout_alignBottom="@+id/add_ok" -->
+<!--         android:layout_alignParentRight="true" -->
+<!--         android:layout_marginRight="51dp" -->
+<!--         android:text="@string/Cancel" /> -->
+
+    <EditText
+        android:id="@+id/etItem_new"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+</RelativeLayout>
+<!-- From: file:/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/res/layout/add.xml -->

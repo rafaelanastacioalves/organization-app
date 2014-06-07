@@ -52,8 +52,8 @@ public class CalendarAdapter {
 					// ignore
 
 				}
-				chkLnNew.setText(title + " on ---------- " + df.format(start) + " "
-						+ tf.format(start) + "ID ");
+				chkLnNew.setText(title + " on  " + df.format(start) + " "
+						+ tf.format(start));
 
 				// order
 
@@ -77,8 +77,8 @@ public class CalendarAdapter {
 		calendar_ids.append(")");
 		(new DBHelper(aController.getApplicationContext()))
 				.deleteCalendarCheckLines(calendar_ids.toString());
+		
 		return lstChkLn;
-
 	}
 
 	public Cursor query5() {

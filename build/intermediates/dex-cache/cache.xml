@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/build/intermediates/pre-dexed/debug/nineoldandroids-2.4.0-8fdf4a9730eb15cb87adb0d583c2f40e6470fd8d.jar"
+        jar="/Users/rafaelanastacioalves/GitHub/codigo/build/intermediates/exploded-aar/codigo/swipelistview/unspecified/libs/nineoldandroids-2.4.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="59f19e43354d32de831379c23ce03bb259a4c2b7"/>
+    <item
+        dex="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/build/intermediates/pre-dexed/debug/android-support-v4-7d647398643741a0b762e37b9727863c87fb5c0e.jar"
+        jar="/Users/rafaelanastacioalves/GitHub/codigo/build/intermediates/exploded-aar/codigo/swipelistview/unspecified/libs/android-support-v4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="5896b0a4e377ac4242eb2bc785220c1c4fc052f4"/>
+    <item
+        dex="/Users/rafaelanastacioalves/GitHub/codigo/Juntando_Tudo/build/intermediates/pre-dexed/debug/classes-4ad5406e0513031e531a37dc9b672d36d2ce0a46.jar"
+        jar="/Users/rafaelanastacioalves/GitHub/codigo/build/intermediates/exploded-aar/codigo/swipelistview/unspecified/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="2e12e631f36dc8e2f26001c3efea1576d9c7feac"/>
+
+</pre-dex-items>
