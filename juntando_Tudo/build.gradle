@@ -1,0 +1,25 @@
+apply plugin: 'com.android.application'
+
+android {
+
+
+    defaultConfig {
+        applicationId "com.juntando_tudo"
+        minSdkVersion 24
+        buildToolsVersion "26.0.1"
+        targetSdkVersion 26
+        compileSdkVersion 26
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile project(':swipelistview')
+    compile 'com.android.support:support-v4:26.0.0'
+}
