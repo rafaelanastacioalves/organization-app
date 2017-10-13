@@ -1,20 +1,19 @@
 package pfc.ime.gtdmanager.main;
 
-import pfc.ime.gtdmanager.controller.Controller;
-
-import com.juntando_tudo.R;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 
+import pfc.ime.gtdmanager.R;
+import pfc.ime.gtdmanager.controller.Controller;
+
 public class MainMenu extends Activity {
 	
-	 Controller aController; 
+	Controller aController;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

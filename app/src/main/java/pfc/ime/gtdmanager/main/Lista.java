@@ -1,19 +1,9 @@
 package pfc.ime.gtdmanager.main;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import pfc.ime.gtdmanager.controller.Controller;
-import pfc.ime.gtdmanager.model.CheckLine;
-import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
-import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
-import com.fortysevendeg.swipelistview.SwipeListView;
-import com.juntando_tudo.R;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -24,6 +14,17 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
+import com.fortysevendeg.swipelistview.SwipeListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import pfc.ime.gtdmanager.R;
+import pfc.ime.gtdmanager.controller.Controller;
+import pfc.ime.gtdmanager.model.CheckLine;
+import pfc.ime.gtdmanager.swipelistview.ItemAdapter;
 
 public class Lista extends Activity {
 
@@ -38,7 +39,7 @@ public class Lista extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista);
         aController = (Controller ) getApplicationContext();
-        swipelistview=(SwipeListView)findViewById(R.id.example_swipe_lv_list); 
+        swipelistview=(SwipeListView)findViewById(R.id.example_swipe_lv_list);
         itemData=new ArrayList<CheckLine>();
         adapter=new ItemAdapter(this,R.layout.custom_row,itemData);
         

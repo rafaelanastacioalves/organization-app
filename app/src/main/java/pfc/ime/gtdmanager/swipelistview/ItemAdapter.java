@@ -13,10 +13,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.juntando_tudo.R;
-
 import java.util.List;
 
+import pfc.ime.gtdmanager.R;
 import pfc.ime.gtdmanager.controller.Controller;
 import pfc.ime.gtdmanager.model.CheckLine;
 
