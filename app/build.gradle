@@ -4,8 +4,8 @@ android {
 
 
     defaultConfig {
-        applicationId "com.juntando_tudo"
-        minSdkVersion 24
+        applicationId "pfc.ime.gtdmanager"
+        minSdkVersion 14
         buildToolsVersion "26.0.1"
         targetSdkVersion 26
         compileSdkVersion 26

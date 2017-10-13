@@ -1,2 +1,2 @@
 include ':swipelistview'
-include ':juntando_Tudo'
+include ':app'
