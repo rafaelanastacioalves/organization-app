@@ -9,5 +9,11 @@
     <string name="add">Add</string>
     <string name="OK">OK</string>
     <string name="Cancel">Cancel</string>
+    <string name="button_agenda">Agenda</string>
+    <string name="button_next_actions">Próximas ações</string>
+    <string name="button_caixa_de_entrada">Caixa de Entrada</string>
+    <string name="button_delegados">Delegados</string>
+    <string name="button_incubar">Incubar</string>
+    <string name="button_outros">Outros</string>
 
 </resources>

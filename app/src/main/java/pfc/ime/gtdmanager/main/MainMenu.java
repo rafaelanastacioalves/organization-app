@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ImageButton;
 
 import pfc.ime.gtdmanager.R;
 import pfc.ime.gtdmanager.controller.Controller;
@@ -32,7 +31,7 @@ public class MainMenu extends Activity {
 	}
 	
 	public void listar ( View v){
-		ImageButton bTela = (ImageButton) findViewById(v.getId());
+		View bTela = (View) findViewById(v.getId());
 		String sNome = bTela.toString();
 		mostrarMSG(sNome, "Info Button" );
 		Intent iChamaLista = new Intent(this,Lista.class);
