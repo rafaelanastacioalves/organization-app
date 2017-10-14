@@ -1,4 +1,4 @@
-package pfc.ime.gtdmanager.model;
+package ime.pfc.CheckApp.Data.model;
 
 public abstract class Table {
 	int id;
@@ -11,7 +11,7 @@ public abstract class Table {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getCreated_at() {
 		return created_at;
 	}

@@ -4,7 +4,7 @@ android {
 
 
     defaultConfig {
-        applicationId "pfc.ime.gtdmanager"
+        applicationId "ime.pfc.CheckApp"
         minSdkVersion 14
         buildToolsVersion "26.0.1"
         targetSdkVersion 26

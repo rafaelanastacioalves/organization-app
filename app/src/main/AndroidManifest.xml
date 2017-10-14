@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pfc.ime.gtdmanager"
+    package="ime.pfc.CheckApp"
     android:versionCode="1"
     android:versionName="1.0" >
-
-
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.READ_CALENDAR"/>
+	<uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+	
 
     <application
-        android:name="pfc.ime.gtdmanager.controller.Controller"
+        android:name=".Business.Controller"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
+        
         <activity
-            android:name="pfc.ime.gtdmanager.main.LoginGoogle"
-            android:label="@string/title_activity_login_google"
-            android:parentActivityName="@string/title_activity_main_menu"
-            android:windowSoftInputMode="adjustResize|stateVisible" >
-        </activity>
-        <activity
-            android:name="pfc.ime.gtdmanager.main.MainMenu"
+            android:name="ime.pfc.CheckApp.Presentation.activity.MainMenu"
             android:label="@string/title_activity_main_menu" 
             >
             <intent-filter>
@@ -29,16 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter><meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".main.MainMenu" />
+                android:value=".Presentation.activity.MainMenu" />
         </activity>
         <activity
-            android:name="pfc.ime.gtdmanager.main.Lista"
-            android:label="@string/title_activity_lista"
-            android:parentActivityName="pfc.ime.gtdmanager.main.MainMenu" >
+            android:name="ime.pfc.CheckApp.Presentation.activity.Lista"         android:label="@string/title_activity_lista"
+            android:parentActivityName="ime.pfc.CheckApp.Presentation.activity.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".main.MainMenu" />
+                android:value=".Presentation.activity.MainMenu" />
         </activity>
+        <activity android:name="ime.pfc.CheckApp.Presentation.activity.OtherLists" android:label="@string/title_activity_other_list" android:parentActivityName="ime.pfc.CheckApp.Presentation.activity.MainMenu"></activity>
+        <activity android:name = "ime.pfc.CheckApp.Presentation.activity.Lista_Calendar" android:label="@string/title_activity_lista_calendar" android:parentActivityName="ime.pfc.CheckApp.Presentation.activity.MainMenu"></activity>
+        
     </application>
 
 </manifest>
