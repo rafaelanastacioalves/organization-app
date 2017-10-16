@@ -1,6 +1,5 @@
 package ime.pfc.CheckApp.Presentation.activity;
 
-import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import ime.pfc.CheckApp.R;
 
 public class MainMenu extends Activity {
 
-	private static final int CHOOSE_ACCOUNT = 2;
 	Controller aController;
 
 	@Override
@@ -28,10 +26,12 @@ public class MainMenu extends Activity {
 			mostrarMSG("Voce tem uma conta Google!");
 
 		} else {
-			Intent intent = AccountManager.newChooseAccountIntent(null, null,
-					new String[] { "com.google" }, true, null, null,
-					null, null);
-			startActivityForResult(intent, CHOOSE_ACCOUNT);
+			Intent addAccountIntent = new Intent(
+					android.provider.Settings.ACTION_ADD_ACCOUNT)
+					.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			addAccountIntent.putExtra(Settings.EXTRA_ACCOUNT_TYPES,
+					new String[] { "com.google" });
+			this.startActivity(addAccountIntent);
 		}
 		aController.setupBD();
 	}
@@ -48,7 +48,7 @@ public class MainMenu extends Activity {
 		switch (item.getItemId()) {
 		case R.id.add_Google_User:
 			Intent addAccountIntent = new Intent(
-					Settings.ACTION_ADD_ACCOUNT)
+					android.provider.Settings.ACTION_ADD_ACCOUNT)
 					.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			addAccountIntent.putExtra(Settings.EXTRA_ACCOUNT_TYPES,
 					new String[] { "com.google" });
@@ -63,7 +63,7 @@ public class MainMenu extends Activity {
 
 
 	public void listar(View v) {
-		String sNome = getResources().getString(Integer.parseInt(String.valueOf(v.getId())));
+		String sNome = getResources().getString(v.getId());
 		// mostrarMSG(sNome, "Info Button" );
 		aController.goToList((String) v.getTag(), sNome, this);
 
