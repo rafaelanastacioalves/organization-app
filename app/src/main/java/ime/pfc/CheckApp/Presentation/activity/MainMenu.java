@@ -63,7 +63,7 @@ public class MainMenu extends Activity {
 
 
 	public void listar(View v) {
-		String sNome = getResources().getString(v.getId());
+		String sNome = getResources().getString(Integer.parseInt(String.valueOf(v.getId())));
 		// mostrarMSG(sNome, "Info Button" );
 		aController.goToList((String) v.getTag(), sNome, this);
 

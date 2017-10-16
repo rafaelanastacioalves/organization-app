@@ -11,25 +11,26 @@
     tools:context=".main.MainMenu">
 
     <Button
-        android:id="@+id/btIncubar"
+        android:id="@string/dbINCUBATOR"
         android:layout_width="@dimen/button_size_default"
         android:layout_height="@dimen/button_size_default"
-        android:layout_above="@+id/btOther"
+        android:layout_above="@string/dbOTHER"
         android:layout_alignParentLeft="true"
         android:text="@string/button_incubar"
         style="@style/Widget.AppCompat.Button.Colored"
-
+        android:tag="@string/INCUBATOR"
         android:layout_marginBottom="29dp"
         android:layout_marginLeft="20dp"
         android:onClick="listar" />
 
     <Button
-        android:id="@+id/btAgenda"
+        android:id="@string/dbCALENDAR"
         android:layout_width="@dimen/button_size_default"
         android:layout_height="@dimen/button_size_default"
         android:layout_alignParentLeft="true"
         android:text="@string/button_agenda"
         android:layout_alignParentTop="true"
+        android:tag="@string/CALENDAR"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="47dp"
@@ -37,29 +38,31 @@
         android:src="@drawable/ic_action_agenda" />
 
     <Button
-        android:id="@+id/btNextAction"
+        android:id="@string/dbNEXT_ACTIONS"
+        android:tag="@string/NEXT_ACTIONS"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="@dimen/button_size_default"
         android:layout_height="@dimen/button_size_default"
         android:layout_alignParentRight="true"
         android:text="@string/button_next_actions"
-        android:layout_alignTop="@+id/btAgenda"
+        android:layout_alignTop="@string/dbCALENDAR"
         android:layout_marginRight="25dp"
         android:onClick="listar"
        />
 
     <Button
-        android:id="@+id/btTalvez"
+        android:id="@string/dbMAYBE_LATER"
         android:layout_width="@dimen/button_size_default"
         android:layout_height="@dimen/button_size_default"
-        android:layout_alignRight="@+id/btNextAction"
+        android:layout_alignRight="@string/dbNEXT_ACTIONS"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_alignTop="@+id/btIncubar"
+        android:layout_alignTop="@string/dbINCUBATOR"
         android:text="Talvez"
+        android:tag="@string/MAYBE_LATER"
         android:onClick="listar" />
 
     <Button
-        android:id="@+id/btOther"
+        android:id="@string/dbOTHER"
         android:layout_width="@dimen/button_size_default"
         android:layout_height="@dimen/button_size_default"
         android:layout_alignParentBottom="true"
@@ -70,25 +73,28 @@
         android:onClick="listar"/>
 
     <Button
-        android:id="@+id/btInbox"
+        android:id="@string/dbINBOX"
         android:layout_width="@dimen/button_size_default"
         android:layout_height="@dimen/button_size_default"
         style="@style/Widget.AppCompat.Button.Colored"
         android:text="@string/button_caixa_de_entrada"
-        android:layout_above="@+id/btDelegados"
+        android:tag="@string/INBOX"
+        android:layout_above="@string/dbDELEGATED"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="84dp"
         android:onClick="listar" />
 
     <Button
-        android:id="@+id/btDelegados"
+        android:id="@string/dbDELEGATED"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="@dimen/button_size_default"
         android:layout_height="@dimen/button_size_default"
-        android:layout_alignLeft="@+id/btInbox"
-        android:layout_alignTop="@+id/btIncubar"
+        android:layout_alignLeft="@string/dbINBOX"
+        android:layout_alignTop="@string/dbINCUBATOR"
         android:text="@string/button_delegados"
         android:onClick="listar"
+        android:tag="@string/DELEGATED"
+
         />
 
 </RelativeLayout>
