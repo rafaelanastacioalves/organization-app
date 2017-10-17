@@ -20,6 +20,6 @@ Besides, in Calendar, it can:
 The final version of the app is not here, but in the play store so you can download it. 
 This repository just show part of the architecture.
 
-## Download (PLay Store)
+## Download (Play Store)
 
 you can download it [here](https://play.google.com/store/apps/details?id=com.juntando_tudo).
