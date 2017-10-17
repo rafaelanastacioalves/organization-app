@@ -22,4 +22,4 @@ This repository just show part of the architecture.
 
 ## Download (PLay Store)
 
-you can download it [here](wwww.gmail.com).
+you can download it [here](https://play.google.com/store/apps/details?id=com.juntando_tudo).
